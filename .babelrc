@@ -1,0 +1,33 @@
+{
+  "env": {
+    "test": {
+      "plugins": [
+        "@babel/plugin-transform-modules-commonjs",
+        "@babel/plugin-syntax-jsx",
+        "@babel/plugin-transform-runtime",
+        [
+          "module-resolver",
+          {
+              "root": [
+                  "./src"
+              ],
+              "alias": {
+                "constants":"src/constants",
+                "store":  "src/store",
+                "src":  "src",
+                "helpers":  "src/helpers"
+              }
+          }
+      ],
+      [
+        "styled-components",
+        {
+            "ssr": false,
+            "preprocess": false
+        }
+      ]
+      ]
+    }
+  },
+  "presets": ["@babel/preset-env", "@babel/preset-react","@babel/preset-typescript"]
+}
