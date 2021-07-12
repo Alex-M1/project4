@@ -1,0 +1,1 @@
+export const SET_CREDENTIALS_VALUE = '@@credential/SET_CREDENTIALS_VALUE';
