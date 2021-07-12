@@ -3,10 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 import Input from '../_common_/Input';
 import Button from '../_common_/Button';
+import Header from '../Header'
 
 const Auth = () => {
     return(
         <>
+            <Header/>
             <h1>Sign In</h1>
             <div>
                 <label>Login

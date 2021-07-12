@@ -3,10 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 import Input from '../_common_/Input';
 import Button from '../_common_/Button';
+import Header from '../Header';
 
 const Registration = () => {
     return(
         <>
+            <Header/>
             <h1>Sign Up</h1>
             <div>
                 <label>Login
@@ -24,7 +26,7 @@ const Registration = () => {
                 </label>
             </div>
             <div>
-                <Button text="Sign Up"/>
+                <Button text="Sign up"/>
             </div>
             <p>Already have an account?</p>
             <NavLink to="/">
