@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { StInput } from './styled';
+
 const Input = ({type, placeholder}) => {
     return(
-        <input type={type} placeholder={placeholder}/>
+        <StInput type={type} placeholder={placeholder}/>
     )
 }
 

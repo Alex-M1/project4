@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { StButton } from './styled';
+
 const Button = ({text}) => {
     return(
-        <button type="button">
+        <StButton type="button">
             {text}
-        </button>
+        </StButton>
     )
 }
 
