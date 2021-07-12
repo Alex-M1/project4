@@ -10,7 +10,7 @@ export interface IRegistration extends IAuth {
 
 export interface ICredential {
   auth: IAuth;
-  register: IRegistration;
+  registration: IRegistration;
 }
 
 export interface ISetting {

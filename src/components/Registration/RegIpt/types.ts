@@ -1,0 +1,13 @@
+import { TCredentialsAction } from 'store/credentials/types';
+import { Dispatch } from 'react';
+
+export interface IRegIndex {
+  type: 'login' | 'password' | 'confirm';
+}
+
+export interface IRegIpt extends IRegIndex {
+  value: string;
+  placeholder: string;
+  onChange: (value: string) => void;
+}
+export type TDispatch = Dispatch<TCredentialsAction>

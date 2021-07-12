@@ -6,7 +6,7 @@ export const initialState: ICredential = {
     login: '',
     password: '',
   },
-  register: {
+  registration: {
     login: '',
     password: '',
     confirm: '',
