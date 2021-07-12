@@ -21,8 +21,9 @@
         ],
         "constants/*":["./src/constants/*"],
         "store/*": ["./src/store/*"],
-        "src/*": ["src/*"],
-        "helpers/*": ["src/helpers/*"],
+        "src/*": ["./src/*"],
+        "helpers/*": ["./src/helpers/*"],
+        "common/*":["./src/components/_common_/*"]
     },
   },
   "include": [
