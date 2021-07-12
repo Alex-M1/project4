@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Button from '../_common_/Button';
 import Header from '../Header';
 import Title from '../_common_/Title';
 import RegIpt from './RegIpt';
+import RegBtn from './RegBtn';
 
 const Registration = () => {
   return (
@@ -23,7 +23,7 @@ const Registration = () => {
         placeholder="login"
       />
       <div>
-        <Button text="Sign up" />
+        <RegBtn />
       </div>
       <p>Already have an account?</p>
       <NavLink to="/">
