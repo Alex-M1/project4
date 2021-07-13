@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { compose, createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import './i18n';
 import { rootReducer } from 'store/rootReducer';
 import rootSaga from 'store/rootSaga';
 import App from './components/App';

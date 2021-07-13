@@ -5,7 +5,7 @@ import { IRegBtn } from './types';
 const RegBtn = ({ signUpRequest }: IRegBtn) => {
   const onButtonClick = () => signUpRequest();
   return (
-    <Button text="sign up" onClick={onButtonClick} />
+    <Button text="signUpBtn" onClick={onButtonClick} />
   );
 };
 
