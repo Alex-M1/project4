@@ -4,7 +4,7 @@ export const Theme = React.createContext({ theme: 'dark', changeTheme: () => { }
 
 export const withTheme = (Component: React.ComponentType<any>) => () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
-  const changeTheme = async () => {
+  const changeTheme = () => {
     setTheme((theme) => (theme === 'dark' ? 'light' : 'dark'));
   };
   useEffect(() => {

@@ -4,7 +4,7 @@ export const colors = {
     backgroundSecondary: '#17212B',
     button: '#2B5278',
     input: '#D1D1D1',
-    textColor: '#FFFFFF',
+    textColor: '#000',
     placeholderColor: '#55667B',
 
   },
@@ -13,7 +13,7 @@ export const colors = {
     backgroundSecondary: '#ECECEC',
     button: '#2B5278',
     input: '#242F3D',
-    textColor: '#000000',
+    textColor: '#FFFFFF',
     placeholderColor: '#55667B',
   },
 };
