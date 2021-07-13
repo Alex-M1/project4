@@ -5,7 +5,7 @@ import Title from '../_common_/Title';
 import AuthIpt from './AuthIpt';
 import AuthBtn from './AuthBtn';
 import Header from '../Header';
-import { StGlobalCredentials, StContainer } from './styled';
+import { StGlobalCredentials, StContainer, StNavLink } from './styled';
 
 const Auth = () => {
   return (
@@ -23,10 +23,13 @@ const Auth = () => {
                 placeholder="Enter your password" 
             />
             <AuthBtn/>
-            <p>Create an account</p>
-            <NavLink to="/signup">
-                Sign Up
-            </NavLink>
+            <StNavLink>
+                <p>Create an account</p> 
+                &nbsp;
+                <NavLink to="/signup">
+                    Sign Up
+                </NavLink>
+            </StNavLink>
         </StContainer>
     </StGlobalCredentials>
     </>

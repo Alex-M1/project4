@@ -4,7 +4,7 @@ import Header from '../Header';
 import Title from '../_common_/Title';
 import RegIpt from './RegIpt';
 import RegBtn from './RegBtn';
-import { StContainer, StGlobalCredentials } from '../Auth/styled';
+import { StContainer, StGlobalCredentials, StNavLink } from '../Auth/styled';
 
 const Registration = () => {
   return (
@@ -25,13 +25,14 @@ const Registration = () => {
           type="confirm"
           placeholder="login"
         />
-        <div>
-          <RegBtn />
-        </div>
-        <p>Already have an account?</p>
-        <NavLink to="/">
-          Sign In
-        </NavLink>
+        <RegBtn />
+        <StNavLink>
+          <p>Already have an account?</p>
+          &nbsp;
+          <NavLink to="/">
+            Sign In
+          </NavLink>
+        </StNavLink>
         </StContainer>
       </StGlobalCredentials>
     </>
