@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { StInput } from './styled';
 import { IInput } from './types';
 
-const Input = ({ type, value, placeholder, onChange }: IInput) => {
+const Input = ({ type, value, onChange }: IInput) => {
   const { colors, theme } = useTheme();
   const { t } = useTranslation();
   return (
@@ -14,7 +14,7 @@ const Input = ({ type, value, placeholder, onChange }: IInput) => {
       theme={theme}
       colors={colors}
       onChange={onChange}
-      placeholder={t(`${placeholder}Ipt`)}
+      placeholder={t(`${type}Ipt`)}
     />
   );
 };

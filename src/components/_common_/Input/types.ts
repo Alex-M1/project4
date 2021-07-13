@@ -8,6 +8,5 @@ export interface IStInput {
 export interface IInput {
   type: string;
   value: string;
-  placeholder: string;
   onChange: (e: SyntheticEvent<HTMLInputElement>) => void;
 }

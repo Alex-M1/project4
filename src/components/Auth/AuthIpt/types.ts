@@ -10,6 +10,5 @@ export type TDispatch = Dispatch<TCredentialsAction>
 
 export interface IAuthIpt extends IAuthIndex {
   value: string;
-  placeholder: string;
   onChange: (value: string) => void;
 }

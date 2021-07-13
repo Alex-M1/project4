@@ -1,34 +1,23 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
-import Input from '../_common_/Input';
-import Button from '../_common_/Button';
-import Header from '../Header';
+import Title from '../_common_/Title';
+import AuthIpt from './AuthIpt';
+import AuthBtn from './AuthBtn';
+import { StGlobalCredentials, StContainer } from './styled';
+import AuthLink from './AuthLink';
 
 const Auth = () => {
     return (
         <>
-            <Header />
-            <h1>Sign In</h1>
-            <div>
-                <div>
-                    Login
-                    <Input type="text" placeholder="Enter your login" />
-                </div>
-            </div>
-            <div>
-                <div>
-                    Password
-                    <Input type="password" placeholder="Enter your password" />
-                </div>
-            </div>
-            <div>
-                <Button text="Sign in" />
-            </div>
-            <p>Create an account</p>
-            <NavLink to="/signup">
-                Sign Up
-            </NavLink>
+            <StGlobalCredentials>
+                <StContainer>
+                    <Title title="signInTitle" />
+                    <AuthIpt type="login" />
+                    <AuthIpt type="password" />
+                    <AuthBtn />
+                    <AuthLink />
+                </StContainer>
+            </StGlobalCredentials>
         </>
     );
 };

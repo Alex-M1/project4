@@ -8,5 +8,9 @@
   "signInTitle":"Sign in",
   "signUpTitle":"Sign up",
   "signInBtn": "Sign in",
-  "signUpBtn": "Sign up"
+  "signUpBtn": "Sign up",
+  "toLogin":"Already have an account ?",
+  "toRegister":"Create an account",
+  "toLoginLink": "Sign in",
+  "toRegisterLink": "Sign up"
 }

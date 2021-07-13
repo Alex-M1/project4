@@ -6,11 +6,11 @@ import { IAuthIndex, TDispatch } from './types';
 import AuthIpt from './AuthIpt';
 
 const mapStateToProps = (state: AppStateType, props: IAuthIndex) => ({
-  value: inputValue(state, props.page, props.type),
+  value: inputValue(state, 'auth', props.type),
 });
 
 const mapDispatchToProps = (dispatch: TDispatch, props: IAuthIndex) => ({
-  onChange: (value: string) => dispatch(setCredentialsValue({ page: props.page, field: props.type }, value)),
+  onChange: (value: string) => dispatch(setCredentialsValue({ page: 'auth', field: props.type }, value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthIpt);

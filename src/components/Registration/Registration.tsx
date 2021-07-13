@@ -1,21 +1,23 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import Title from '../_common_/Title';
 import RegIpt from './RegIpt';
 import RegBtn from './RegBtn';
+import { StContainer, StGlobalCredentials } from '../Auth/styled';
+import RegNav from './RegNav';
 
 const Registration = () => {
   return (
     <>
-      <Title title="signUpTitle" />
-      <RegIpt type="login" placeholder="login" />
-      <RegIpt type="password" placeholder="login" />
-      <RegIpt type="confirm" placeholder="login" />
-      <RegBtn />
-      <p>Already have an account?</p>
-      <NavLink to="/">
-        Sign In
-      </NavLink>
+      <StGlobalCredentials>
+        <StContainer>
+          <Title title="signUpTitle" />
+          <RegIpt type="login" />
+          <RegIpt type="password" />
+          <RegIpt type="confirm" />
+          <RegBtn />
+          <RegNav />
+        </StContainer>
+      </StGlobalCredentials>
     </>
   );
 };

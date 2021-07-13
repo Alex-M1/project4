@@ -8,5 +8,9 @@
   "signInTitle":"Авторизация",
   "signUpTitle":"Регистрация",
   "signInBtn": "Вход",
-  "signUpBtn": "Регистрация"
+  "signUpBtn": "Регистрация",
+  "toLogin":"Уже имеете аккаунт ?",
+  "toRegister":"Не зарегистрированы?",
+  "toLoginLink": "К авторизации",
+  "toRegisterLink": "К регистрации"
 }

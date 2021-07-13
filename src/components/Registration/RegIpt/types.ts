@@ -7,7 +7,6 @@ export interface IRegIndex {
 
 export interface IRegIpt extends IRegIndex {
   value: string;
-  placeholder: string;
   onChange: (value: string) => void;
 }
 export type TDispatch = Dispatch<TCredentialsAction>
