@@ -1,6 +1,8 @@
-import { TSetCredentialsValue, ISetting } from './types';
+import { TSetCredentialsValue, ISetting, TSignUpRequest } from './types';
 import * as AT from './actionTypes';
 
 export const setCredentialsValue = (setting: ISetting, payload: string): TSetCredentialsValue => ({
   type: AT.SET_CREDENTIALS_VALUE, setting, payload,
 });
+
+export const signUpRequest = (): TSignUpRequest => ({ type: AT.SIGN_UP_REQUEST });
