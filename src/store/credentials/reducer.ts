@@ -11,6 +11,7 @@ export const initialState: ICredential = {
     password: '',
     confirm: '',
   },
+  isRedirect: false,
 };
 
 export const credentialsReducer = (state = initialState, action: TCredentialsAction) => {
@@ -24,6 +25,21 @@ export const credentialsReducer = (state = initialState, action: TCredentialsAct
         },
       };
     }
+    case AT.SET_IS_REDIRECT:
+      return {
+        ...state,
+        isRedirect: action.isRedirect,
+      };
+    case AT.CLEAR_IPT:
+      return {
+        ...state,
+        [action.page]: {
+          ...state[action.page],
+          login: '',
+          password: '',
+          confirm: '',
+        },
+      };
     default: return state;
   }
 };

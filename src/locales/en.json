@@ -12,5 +12,11 @@
   "toLogin":"Already have an account ?",
   "toRegister":"Create an account",
   "toLoginLink": "Sign in",
-  "toRegisterLink": "Sign up"
+  "toRegisterLink": "Sign up",
+  "invalidLogin": "Login must contain from 1 to 25 latin characters and / or numbers.",
+  "invalidPassword": "Password must contain from 6 to 25 latin characters and / or numbers.",
+  "invalidConfirm": "Password doesn`t match",
+  "userIsReg":"This user already exists",
+  "somethingWrong":"Something has been wrong, please try again",
+  "successReg": "Success registration"
 }

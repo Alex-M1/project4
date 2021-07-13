@@ -1,6 +1,7 @@
 import React from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
 import { StGlobalStyle } from './styled';
 import Auth from '../Auth';
 import Registration from '../Registration';
@@ -11,10 +12,6 @@ const App = () => {
   const { colors, theme } = useTheme();
   return (
     <div>
-      <StGlobalStyle 
-        theme={theme}
-        colors={colors}
-      />
       <Router>
         <Header />
         <Switch>
@@ -22,6 +19,11 @@ const App = () => {
           <Route path="/signup" component={Registration} />
         </Switch>
       </Router>
+      <StGlobalStyle
+        theme={theme}
+        colors={colors}
+      />
+      <ToastContainer />
     </div>
   );
 };

@@ -8,7 +8,7 @@ export const request = async (url: string, body: any, method: TMethod) => {
       'Content-Type': 'application/json',
     },
   });
-  if (!response.ok) throw new Error(response.statusText);
+  if (!response.ok) throw await response.text();
   return response;
 };
 

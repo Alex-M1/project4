@@ -11,14 +11,18 @@ export interface IRegistration extends IAuth {
 export interface ICredential {
   auth: IAuth;
   registration: IRegistration;
+  isRedirect: boolean;
 }
-
+export type TPage = 'auth' | 'registration'
+export type TField = 'login' | 'password' | 'confirm'
 export interface ISetting {
-  page: 'auth' | 'registration';
-  field: 'login' | 'password' | 'confirm';
+  page: TPage;
+  field: TField;
 }
 
 export type TSetCredentialsValue = { type: typeof AT.SET_CREDENTIALS_VALUE, setting: ISetting, payload: string };
 export type TSignUpRequest = { type: typeof AT.SIGN_UP_REQUEST }
 export type TSignInRequest = { type: typeof AT.SIGN_IN_REQUEST }
-export type TCredentialsAction = TSetCredentialsValue | TSignInRequest;
+export type TSetIsRedirect = { type: typeof AT.SET_IS_REDIRECT, isRedirect: boolean }
+export type TCleatIpt = { type: typeof AT.CLEAR_IPT, page: TPage }
+export type TCredentialsAction = TSetCredentialsValue | TSignInRequest | TSetIsRedirect | TCleatIpt;

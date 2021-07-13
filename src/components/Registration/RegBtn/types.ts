@@ -1,3 +1,5 @@
 export interface IRegBtn {
-  signUpRequest: () => void
+  isRedirect: boolean;
+  signUpRequest: () => void;
+  setIsRedirect: (isReg: boolean) => void;
 }

@@ -1,16 +1,27 @@
 import { url } from 'constants/urls';
-import { takeEvery, select } from 'redux-saga/effects';
+import { takeEvery, select, call, put } from 'redux-saga/effects';
+import { notifications } from 'src/helpers/notification';
 import { request } from 'src/helpers/requests';
+import { validate } from 'src/helpers/validation';
+import { cleatIpt, setIsRedirect } from './action';
 import * as AT from './actionTypes';
 import { auth, registration } from './selectors';
 
 export function* signUpSaga() {
+  const body = yield select(registration);
   try {
-    const body = yield select(registration);
-    request(url.registration, body, 'POST');
-    console.log(body);
+    const valid = yield call(validate, body);
+    if (valid) return yield call(notifications, { message: valid });
+    const { confirm, ...newBody } = body;
+    yield call(request, url.registration, newBody, 'POST');
+    yield put(setIsRedirect(true));
+    yield put(cleatIpt('registration'));
+    yield call(notifications, { message: 'successReg', type: 'success' });
   } catch (err) {
-    console.log(err);
+    if (err === `User ${body.login} already exists`) {
+      return yield call(notifications, { message: 'userIsReg' });
+    }
+    yield call(notifications, { message: 'somethingWrong' });
   }
 }
 

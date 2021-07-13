@@ -17,7 +17,7 @@ module.exports = {
     'json',
     'lcov',
   ],
-  setupFilesAfterEnv: ['<rootDir>/src/__tests__/testHelper.js'],
+  setupFilesAfterEnv: ['<rootDir>/src/__tests__/config.js'],
   coveragePathIgnorePatterns: [
     '/server/',
     '/node_modules/',
