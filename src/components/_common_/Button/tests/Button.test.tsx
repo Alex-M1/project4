@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallowSmart } from '../../../../__tests__/testHelper';
+import { shallow } from 'enzyme';
 import Button from '../Button';
 
 describe('Button', () => {
@@ -11,15 +11,15 @@ describe('Button', () => {
         };
     });
     it('Should match snapshot', () => {
-        const component = shallowSmart(<Button {...props}/>);
+        const component = shallow(<Button {...props}/>);
         expect(component.html()).toMatchSnapshot();
     });
     it('should render StButton', () => {
-        const component = shallowSmart(<Button {...props}/>);
-        expect(component.find('styled__StButton')).toHaveLength(0);
+        const component = shallow(<Button {...props}/>);
+        expect(component.find('styled__StButton')).toHaveLength(1);
     });
     it('should call onClick', () => {
-        const component = shallowSmart(<Button {...props}/>);
+        const component = shallow(<Button {...props}/>);
         component.find('styled__StButton').simulate('click');
         expect(props.onClick).toHaveBeenCalled();
     });
