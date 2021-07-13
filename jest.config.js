@@ -3,21 +3,25 @@ module.exports = {
   moduleFileExtensions: [
     'js',
     'jsx',
+    'ts',
+    'tsx',
   ],
   globals: {
     window: true,
   },
-  collectCoverageFrom: ['**/*.jsx', '**/*.js'],
+  collectCoverageFrom: ['**/*.jsx', '**/*.js', '**/*.ts', '**/*.tsx'],
   moduleDirectories: ['node_modules', '.', 'src'],
   testMatch: [
     '**/*.(test|spec).(js)',
     '**/*.(test|spec).(jsx)',
+    '**/*.(test|spec).(ts)',
+    '**/*.(test|spec).(tsx)',
   ],
   coverageReporters: [
     'json',
     'lcov',
   ],
-  setupFilesAfterEnv: ['<rootDir>/src/__tests__/testHelper.js'],
+  setupFilesAfterEnv: ['<rootDir>/src/__tests__/config.js'],
   coveragePathIgnorePatterns: [
     '/server/',
     '/node_modules/',
