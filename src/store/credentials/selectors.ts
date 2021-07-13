@@ -4,8 +4,8 @@ import { AppStateType } from '../rootReducer';
 export const credentials = (state: AppStateType) => state.credentials;
 export const auth = createSelector(
   credentials, 
-  (credentials) => credentials.auth
-)
+  (credentials) => credentials.auth,
+);
 export const registration = createSelector(
   credentials,
   (credentials) => credentials.registration,

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { IAuthBtn } from './types';
 import Button from 'common/Button';
+import { IAuthBtn } from './types';
 import { StInputDiv } from '../AuthIpt/styled';
 
 const AuthBtn = ({ signInRequest }: IAuthBtn) => {
@@ -11,9 +11,9 @@ const AuthBtn = ({ signInRequest }: IAuthBtn) => {
         <Button
             text="Sign in"
             onClick={onButtonClick}
-            />
+        />
         </StInputDiv>
-    )
-}
+    );
+};
 
 export default AuthBtn;

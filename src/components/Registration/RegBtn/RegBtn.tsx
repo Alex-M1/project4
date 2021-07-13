@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'common/Button';
-import { IRegBtn } from './types';
 import { StInputDiv } from 'src/components/Auth/AuthIpt/styled';
+import { IRegBtn } from './types';
 
 const RegBtn = ({ signUpRequest }: IRegBtn) => {
   const onButtonClick = () => signUpRequest();
