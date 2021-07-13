@@ -1,15 +1,21 @@
 import React from 'react';
-import Title from '../_common_/Title';
+
+import Title from 'common/Title';
 import RegIpt from './RegIpt';
 import RegBtn from './RegBtn';
 import { StContainer, StGlobalCredentials } from '../Auth/styled';
 import RegNav from './RegNav';
+import { useTheme } from '../hooks/useTheme';
 
 const Registration = () => {
+  const { colors, theme } = useTheme();
   return (
     <>
       <StGlobalCredentials>
-        <StContainer>
+        <StContainer
+          theme={theme}
+          colors={colors}
+        >
           <Title title="signUpTitle" />
           <RegIpt type="login" />
           <RegIpt type="password" />

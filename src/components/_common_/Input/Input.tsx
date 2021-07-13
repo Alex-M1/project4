@@ -1,6 +1,7 @@
 import React from 'react';
-import { useTheme } from 'src/components/hooks/useTheme';
 import { useTranslation } from 'react-i18next';
+
+import { useTheme } from 'src/components/hooks/useTheme';
 import { StInput } from './styled';
 import { IInput } from './types';
 

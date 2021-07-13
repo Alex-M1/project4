@@ -1,8 +1,10 @@
 export const colors = {
   light: {
     background: '#fff',
-    backgroundSecondary: '#17212B',
+    backgroundSecondary: '#ECECEC',
     button: '#2B5278',
+    buttonColor: '#fff',
+    buttonHover: '#346392',
     input: '#D1D1D1',
     textColor: '#000',
     placeholderColor: '#55667B',
@@ -10,10 +12,12 @@ export const colors = {
   },
   dark: {
     background: '#0E1621',
-    backgroundSecondary: '#ECECEC',
+    backgroundSecondary: '#17212B',
     button: '#2B5278',
+    buttonColor: '#fff',
+    buttonHover: '#346392',
     input: '#242F3D',
-    textColor: '#FFFFFF',
+    textColor: '#d4d4d4',
     placeholderColor: '#55667B',
   },
 };

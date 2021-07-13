@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import { IStyled } from 'common/types/styledTypes';
 
-export const StContainer = styled.div`    
-    width: 430px;
+export const StContainer = styled.div < IStyled > `    
+    width: 440px;
     height: auto;
     min-height: 420px;
     padding: 0 70px 30px;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 12px;
-    background: #ECECEC;
+    background: ${({ colors, theme }) => colors[theme].backgroundSecondary};
 `;
 
 export const StGlobalCredentials = styled.div`
@@ -17,9 +18,10 @@ export const StGlobalCredentials = styled.div`
     width: 100vw;
     height: calc(100vh - 90px);
 `;
-export const StNavLink = styled.div`
+export const StNavLink = styled.div < IStyled > `
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    color: ${({ colors, theme }) => colors[theme].textColor};
 `;

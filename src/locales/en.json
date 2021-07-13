@@ -1,9 +1,9 @@
 {
   "login":"Login",
-  "loginIpt": "Please enter your login",
+  "loginIpt": "Enter your login",
   "password": "Password",
-  "passwordIpt": "Please enter your password",
-  "confirm": "Confirm pasword",
+  "passwordIpt": "Enter your password",
+  "confirm": "Confirm your pasword",
   "confirmIpt": "Please confirm your password",
   "signInTitle":"Sign in",
   "signUpTitle":"Sign up",

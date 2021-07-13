@@ -1,6 +1,7 @@
+import { connect } from 'react-redux';
+
 import { AppStateType } from 'store/rootReducer';
 import { inputValue } from 'store/credentials/selectors';
-import { connect } from 'react-redux';
 import { setCredentialsValue } from 'store/credentials/action';
 import { IAuthIndex, TDispatch } from './types';
 import AuthIpt from './AuthIpt';

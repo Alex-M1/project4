@@ -1,21 +1,26 @@
 import React from 'react';
 
+import { useTheme } from '../hooks/useTheme';
 import Title from '../_common_/Title';
 import AuthIpt from './AuthIpt';
 import AuthBtn from './AuthBtn';
 import { StGlobalCredentials, StContainer } from './styled';
-import AuthLink from './AuthLink';
+import AuthNav from './AuthNav';
 
 const Auth = () => {
+    const { colors, theme } = useTheme();
     return (
         <>
             <StGlobalCredentials>
-                <StContainer>
+                <StContainer
+                    theme={theme}
+                    colors={colors}
+                >
                     <Title title="signInTitle" />
                     <AuthIpt type="login" />
                     <AuthIpt type="password" />
                     <AuthBtn />
-                    <AuthLink />
+                    <AuthNav />
                 </StContainer>
             </StGlobalCredentials>
         </>

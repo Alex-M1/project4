@@ -1,5 +1,5 @@
-import { TCredentialsAction } from 'store/credentials/types';
 import { Dispatch } from 'react';
+import { TCredentialsAction } from 'store/credentials/types';
 
 export interface IRegIndex {
   type: 'login' | 'password' | 'confirm';
