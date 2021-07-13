@@ -20,4 +20,5 @@ export interface ISetting {
 
 export type TSetCredentialsValue = { type: typeof AT.SET_CREDENTIALS_VALUE, setting: ISetting, payload: string };
 export type TSignUpRequest = { type: typeof AT.SIGN_UP_REQUEST }
-export type TCredentialsAction = TSetCredentialsValue;
+export type TSignInRequest = { type: typeof AT.SIGN_IN_REQUEST }
+export type TCredentialsAction = TSetCredentialsValue | TSignInRequest;

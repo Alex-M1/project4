@@ -1,9 +1,10 @@
 import React from 'react';
+import { StTitle } from './styled';
 import { ITitle } from './types';
 
 const Title = ({ title }: ITitle) => {
   return (
-    <h1>{title}</h1>
+    <StTitle>{title}</StTitle>
   );
 };
 
