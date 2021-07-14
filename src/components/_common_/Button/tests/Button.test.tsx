@@ -2,6 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Button from '../Button';
 
+jest.mock('react-i18next', () => ({
+    useTranslation: jest.fn().mockImplementation(() => ({
+      t: jest.fn(),
+    })),
+  }),
+);
+
 describe('Button', () => {
     let props;
     beforeEach(() => {

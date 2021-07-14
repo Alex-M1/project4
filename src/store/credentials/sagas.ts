@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { url } from 'constants/urls';
 import { takeEvery, select, call, put } from 'redux-saga/effects';
 import { notifications } from 'src/helpers/notification';

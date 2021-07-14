@@ -1,6 +1,13 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Input from '../Input';
+
+jest.mock('react-i18next', () => ({
+    useTranslation: jest.fn().mockImplementation(() => ({
+      t: jest.fn(),
+    })),
+  }),
+  );
 
 describe('Input', () => {
     let props;
@@ -16,12 +23,12 @@ describe('Input', () => {
         expect(component.html()).toMatchSnapshot();
     });
     it('should render StInput', () => {
-        const component = shallow(<Input {...props} />);
+        const component = mount(<Input {...props} />);
         expect(component.find('styled__StInput')).toHaveLength(1);
     });
     it('should call onChange', () => {
         const component = shallow(<Input {...props} />);
         component.find('styled__StInput').simulate('change', { target: { value: 'testValue' } });
-        expect(props.onChange).toHaveBeenCalledWith({ value: 'testValue' });
+        expect(component.props().onChange).toHaveBeenCalled();
     });
 });

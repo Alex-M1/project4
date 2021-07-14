@@ -48,7 +48,7 @@ async function networkFirst(request) {
         await cache.put(request, response.clone());
         return response;
     } catch (e) {
-        console.log(e, 'error');
+        // console.log(e, 'error');
         const cached = await cache.match(request);
         const mess = { message: "offline" };
         return cached ?? new Response(JSON.stringify(mess));
