@@ -38,7 +38,7 @@ export function* signInSaga() {
     yield put(setIsRedirect(true));
     yield put(clearIpt('auth'));
   } catch (err) {
-    if (err === 'Incorrect credentials' || `User ${body.login} was not found`) {
+    if (err === 'Incorrect credentials' || err === `User ${body.login} was not found`) {
       return yield call(notifications, { message: 'inCorrectCred' });
     }
     yield call(notifications, { message: 'somethingWrong' });
