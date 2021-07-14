@@ -1,8 +1,8 @@
 import React, { SyntheticEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Input from 'common/Input';
 import { useTheme } from 'src/components/hooks/useTheme';
+import Input from '../../_common_/Input';
 import { IAuthIpt } from './types';
 import { StInputDiv, StSpan } from './styled';
 

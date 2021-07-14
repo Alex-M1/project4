@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StNavLink } from '../styled';
 
-const AuthLink = () => {
+const AuthNav = () => {
   const { colors, theme } = useTheme();
   const { t } = useTranslation();
   return (
@@ -22,4 +22,4 @@ const AuthLink = () => {
   );
 };
 
-export default AuthLink;
+export default AuthNav;
