@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import AuthNav from '../AuthNav';
+import { mountSmart, shallowSmart } from '../../../../__tests__/testHelper';
 
 jest.mock('react-i18next', () => ({
     useTranslation: jest.fn().mockImplementation(() => ({
@@ -17,11 +17,15 @@ describe('AuthNav', () => {
         };
     });
     it('Should match snapshot', () => {
-        const component = shallow(<AuthNav {...props}/>);
+        const component = shallowSmart(<AuthNav {...props}/>);
         expect(component.html()).toMatchSnapshot();
     });
     it('should render StNavLink', () => {
-        const component = shallow(<AuthNav {...props}/>);
+        const component = mountSmart(<AuthNav {...props}/>);
+        expect(component.find('styled__StNavLink')).toHaveLength(1);
+    });
+    it('should change', () => {
+        const component = mountSmart(<AuthNav {...props}/>);
         expect(component.find('styled__StNavLink')).toHaveLength(1);
     });
 });
