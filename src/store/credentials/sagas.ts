@@ -4,6 +4,7 @@ import { takeEvery, select, call, put } from 'redux-saga/effects';
 import { notifications } from 'src/helpers/notification';
 import { request } from 'src/helpers/requests';
 import { validate } from 'src/helpers/validation';
+import { cookieMaster } from '../../helpers/cookieMaster';
 import { clearIpt, setIsRedirect } from './action';
 import { ActionTypes as AT } from './actionTypes';
 import { auth, registration } from './selectors';
@@ -27,13 +28,23 @@ export function* signUpSaga(): SagaIterator {
 }
 
 export function* signInSaga() {
+  const body = yield select(auth);
   try {
-    const body = yield select(auth);
-    console.log(body);
+    const valid = yield call(validate, body);
+    if (valid) return yield call(notifications, { message: valid });
+    const response = yield call(request, url.auth, body, 'POST');
+    const token: string = yield call([response, 'text']);
+    yield call([cookieMaster, 'setTokenInCookie'], token);
+    yield put(setIsRedirect(true));
+    yield put(clearIpt('auth'));
   } catch (err) {
-    console.log(err);
+    if (err === 'Incorrect credentials' || `User ${body.login} was not found`) {
+      return yield call(notifications, { message: 'inCorrectCred' });
+    }
+    yield call(notifications, { message: 'somethingWrong' });
   }
 }
+
 export function* credentialsWatcher() {
   yield takeEvery(AT.SIGN_UP_REQUEST, signUpSaga);
   yield takeEvery(AT.SIGN_IN_REQUEST, signInSaga);

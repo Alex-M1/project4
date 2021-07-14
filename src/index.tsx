@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -21,10 +20,7 @@ const store = createStore(
 );
 
 saga.run(rootSaga);
-const registration = async () => {
-  await navigator.serviceWorker.register('../../../serviceWorker.js');
-};
-registration();
+
 render(
   <Provider store={store}>
     <App />

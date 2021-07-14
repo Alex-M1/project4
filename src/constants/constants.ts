@@ -8,3 +8,5 @@ export const regExp = {
   login: /^[a-z0-9]{1,25}/,
   password: /^[a-z0-9]{6,25}$/,
 };
+
+export const cookieAge = 20000;
