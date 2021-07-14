@@ -1,4 +1,4 @@
-import * as AT from './actionTypes';
+import { ActionTypes as AT } from './actionTypes';
 
 export interface IAuth {
   login: string;
