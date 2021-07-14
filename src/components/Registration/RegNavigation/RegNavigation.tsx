@@ -13,10 +13,10 @@ const RegNavigation = () => {
       theme={theme}
       colors={colors}
     >
-      <p>{t('toLogin')}</p>
+      <p>{t('to_login')}</p>
       &nbsp;
       <NavLink to={url.authClient}>
-        {t('toLoginLink')}
+        {t('to_login_link')}
       </NavLink>
     </StNavLink>
   );

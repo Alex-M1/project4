@@ -18,12 +18,12 @@ export function* signUpSaga(): SagaIterator {
     yield call(request, url.registration, newRegData, 'POST');
     yield put(setIsRedirect(true));
     yield put(clearUserFields('registration'));
-    yield call(notifications, { message: 'successReg', type: 'success' });
+    yield call(notifications, { message: 'success_reg', type: 'success' });
   } catch (err) {
     if (err === `User ${regData.login} already exists`) {
-      return yield call(notifications, { message: 'userIsReg' });
+      return yield call(notifications, { message: 'user_is_reg' });
     }
-    yield call(notifications, { message: 'somethingWrong' });
+    yield call(notifications, { message: 'something_wrong' });
   }
 }
 
@@ -39,9 +39,9 @@ export function* signInSaga() {
     yield put(clearUserFields('auth'));
   } catch (err) {
     if (err === 'Incorrect credentials' || err === `User ${authData.login} was not found`) {
-      return yield call(notifications, { message: 'inCorrectCred' });
+      return yield call(notifications, { message: 'incorrect_cred' });
     }
-    yield call(notifications, { message: 'somethingWrong' });
+    yield call(notifications, { message: 'something_wrong' });
   }
 }
 

@@ -18,7 +18,7 @@ const AuthBtn = ({ isRedirect, setIsRedirect, signInRequest }: IAuthBtn) => {
         <>
             <StInputDiv>
                 <Button
-                    text="signInBtn"
+                    text="sign_in_btn"
                     onClick={onButtonClick}
                 />
             </StInputDiv>

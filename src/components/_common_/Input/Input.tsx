@@ -15,7 +15,7 @@ const Input = ({ type, value, onChange }: IInput) => {
       theme={theme}
       colors={colors}
       onChange={onChange}
-      placeholder={t(`${type}Ipt`)}
+      placeholder={t(`${type}_ipt`)}
     />
   );
 };

@@ -32,7 +32,7 @@ describe('credentials Saga', () => {
         .next()
         .put(clearUserFields('registration'))
         .next()
-        .call(notifications, { message: 'successReg', type: 'success' })
+        .call(notifications, { message: 'success_reg', type: 'success' })
         .next()
         .isDone();
     });
@@ -56,7 +56,7 @@ describe('credentials Saga', () => {
         .next(regValue)
         //@ts-ignore
         .throw('User login123 already exists')
-        .call(notifications, { message: 'userIsReg' })
+        .call(notifications, { message: 'user_is_reg' })
         .next()
         .isDone();
     });
@@ -68,7 +68,7 @@ describe('credentials Saga', () => {
         .next(regValue)
         //@ts-ignore
         .throw('adasdadaad')
-        .call(notifications, { message: 'somethingWrong' })
+        .call(notifications, { message: 'something_wrong' })
         .next()
         .isDone();
     });
@@ -123,7 +123,7 @@ describe('credentials Saga', () => {
         .next(authValue)
         //@ts-ignore
         .throw('Incorrect credentials')
-        .call(notifications, { message: 'inCorrectCred' })
+        .call(notifications, { message: 'incorrect_cred' })
         .next()
         .isDone();
     });
@@ -135,7 +135,7 @@ describe('credentials Saga', () => {
         .next(authValue)
         //@ts-ignore
         .throw('asdasdaфіsd')
-        .call(notifications, { message: 'somethingWrong' })
+        .call(notifications, { message: 'something_wrong' })
         .next()
         .isDone();
     });

@@ -8,6 +8,7 @@ export const StInputDiv = styled.div`
     align-items: flex-start;
     padding: 10px 0;
 `;
+
 export const StSpan = styled.span < IStyled > `
     padding: 5px;
     font-size: 17px;

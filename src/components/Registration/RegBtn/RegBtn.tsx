@@ -18,7 +18,7 @@ const RegBtn = ({ isRedirect, signUpRequest, setIsRedirect }: IRegBtn) => {
     <>
       <StInputDiv>
         <Button
-          text="signUpBtn"
+          text="sign_up_btn"
           onClick={onButtonClick}
         />
       </StInputDiv>

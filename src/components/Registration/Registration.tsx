@@ -16,7 +16,7 @@ const Registration = () => {
           theme={theme}
           colors={colors}
         >
-          <Title title="signUpTitle" />
+          <Title title="sign_up_title" />
           <RegForm type="login" />
           <RegForm type="password" />
           <RegForm type="confirm" />
