@@ -1,6 +1,6 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
-import { mountSmart, shallowSmart } from '../../../__tests__/testHelper';
+import { mountSmart, shallowSmart } from 'tests/testHelper';
 import Registration from '../Registration';
 
 jest.mock('react-i18next', () => ({
@@ -12,7 +12,7 @@ jest.mock('react-i18next', () => ({
 
 const mockStore = configureStore();
 const store = mockStore({
-  credentials: {
+  user: {
     auth: {
       login: '',
       password: '',
