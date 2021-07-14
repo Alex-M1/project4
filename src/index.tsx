@@ -21,10 +21,6 @@ const store = createStore(
 );
 
 saga.run(rootSaga);
-const registration = async () => {
-  await navigator.serviceWorker.register('../../../serviceWorker.js');
-};
-registration();
 render(
   <Provider store={store}>
     <App />
