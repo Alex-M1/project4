@@ -20,7 +20,6 @@ const store = createStore(
 );
 
 saga.run(rootSaga);
-
 render(
   <Provider store={store}>
     <App />
