@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Title from 'common/Title';
+import Title from '../_common_/Title';
 import RegIpt from './RegIpt';
 import RegBtn from './RegBtn';
 import { StContainer, StGlobalCredentials } from '../Auth/styled';

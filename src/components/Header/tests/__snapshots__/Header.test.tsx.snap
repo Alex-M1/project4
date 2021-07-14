@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Should match snapshot 1`] = `"<div class=\\"styled__StHeader-hIeMMX huhxUD\\"><img src=\\"src/assets/img/logo.png\\" alt=\\"logo\\" class=\\"styled__StLogo-gRpOwf kVbGcU\\"/></div>"`;
