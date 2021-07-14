@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { credentialsReducer } from './credentials/reducer';
+import { userReducer } from './user/reducer';
 
 export const rootReducer = combineReducers({
-  credentials: credentialsReducer,
+  user: userReducer,
 });
 
 type ReducersType = typeof rootReducer

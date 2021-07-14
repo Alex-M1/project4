@@ -1,6 +1,6 @@
 import { messages, regExp } from 'constants/constants';
 
-export const validate = ({ login, password, confirm }: IValidate) => {
+export const isInvalid = ({ login, password, confirm }: IIsInvalid) => {
   if (!regExp.login.test(login)) {
     return messages.invalidLogin;
   }
@@ -13,7 +13,7 @@ export const validate = ({ login, password, confirm }: IValidate) => {
   return false;
 };
 
-interface IValidate {
+interface IIsInvalid {
   login: string;
   password: string;
   confirm?: string

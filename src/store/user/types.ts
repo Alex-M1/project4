@@ -24,5 +24,5 @@ export type TSetCredentialsValue = { type: typeof AT.SET_CREDENTIALS_VALUE, sett
 export type TSignUpRequest = { type: typeof AT.SIGN_UP_REQUEST }
 export type TSignInRequest = { type: typeof AT.SIGN_IN_REQUEST }
 export type TSetIsRedirect = { type: typeof AT.SET_IS_REDIRECT, isRedirect: boolean }
-export type TCleatIpt = { type: typeof AT.CLEAR_IPT, page: TPage }
-export type TCredentialsAction = TSetCredentialsValue | TSignInRequest | TSetIsRedirect | TCleatIpt;
+export type TCleatIUserFields = { type: typeof AT.CLEAR_USER_FIELDS, page: TPage }
+export type TCredentialsAction = TSetCredentialsValue | TSignInRequest | TSetIsRedirect | TCleatIUserFields;

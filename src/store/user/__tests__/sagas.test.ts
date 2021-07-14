@@ -1,13 +1,13 @@
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
-import { cookieMaster } from '../../../helpers/cookieMaster';
-import { notifications } from '../../../helpers/notification';
-import { clearIpt, setIsRedirect } from '../action';
-import { url } from '../../../constants/urls';
-import { request } from '../../../helpers/requests';
-import { validate } from '../../../helpers/validation';
-import { signUpSaga, credentialsWatcher, signInSaga } from '../sagas';
+import { cookieMaster } from 'helpers/cookieMaster';
+import { notifications } from 'helpers/notification';
+import { url } from 'constants/urls';
+import { request } from 'helpers/requests';
+import { isInvalid } from 'helpers/validation';
+import { clearUserFields, setIsRedirect } from '../action';
+import userWatcher, { signUpSaga, signInSaga } from '../sagas';
 import { ActionTypes as AT } from '../actionTypes';
-import { auth, registration } from '../selectors';
+import { getAuthData, getRegData } from '../selectors';
 
 describe('credentials Saga', () => {
   describe('signUpSaga', () => {
@@ -22,15 +22,15 @@ describe('credentials Saga', () => {
       //@ts-ignore
       testSaga(signUpSaga, action)
         .next()
-        .select(registration)
+        .select(getRegData)
         .next(regValue)
-        .call(validate, regValue)
+        .call(isInvalid, regValue)
         .next(false)
         .call(request, url.registration, { login: 'login123', password: '11111111' }, 'POST')
         .next()
         .put(setIsRedirect(true))
         .next()
-        .put(clearIpt('registration'))
+        .put(clearUserFields('registration'))
         .next()
         .call(notifications, { message: 'successReg', type: 'success' })
         .next()
@@ -40,9 +40,9 @@ describe('credentials Saga', () => {
       //@ts-ignore
       testSaga(signUpSaga, action)
         .next()
-        .select(registration)
+        .select(getRegData)
         .next(regValue)
-        .call(validate, regValue)
+        .call(isInvalid, regValue)
         .next('msg')
         .call(notifications, { message: 'msg' })
         .next()
@@ -52,7 +52,7 @@ describe('credentials Saga', () => {
       //@ts-ignore
       testSaga(signUpSaga, action)
         .next()
-        .select(registration)
+        .select(getRegData)
         .next(regValue)
         //@ts-ignore
         .throw('User login123 already exists')
@@ -64,7 +64,7 @@ describe('credentials Saga', () => {
       //@ts-ignore
       testSaga(signUpSaga, action)
         .next()
-        .select(registration)
+        .select(getRegData)
         .next(regValue)
         //@ts-ignore
         .throw('adasdadaad')
@@ -87,9 +87,9 @@ describe('credentials Saga', () => {
       //@ts-ignore
       testSaga(signInSaga, action)
         .next()
-        .select(auth)
+        .select(getAuthData)
         .next(authValue)
-        .call(validate, authValue)
+        .call(isInvalid, authValue)
         .next(false)
         .call(request, url.auth, authValue, 'POST')
         .next(mockResponse)
@@ -99,7 +99,7 @@ describe('credentials Saga', () => {
         .next()
         .put(setIsRedirect(true))
         .next()
-        .put(clearIpt('auth'))
+        .put(clearUserFields('auth'))
         .next()
         .isDone();
     });
@@ -107,9 +107,9 @@ describe('credentials Saga', () => {
       //@ts-ignore
       testSaga(signInSaga, action)
         .next()
-        .select(auth)
+        .select(getAuthData)
         .next(authValue)
-        .call(validate, authValue)
+        .call(isInvalid, authValue)
         .next('msg')
         .call(notifications, { message: 'msg' })
         .next()
@@ -119,7 +119,7 @@ describe('credentials Saga', () => {
       //@ts-ignore
       testSaga(signInSaga, action)
         .next()
-        .select(auth)
+        .select(getAuthData)
         .next(authValue)
         //@ts-ignore
         .throw('Incorrect credentials')
@@ -131,7 +131,7 @@ describe('credentials Saga', () => {
       //@ts-ignore
       testSaga(signInSaga, action)
         .next()
-        .select(auth)
+        .select(getAuthData)
         .next(authValue)
         //@ts-ignore
         .throw('asdasdaфіsd')
@@ -142,7 +142,7 @@ describe('credentials Saga', () => {
   });
   describe('fork', () => {
     it('should fork watchers', () => {
-      expectSaga(credentialsWatcher)
+      expectSaga(userWatcher)
         .put({ type: 'FORKED' })
         .run();
     });

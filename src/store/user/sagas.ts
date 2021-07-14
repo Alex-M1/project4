@@ -3,24 +3,24 @@ import { SagaIterator } from 'redux-saga';
 import { takeEvery, select, call, put } from 'redux-saga/effects';
 import { notifications } from 'src/helpers/notification';
 import { request } from 'src/helpers/requests';
-import { validate } from 'src/helpers/validation';
+import { isInvalid } from 'src/helpers/validation';
 import { cookieMaster } from '../../helpers/cookieMaster';
-import { clearIpt, setIsRedirect } from './action';
+import { clearUserFields, setIsRedirect } from './action';
 import { ActionTypes as AT } from './actionTypes';
-import { auth, registration } from './selectors';
+import { getRegData, getAuthData } from './selectors';
 
 export function* signUpSaga(): SagaIterator {
-  const body = yield select(registration);
+  const regData = yield select(getRegData);
   try {
-    const valid = yield call(validate, body);
+    const valid = yield call(isInvalid, regData);
     if (valid) return yield call(notifications, { message: valid });
-    const { confirm, ...newBody } = body;
-    yield call(request, url.registration, newBody, 'POST');
+    const { confirm, ...newRegData } = regData;
+    yield call(request, url.registration, newRegData, 'POST');
     yield put(setIsRedirect(true));
-    yield put(clearIpt('registration'));
+    yield put(clearUserFields('registration'));
     yield call(notifications, { message: 'successReg', type: 'success' });
   } catch (err) {
-    if (err === `User ${body.login} already exists`) {
+    if (err === `User ${regData.login} already exists`) {
       return yield call(notifications, { message: 'userIsReg' });
     }
     yield call(notifications, { message: 'somethingWrong' });
@@ -28,24 +28,24 @@ export function* signUpSaga(): SagaIterator {
 }
 
 export function* signInSaga() {
-  const body = yield select(auth);
+  const authData = yield select(getAuthData);
   try {
-    const valid = yield call(validate, body);
+    const valid = yield call(isInvalid, authData);
     if (valid) return yield call(notifications, { message: valid });
-    const response = yield call(request, url.auth, body, 'POST');
+    const response = yield call(request, url.auth, authData, 'POST');
     const token: string = yield call([response, 'text']);
     yield call([cookieMaster, 'setTokenInCookie'], token);
     yield put(setIsRedirect(true));
-    yield put(clearIpt('auth'));
+    yield put(clearUserFields('auth'));
   } catch (err) {
-    if (err === 'Incorrect credentials' || err === `User ${body.login} was not found`) {
+    if (err === 'Incorrect credentials' || err === `User ${authData.login} was not found`) {
       return yield call(notifications, { message: 'inCorrectCred' });
     }
     yield call(notifications, { message: 'somethingWrong' });
   }
 }
 
-export function* credentialsWatcher() {
+export default function* userWatcher() {
   yield takeEvery(AT.SIGN_UP_REQUEST, signUpSaga);
   yield takeEvery(AT.SIGN_IN_REQUEST, signInSaga);
 }

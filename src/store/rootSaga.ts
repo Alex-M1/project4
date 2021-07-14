@@ -1,8 +1,8 @@
 import { all, fork } from '@redux-saga/core/effects';
-import { credentialsWatcher } from './credentials/sagas';
+import userWatcher from './user/sagas';
 
 const sagas = [
-  credentialsWatcher,
+  userWatcher,
 ];
 
 export default function* rootSaga() {

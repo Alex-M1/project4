@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 
 import { AppStateType } from 'store/rootReducer';
-import { inputValue } from 'store/credentials/selectors';
-import { setCredentialsValue } from 'store/credentials/action';
+import { getInputValue } from 'store/user/selectors';
+import { setCredentialsValue } from 'store/user/action';
 import { IAuthIndex, TDispatch } from './types';
 import AuthIpt from './AuthIpt';
 
 const mapStateToProps = (state: AppStateType, props: IAuthIndex) => ({
-  value: inputValue(state, 'auth', props.type),
+  value: getInputValue(state, 'auth', props.type),
 });
 
 const mapDispatchToProps = (dispatch: TDispatch, props: IAuthIndex) => ({

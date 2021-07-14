@@ -1,4 +1,4 @@
-import { setIsRedirect } from 'store/credentials/action';
+import { setIsRedirect } from 'store/user/action';
 import { connect } from 'react-redux';
 import ModRedirect from './ModRedirect';
 

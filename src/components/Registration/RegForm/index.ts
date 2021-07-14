@@ -1,18 +1,17 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-
 import { AppStateType } from 'store/rootReducer';
-import { inputValue } from 'store/credentials/selectors';
-import { setCredentialsValue } from 'store/credentials/action';
+import { getInputValue } from 'store/user/selectors';
+import { setCredentialsValue } from 'store/user/action';
 import { IRegIndex } from './types';
-import RegIpt from './RegIpt';
+import RegForm from './RegForm';
 
 const mapStateToProps = (state: AppStateType, props: IRegIndex) => ({
-  value: inputValue(state, 'registration', props.type),
+  value: getInputValue(state, 'registration', props.type),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch, props: IRegIndex) => ({
   onChange: (value: string) => dispatch(setCredentialsValue({ page: 'registration', field: props.type }, value)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegIpt);
+export default connect(mapStateToProps, mapDispatchToProps)(RegForm);

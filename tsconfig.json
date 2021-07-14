@@ -13,7 +13,6 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node", // Формат модулей (на входе)
     "sourceMap": false, // Нужно ли юзать удобные для дебага source map'ы (да, нужно)
-    // "outDir": "src/js/modules", // Куда выплевывать скомпиленный код
     "baseUrl": ".", // Где сам проект находится
     "paths": {
         "*": [

@@ -1,31 +1,31 @@
 import React from 'react';
-import RegNav from '../RegNav';
-import { mountSmart, shallowSmart } from '../../../../__tests__/testHelper';
+import { mountSmart, shallowSmart } from 'tests/testHelper';
+import RegNavigation from '../RegNavigation';
 
 jest.mock('react-i18next', () => ({
     useTranslation: jest.fn().mockImplementation(() => ({
-      t: jest.fn(),
+        t: jest.fn(),
     })),
-  }),
+}),
 );
 
-describe('RegNav', () => {
+describe('RegNavigation', () => {
     let props;
     beforeEach(() => {
         props = {
-            
+
         };
     });
     it('Should match snapshot', () => {
-        const component = shallowSmart(<RegNav {...props}/>);
+        const component = shallowSmart(<RegNavigation {...props} />);
         expect(component.html()).toMatchSnapshot();
     });
     it('should render StNavLink', () => {
-        const component = mountSmart(<RegNav {...props}/>);
+        const component = mountSmart(<RegNavigation {...props} />);
         expect(component.find('styled__StNavLink')).toHaveLength(1);
     });
     it('should change', () => {
-        const component = mountSmart(<RegNav {...props}/>);
+        const component = mountSmart(<RegNavigation {...props} />);
         expect(component.find('styled__StNavLink')).toHaveLength(1);
     });
 });

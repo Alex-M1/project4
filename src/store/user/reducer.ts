@@ -14,7 +14,7 @@ export const initialState: ICredential = {
   isRedirect: false,
 };
 
-export const credentialsReducer = (state = initialState, action: TCredentialsAction) => {
+export const userReducer = (state = initialState, action: TCredentialsAction) => {
   switch (action.type) {
     case AT.SET_CREDENTIALS_VALUE: {
       return {
@@ -30,7 +30,7 @@ export const credentialsReducer = (state = initialState, action: TCredentialsAct
         ...state,
         isRedirect: action.isRedirect,
       };
-    case AT.CLEAR_IPT:
+    case AT.CLEAR_USER_FIELDS:
       return {
         ...state,
         [action.page]: {

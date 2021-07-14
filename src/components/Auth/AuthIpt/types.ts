@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import { TCredentialsAction } from 'store/credentials/types';
+import { TCredentialsAction } from 'store/user/types';
 
 export interface IAuthIndex {
   type: 'login' | 'password' | 'confirm';
