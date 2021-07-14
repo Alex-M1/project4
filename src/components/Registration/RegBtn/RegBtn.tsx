@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import Button from 'common/Button';
 import { StInputDiv } from 'src/components/Auth/AuthIpt/styled';
-import ModRedirect from 'common/ModRedirect';
+import ModRedirect from '../../_common_/ModRedirect';
+import Button from '../../_common_/Button';
 import { IRegBtn } from './types';
 
 const RegBtn = ({ isRedirect, signUpRequest, setIsRedirect }: IRegBtn) => {
