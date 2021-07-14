@@ -1,0 +1,22 @@
+{
+    "theme_color": "#f69435",
+    "background_color": "#f69435",
+    "display": "fullscreen",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Reactive Checkers",
+    "short_name": "check",
+    "description": "application that you won't leave",
+    "icons": [
+        {
+            "src": "/src/assets/img/logo.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/src/assets/img/puzzle.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+    ]
+}
