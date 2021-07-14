@@ -7,9 +7,9 @@ import { IAuthIpt } from './types';
 import { StInputDiv, StSpan } from './styled';
 
 const AuthIpt = ({ type, value, onChange }: IAuthIpt) => {
+  const { t } = useTranslation();
   const { colors, theme } = useTheme();
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value);
-  const { t } = useTranslation();
   return (
     <StInputDiv>
       <StSpan

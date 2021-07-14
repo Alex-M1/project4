@@ -1,12 +1,12 @@
-export const messages = {
-  invalidLogin: 'invalidLogin',
-  invalidPassword: 'invalidPassword',
-  invalidConfirm: 'invalidConfirm',
+export const MESSAGES = {
+  invalid_login: 'invalid_login',
+  invalid_password: 'invalid_password',
+  invalid_confirm: 'invalid_confirm',
 };
 
-export const regExp = {
+export const REG_EXP = {
   login: /^[a-z0-9]{1,25}/,
   password: /^[a-z0-9]{6,25}$/,
 };
 
-export const cookieAge = 20000;
+export const COOKIE_AGE = 20000;

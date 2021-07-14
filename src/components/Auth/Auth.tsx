@@ -16,7 +16,7 @@ const Auth = () => {
                     theme={theme}
                     colors={colors}
                 >
-                    <Title title="signInTitle" />
+                    <Title title="sign_in_title" />
                     <AuthIpt type="login" />
                     <AuthIpt type="password" />
                     <AuthBtn />

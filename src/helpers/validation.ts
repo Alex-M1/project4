@@ -1,14 +1,14 @@
-import { messages, regExp } from 'constants/constants';
+import { MESSAGES, REG_EXP } from 'constants/constants';
 
 export const validate = ({ login, password, confirm }: IValidate) => {
-  if (!regExp.login.test(login)) {
-    return messages.invalidLogin;
+  if (!REG_EXP.login.test(login)) {
+    return MESSAGES.invalid_login;
   }
-  if (!regExp.password.test(password)) {
-    return messages.invalidPassword;
+  if (!REG_EXP.password.test(password)) {
+    return MESSAGES.invalid_password;
   }
   if (confirm && password !== confirm) {
-    return messages.invalidConfirm;
+    return MESSAGES.invalid_confirm;
   }
   return false;
 };

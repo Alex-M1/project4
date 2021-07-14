@@ -112,7 +112,7 @@
         "code": 120,
         "ignoreStrings": true,
         "ignoreTemplateLiterals": true,
-        "ignoreRegExpLiterals": true,
+        "ignoreREG_EXPLiterals": true,
         "ignoreComments": true
       }
     ],

@@ -8,7 +8,8 @@ const mapStateToProps = (state: AppStateType) => ({
     isRedirect: isRedirect(state),
 });
 const mapDispatchToProps = {
-    signInRequest, setIsRedirect,
+    signInRequest, 
+    setIsRedirect,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthBtn);

@@ -1,7 +1,7 @@
-import { cookieAge } from '../constants/constants';
+import { COOKIE_AGE } from '../constants/constants';
 
 export const cookieMaster = {
-  setTokenInCookie: (payload: string, age: number = cookieAge) => {
+  setTokenInCookie: (payload: string, age: number = COOKIE_AGE) => {
     document.cookie = `token=${payload}; path=/; max-age=${age}`;
   },
   getCookie: (name: string) => {

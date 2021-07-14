@@ -1,7 +1,8 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
+import { url } from 'constants/urls';
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StNavLink } from '../styled';
 
@@ -13,10 +14,10 @@ const AuthNav = () => {
       theme={theme}
       colors={colors}
     >
-      <p>{t('toRegister')}</p>
+      <p>{t('to_register')}</p>
       &nbsp;
-      <NavLink to="/signup">
-        {t('toRegisterLink')}
+      <NavLink to={url.signUp}>
+        {t('to_register_link')}
       </NavLink>
     </StNavLink>
   );
