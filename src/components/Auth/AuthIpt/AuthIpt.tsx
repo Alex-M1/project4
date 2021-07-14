@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useTheme } from 'src/components/hooks/useTheme';
@@ -8,7 +8,7 @@ import { StInputDiv, StSpan } from './styled';
 
 const AuthIpt = ({ type, value, onChange }: IAuthIpt) => {
   const { colors, theme } = useTheme();
-  const onInputChange = (e: SyntheticEvent<HTMLInputElement>) => onChange(e.currentTarget.value);
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value);
   const { t } = useTranslation();
   return (
     <StInputDiv>

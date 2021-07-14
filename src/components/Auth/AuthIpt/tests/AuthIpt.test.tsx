@@ -32,8 +32,14 @@ describe('AuthIpt', () => {
         expect(component.find('styled__StSpan')).toHaveLength(1);
     });
     it('should call onChange', () => {
-        const component = mount(<Input {...props} />);
+        const component = mount(<AuthIpt {...props} />);
         component.find('styled__StInput').simulate('change', { target: { value: 'testValue' } });
+        expect(component.props().onChange).toHaveBeenCalled();
+    });
+    it('should change onChange', () => {
+        const component = mount(<AuthIpt {...props} />);
+        const ipt = component.find('Input');
+        ipt.props().onChange({ target: { value: 'sdads' } });
         expect(component.props().onChange).toHaveBeenCalled();
     });
 });
