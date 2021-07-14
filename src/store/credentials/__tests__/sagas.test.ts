@@ -8,10 +8,9 @@ import { signUpSaga, credentialsWatcher } from '../sagas';
 import { ActionTypes as AT } from '../actionTypes';
 import { registration } from '../selectors';
 
-describe('authSagas', () => {
-  describe('workerRegistration', () => {
+describe('credentials Saga', () => {
+  describe('signUpSaga', () => {
     let action: any;
-
     beforeEach(() => {
       action = {
         type: AT.SIGN_UP_REQUEST,
@@ -33,6 +32,42 @@ describe('authSagas', () => {
         .put(clearIpt('registration'))
         .next()
         .call(notifications, { message: 'successReg', type: 'success' })
+        .next()
+        .isDone();
+    });
+    it('should call sendSignUp without error and valid false', () => {
+      //@ts-ignore
+      testSaga(signUpSaga, action)
+        .next()
+        .select(registration)
+        .next(regValue)
+        .call(validate, regValue)
+        .next('msg')
+        .call(notifications, { message: 'msg' })
+        .next()
+        .isDone();
+    });
+    it('should call sendSignUp with error user is register', () => {
+      //@ts-ignore
+      testSaga(signUpSaga, action)
+        .next()
+        .select(registration)
+        .next(regValue)
+        //@ts-ignore
+        .throw('User login123 already exists')
+        .call(notifications, { message: 'userIsReg' })
+        .next()
+        .isDone();
+    });
+    it('should call sendSignUp with some error', () => {
+      //@ts-ignore
+      testSaga(signUpSaga, action)
+        .next()
+        .select(registration)
+        .next(regValue)
+        //@ts-ignore
+        .throw('adasdadaad')
+        .call(notifications, { message: 'somethingWrong' })
         .next()
         .isDone();
     });

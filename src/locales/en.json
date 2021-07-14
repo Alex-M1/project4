@@ -18,5 +18,6 @@
   "invalidConfirm": "Password doesn`t match",
   "userIsReg":"This user already exists",
   "somethingWrong":"Something has been wrong, please try again",
-  "successReg": "Success registration"
+  "successReg": "Success registration",
+  "inCorrectCred": "You entered incorrect data"
 }

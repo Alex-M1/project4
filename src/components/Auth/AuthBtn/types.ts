@@ -1,3 +1,5 @@
 export interface IAuthBtn {
-    signInRequest: () => void
+    isRedirect: boolean;
+    setIsRedirect: (isRedirect: boolean) => void;
+    signInRequest: () => void;
 }

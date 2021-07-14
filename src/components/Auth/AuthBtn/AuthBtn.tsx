@@ -1,18 +1,29 @@
-import React from 'react';
-
+import React, { useMemo } from 'react';
+import ModRedirect from 'src/components/_common_/ModRedirect';
 import Button from '../../_common_/Button';
 import { IAuthBtn } from './types';
 import { StInputDiv } from '../AuthIpt/styled';
 
-const AuthBtn = ({ signInRequest }: IAuthBtn) => {
+const AuthBtn = ({ isRedirect, setIsRedirect, signInRequest }: IAuthBtn) => {
     const onButtonClick = () => signInRequest();
+    const redirect = useMemo(() => {
+        if (isRedirect) {
+            setIsRedirect(false);
+            return <ModRedirect to="/main" />;
+        }
+        return null;
+    }, [isRedirect]);
+
     return (
-        <StInputDiv>
-            <Button
-                text="signInBtn"
-                onClick={onButtonClick}
-            />
-        </StInputDiv>
+        <>
+            <StInputDiv>
+                <Button
+                    text="signInBtn"
+                    onClick={onButtonClick}
+                />
+            </StInputDiv>
+            {redirect}
+        </>
     );
 };
 
