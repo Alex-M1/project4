@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { StInputDiv, StSpan } from 'src/components/Auth/AuthIpt/styled';
 import { useTheme } from 'src/components/hooks/useTheme';
-import Input from 'common/Input';
+import Input from '../../_common_/Input';
 import { IRegIpt } from './types';
 
 const RegIpt = ({ type, value, onChange }: IRegIpt) => {
