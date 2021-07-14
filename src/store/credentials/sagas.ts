@@ -1,14 +1,14 @@
-/* eslint-disable no-console */
 import { url } from 'constants/urls';
+import { SagaIterator } from 'redux-saga';
 import { takeEvery, select, call, put } from 'redux-saga/effects';
 import { notifications } from 'src/helpers/notification';
 import { request } from 'src/helpers/requests';
 import { validate } from 'src/helpers/validation';
-import { cleatIpt, setIsRedirect } from './action';
-import * as AT from './actionTypes';
+import { clearIpt, setIsRedirect } from './action';
+import { ActionTypes as AT } from './actionTypes';
 import { auth, registration } from './selectors';
 
-export function* signUpSaga() {
+export function* signUpSaga(): SagaIterator {
   const body = yield select(registration);
   try {
     const valid = yield call(validate, body);
@@ -16,7 +16,7 @@ export function* signUpSaga() {
     const { confirm, ...newBody } = body;
     yield call(request, url.registration, newBody, 'POST');
     yield put(setIsRedirect(true));
-    yield put(cleatIpt('registration'));
+    yield put(clearIpt('registration'));
     yield call(notifications, { message: 'successReg', type: 'success' });
   } catch (err) {
     if (err === `User ${body.login} already exists`) {

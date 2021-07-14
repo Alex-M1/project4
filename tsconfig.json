@@ -23,7 +23,8 @@
         "store/*": ["./src/store/*"],
         "src/*": ["./src/*"],
         "helpers/*": ["./src/helpers/*"],
-        "common/*":["./src/components/_common_/*"]
+        "common/*":["./src/components/_common_/*"],
+        "tests/*":["./src/__tests__/*"]
     },
   },
   "include": [

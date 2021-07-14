@@ -1,5 +1,5 @@
 import { ICredential, TCredentialsAction } from './types';
-import * as AT from './actionTypes';
+import { ActionTypes as AT } from './actionTypes';
 
 export const initialState: ICredential = {
   auth: {
