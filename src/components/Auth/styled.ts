@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
-export const StContainer = styled.div < IStyled > `    
+export const StContainer = styled.div <IStyled>`    
     width: 440px;
     height: auto;
     min-height: 420px;
@@ -18,7 +18,7 @@ export const StGlobalCredentials = styled.div`
     width: 100vw;
     height: calc(100vh - 90px);
 `;
-export const StNavLink = styled.div < IStyled > `
+export const StNavLink = styled.div <IStyled>`
     display: flex;
     flex-direction: row;
     justify-content: center;
