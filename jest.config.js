@@ -21,7 +21,7 @@ module.exports = {
     'json',
     'lcov',
   ],
-  setupFilesAfterEnv: ['<rootDir>/src/__tests__/config.js'],
+  setupFilesAfterEnv: ['<rootDir>/src/__tests__/config.ts'],
   coveragePathIgnorePatterns: [
     '/server/',
     '/node_modules/',

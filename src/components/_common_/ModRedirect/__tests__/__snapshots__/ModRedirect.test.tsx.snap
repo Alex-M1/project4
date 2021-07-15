@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModRedirect Should match snapshot 1`] = `""`;
+exports[`ModRedirect Should match snapshot 1`] = `" "`;

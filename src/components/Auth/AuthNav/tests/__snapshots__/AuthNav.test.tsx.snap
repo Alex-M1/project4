@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AuthNav Should match snapshot 1`] = `"<div class=\\"styled__StNavLink-kYzesN fxjFPh\\"><p></p> <a href=\\"/signup\\"></a></div>"`;
+exports[`AuthNav Should match snapshot 1`] = `"<div class=\\"styled__StNavLink-kYzesN fxjFPh\\"><p></p> <a href=\\"/signup\\"></a></div> "`;

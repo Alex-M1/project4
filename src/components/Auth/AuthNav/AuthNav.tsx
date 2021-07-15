@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
 import { url } from 'constants/urls';
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StNavLink } from '../styled';
