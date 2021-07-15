@@ -3,15 +3,18 @@ import { connect } from 'react-redux';
 import { AppStateType } from 'store/rootReducer';
 import { getInputValue } from 'store/user/selectors';
 import { setCredentialsValue } from 'store/user/action';
-import { IAuthIndex, TDispatch } from './types';
 import AuthIpt from './AuthIpt';
 
+export interface IAuthIndex {
+  type: 'login' | 'password' | 'confirm';
+  page?: 'auth' | 'registration';
+}
+
 const mapStateToProps = (state: AppStateType, props: IAuthIndex) => ({
-  value: getInputValue(state, 'auth', props.type),
+  value: getInputValue(state, { page: 'auth', field: props.type }),
 });
 
-const mapDispatchToProps = (dispatch: TDispatch, props: IAuthIndex) => ({
-  onChange: (value: string) => dispatch(setCredentialsValue({ page: 'auth', field: props.type }, value)),
-});
-
+const mapDispatchToProps = {
+  setCredentialsValue,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(AuthIpt);

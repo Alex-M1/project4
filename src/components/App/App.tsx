@@ -8,7 +8,7 @@ import Registration from '../Registration';
 import Header from '../Header';
 import { useTheme } from '../hooks/useTheme';
 
-const App = () => {
+const App: React.FC = () => {
   const { colors, theme } = useTheme();
   return (
     <div>

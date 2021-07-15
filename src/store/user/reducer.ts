@@ -1,4 +1,4 @@
-import { ICredential, TCredentialsAction } from './types';
+import { ICredential, TReducer } from './types';
 import { ActionTypes as AT } from './actionTypes';
 
 export const initialState: ICredential = {
@@ -14,27 +14,27 @@ export const initialState: ICredential = {
   isRedirect: false,
 };
 
-export const userReducer = (state = initialState, action: TCredentialsAction) => {
+export const userReducer: TReducer = (state = initialState, action) => {
   switch (action.type) {
     case AT.SET_CREDENTIALS_VALUE: {
       return {
         ...state,
-        [action.setting.page]: {
-          ...state[action.setting.page],
-          [action.setting.field]: action.payload,
+        [action.payload.page]: {
+          ...state[action.payload.page],
+          [action.payload.field]: action.payload.value,
         },
       };
     }
     case AT.SET_IS_REDIRECT:
       return {
         ...state,
-        isRedirect: action.isRedirect,
+        isRedirect: action.payload,
       };
     case AT.CLEAR_USER_FIELDS:
       return {
         ...state,
-        [action.page]: {
-          ...state[action.page],
+        [action.payload]: {
+          ...state[action.payload],
           login: '',
           password: '',
           confirm: '',

@@ -1,15 +1,23 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { useTheme } from 'src/components/hooks/useTheme';
-import Input from '../../_common_/Input';
-import { IAuthIpt } from './types';
+import { IInputValue, TField } from 'store/user/types';
+import Input from 'common/Input';
 import { StInputDiv, StSpan } from './styled';
 
-const AuthIpt = ({ type, value, onChange }: IAuthIpt) => {
+export interface IProps {
+  type: TField;
+  value: string;
+  setCredentialsValue: (payload: IInputValue) => void;
+}
+
+const AuthIpt: React.FC<IProps> = ({ type, value, setCredentialsValue }: IProps) => {
   const { t } = useTranslation();
   const { colors, theme } = useTheme();
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value);
+  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCredentialsValue({ page: 'auth', field: type, value: e.target.value });
+  };
+
   return (
     <StInputDiv>
       <StSpan
@@ -21,7 +29,7 @@ const AuthIpt = ({ type, value, onChange }: IAuthIpt) => {
       <Input
         type={type}
         value={value}
-        onChange={onInputChange}
+        onChange={inputChangeHandler}
       />
     </StInputDiv>
   );

@@ -8,7 +8,7 @@ const mapStateToProps = (state: AppStateType) => ({
     isRedirect: getIsRedirect(state),
 });
 const mapDispatchToProps = {
-    signInRequest, 
+    signInRequest,
     setIsRedirect,
 };
 

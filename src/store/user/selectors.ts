@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { AppStateType } from '../rootReducer';
+import { IGetInputValue } from './types';
 
 export const getUser = (state: AppStateType) => state.user;
 export const getAuthData = createSelector(
@@ -16,7 +17,6 @@ export const getIsRedirect = createSelector(
 );
 export const getInputValue = createSelector(
   getUser,
-  (_state: AppStateType, page: string) => page,
-  (_state: AppStateType, _page, field: string) => field,
-  (user, page, field) => user[page][field],
+  (_state: AppStateType, payload: IGetInputValue) => payload,
+  (user, { page, field }) => user[page][field],
 );

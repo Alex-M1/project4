@@ -5,7 +5,7 @@ import { useTheme } from 'src/components/hooks/useTheme';
 import { StNavLink } from 'src/components/Auth/styled';
 import { url } from 'constants/urls';
 
-const RegNavigation = () => {
+const RegNavigation: React.FC = () => {
   const { colors, theme } = useTheme();
   const { t } = useTranslation();
   return (

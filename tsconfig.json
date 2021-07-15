@@ -28,7 +28,7 @@
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx", "src/__tests__/testHelper.tsx",
+    "**/*.tsx",
   ], // Что именно компилировать
   "exclude": [
     "node_modules",

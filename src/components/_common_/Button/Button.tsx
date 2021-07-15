@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StButton } from './styled';
-import { IButton } from './types';
 
-const Button = ({ text, onClick }: IButton) => {
+export interface IProps {
+  text: string;
+  onClick: (e: SyntheticEvent<HTMLButtonElement>) => void;
+}
+
+const Button: React.FC<IProps> = ({ text, onClick }: IProps) => {
   const { colors, theme } = useTheme();
   const { t } = useTranslation();
   return (
-    <StButton 
-      type="button" 
+    <StButton
+      type="button"
       theme={theme}
       colors={colors}
       onClick={onClick}

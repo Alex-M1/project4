@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Title from '../_common_/Title';
 import RegForm from './RegForm';
 import RegBtn from './RegBtn';
@@ -7,7 +6,7 @@ import { StContainer, StGlobalCredentials } from '../Auth/styled';
 import RegNavigation from './RegNavigation';
 import { useTheme } from '../hooks/useTheme';
 
-const Registration = () => {
+const Registration: React.FC = () => {
   const { colors, theme } = useTheme();
   return (
     <>
