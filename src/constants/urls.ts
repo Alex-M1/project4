@@ -5,4 +5,13 @@ export const url = {
   registration: '/registration/reg',
   auth: '/authorization/auth',
   signUp: '/signup',
+  main: '/main',
+  updateRoom: '/updateRoom',
+  getBotStep: '/get-bot-step',
+  joinRoom: '/joinRoom',
+  getPossibleSteps: '/get-possible-steps',
+  doStep: '/do-step',
+  getStepOrder: '/get-step-order',
+  ticTacToe: '/../../assets/img/tic-tac-toe.png',
+  checkers: '/../../assets/img/checkers.png',
 };

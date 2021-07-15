@@ -2,6 +2,7 @@ export const colors = {
   light: {
     background: '#fff',
     backgroundSecondary: '#ECECEC',
+    backgroundItem: '#d7d8e2',
     button: '#2B5278',
     buttonColor: '#fff',
     buttonHover: '#346392',
@@ -13,6 +14,7 @@ export const colors = {
   dark: {
     background: '#0E1621',
     backgroundSecondary: '#17212B',
+    backgroundItem: '#25323f',
     button: '#2B5278',
     buttonColor: '#fff',
     buttonHover: '#346392',
