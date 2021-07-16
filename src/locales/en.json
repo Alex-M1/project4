@@ -1,0 +1,23 @@
+{
+  "login":"Login",
+  "login_ipt": "Enter your login",
+  "password": "Password",
+  "password_ipt": "Enter your password",
+  "confirm": "Confirm your pasword",
+  "confirm_ipt": "Please confirm your password",
+  "sign_in_title":"Sign in",
+  "sign_up_title":"Sign up",
+  "sign_in_btn": "Sign in",
+  "sign_up_btn": "Sign up",
+  "to_login":"Already have an account ?",
+  "to_register":"Create an account",
+  "to_login_link": "Sign in",
+  "to_register_link": "Sign up",
+  "invalid_login": "Login must contain from 1 to 25 latin characters and / or numbers.",
+  "invalid_password": "Password must contain from 6 to 25 latin characters and / or numbers.",
+  "invalid_confirm": "Password doesn`t match",
+  "user_is_reg":"This user already exists",
+  "something_wrong":"Something has been wrong, please try again",
+  "success_reg": "Success registration",
+  "incorrect_cred": "You entered incorrect data"
+}

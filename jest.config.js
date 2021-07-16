@@ -3,21 +3,25 @@ module.exports = {
   moduleFileExtensions: [
     'js',
     'jsx',
+    'ts',
+    'tsx',
   ],
   globals: {
     window: true,
   },
-  collectCoverageFrom: ['**/*.jsx', '**/*.js'],
+  collectCoverageFrom: ['**/*.jsx', '**/*.js', '**/*.ts', '**/*.tsx'],
   moduleDirectories: ['node_modules', '.', 'src'],
   testMatch: [
     '**/*.(test|spec).(js)',
     '**/*.(test|spec).(jsx)',
+    '**/*.(test|spec).(ts)',
+    '**/*.(test|spec).(tsx)',
   ],
   coverageReporters: [
     'json',
     'lcov',
   ],
-  setupFilesAfterEnv: ['<rootDir>/src/__tests__/testHelper.js'],
+  setupFilesAfterEnv: ['<rootDir>/src/__tests__/config.ts'],
   coveragePathIgnorePatterns: [
     '/server/',
     '/node_modules/',
@@ -33,7 +37,12 @@ module.exports = {
   ],
   moduleNameMapper: {
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
-    '^/src/(.*)$': '<rootDir>/src/$1',
+    '^src/(.*)$': '<rootDir>/src/$1',
+    '^store/(.*)$': '<rootDir>/src/store/$1',
+    '^constants/(.*)$': '<rootDir>/src/constants/$1',
+    '^helpers/(.*)$': '<rootDir>/src/helpers/$1',
+    '^common/(.*)$': '<rootDir>/src/components/_common_/$1',
+    '^tests/(.*)$': '<rootDir>/src/__tests__/$1',
   },
   testEnvironment: 'jsdom',
   resetModules: true,

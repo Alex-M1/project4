@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
+import { IStyled } from 'common/types/styledTypes';
 
-export const StGlobalStyle = createGlobalStyle`
+export const StGlobalStyle = createGlobalStyle <IStyled>`
   *{
     margin: 0;
     padding: 0;
@@ -10,6 +11,7 @@ export const StGlobalStyle = createGlobalStyle`
   body {
     height: ${window.innerHeight}px;
     overflow: hidden;
+    background: ${({ colors, theme }) => colors[theme].background};
   }
   #root{
     height: 100%;

@@ -15,7 +15,8 @@
                 "constants":"src/constants",
                 "store":  "src/store",
                 "src":  "src",
-                "helpers":  "src/helpers"
+                "helpers":  "src/helpers",
+                "tests":"src/__tests__"
               }
           }
       ],
