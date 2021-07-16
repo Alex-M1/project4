@@ -9,6 +9,7 @@ export const colors = {
     input: '#D1D1D1',
     textColor: '#000',
     placeholderColor: '#55667B',
+    AddRoomBtnBtn: '#fff'
 
   },
   dark: {
@@ -21,5 +22,6 @@ export const colors = {
     input: '#242F3D',
     textColor: '#d4d4d4',
     placeholderColor: '#55667B',
+    AddRoomBtnBtn: '#fff'
   },
 };
