@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { StHeader, StLogo } from './styled';
 import { Theme } from '../hocs';
 import HeaderTheme from './HeaderTheme';
+import HeaderLanguage from './HeaderLanguage';
 
 const Header: React.FC = () => {
     const { theme, changeTheme } = useContext(Theme);
@@ -19,6 +20,7 @@ const Header: React.FC = () => {
             <HeaderTheme 
                 toggleThemeMode={toggleThemeMode}
             />
+            <HeaderLanguage text="En" />
         </StHeader>
     );
 };

@@ -11,6 +11,7 @@ export const StCrossBtn = styled.button <IStyled>`
     border: none;
     box-shadow: 0 0 3px ${({ colors, theme }) => colors[theme].AddRoomBtn};
     background: ${({ colors, theme }) => colors[theme].button};
+    cursor: pointer;
     &:hover {
         box-shadow: inset 0 0 3px ${({ colors, theme }) => colors[theme].AddRoomBtnHover};
     }

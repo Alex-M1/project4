@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
-export const StThemeToggle = styled.button < IStyled > `
+export const StThemeToggle = styled.button <IStyled>`
   position: absolute;
   top: 25px;
   right: 10%;
@@ -11,6 +11,7 @@ export const StThemeToggle = styled.button < IStyled > `
   border: none;
   background: ${({ colors, theme }) => colors[theme].iconTheme};
   overflow: none;
+  cursor: pointer;
   z-index: 1;
   &::after {
     content: '';

@@ -11,6 +11,7 @@ export const StBtn = styled.button <IStyled>`
     box-shadow: 0 0 4px #000;
     border: none;
     background: ${({ colors, theme }) => colors[theme].button};
+    cursor: pointer;
     &:hover {
         box-shadow: 0 0 5px ${({ colors, theme }) => colors[theme].AddRoomBtn};;
     }
