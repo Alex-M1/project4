@@ -15,6 +15,9 @@ export const colors = {
     backgroundModalShadow: 'rgba(0,0,0, 0.8)',
     backgroundModalContainer: '#dcd9d9',
     selectBackground: '#d4d4d4',
+    iconTheme: '#ff0',
+    iconThemeMoon: 'rgba(0,0,0,0)',
+    iconThemeSun: '#ff0',
   },
   dark: {
     background: '#0E1621',
@@ -32,5 +35,8 @@ export const colors = {
     backgroundModalShadow: '#757575',
     backgroundModalContainer: '#17212B',
     selectBackground: '#d4d4d4',
+    iconTheme: '#fff',
+    iconThemeMoon: '#2B5278',
+    iconThemeSun: 'rgba(0,0,0,0)',
   },
 };
