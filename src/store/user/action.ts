@@ -1,10 +1,11 @@
-import { TSetCredentialsValue, ISetting, TSignUpRequest, TSignInRequest, TSetIsRedirect, TPage, TCleatIUserFields } from './types';
+import { action } from 'typesafe-actions';
+import { TPage, IInputValue } from './types';
 import { ActionTypes as AT } from './actionTypes';
 
-export const setCredentialsValue = (setting: ISetting, payload: string): TSetCredentialsValue => ({
-  type: AT.SET_CREDENTIALS_VALUE, setting, payload,
-});
-export const setIsRedirect = (isRedirect: boolean): TSetIsRedirect => ({ type: AT.SET_IS_REDIRECT, isRedirect });
-export const signUpRequest = (): TSignUpRequest => ({ type: AT.SIGN_UP_REQUEST });
-export const signInRequest = (): TSignInRequest => ({ type: AT.SIGN_IN_REQUEST });
-export const clearUserFields = (page: TPage): TCleatIUserFields => ({ type: AT.CLEAR_USER_FIELDS, page });
+export const setIsRedirect = (payload: boolean) => action(AT.SET_IS_REDIRECT, payload);
+export const signUpRequest = () => action(AT.SIGN_UP_REQUEST);
+export const signInRequest = () => action(AT.SIGN_IN_REQUEST);
+export const clearUserFields = (payload: TPage) => action(AT.CLEAR_USER_FIELDS, payload);
+export const setCredentialsValue = (payload: IInputValue) => {
+  return action(AT.SET_CREDENTIALS_VALUE, payload);
+};

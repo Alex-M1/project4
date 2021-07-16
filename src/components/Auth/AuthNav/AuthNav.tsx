@@ -5,7 +5,7 @@ import { url } from 'constants/urls';
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StNavLink } from '../styled';
 
-const AuthNav = () => {
+const AuthNav: React.FC = () => {
   const { colors, theme } = useTheme();
   const { t } = useTranslation();
   return (

@@ -15,7 +15,7 @@ describe('RegForm', () => {
         props = {
             type: 'login',
             value: 'value',
-            onChange: jest.fn(),
+            setCredentialsValue: jest.fn(),
         };
     });
     it('Should match snapshot', () => {
@@ -30,15 +30,15 @@ describe('RegForm', () => {
         const component = mount(<RegForm {...props} />);
         expect(component.find('styled__StSpan')).toHaveLength(1);
     });
-    it('should call onChange', () => {
+    it('should call setCredentialsValue', () => {
         const component = mount(<RegForm {...props} />);
         component.find('styled__StInput').simulate('change', { target: { value: 'testValue' } });
-        expect(component.props().onChange).toHaveBeenCalled();
+        expect(component.props().setCredentialsValue).toHaveBeenCalled();
     });
-    it('should change onChange', () => {
+    it('should change setCredentialsValue', () => {
         const component = mount(<RegForm {...props} />);
-        const ipt = component.find('RegForm');
+        const ipt = component.find('Input');
         ipt.props().onChange({ target: { value: 'sdads' } });
-        expect(component.props().onChange).toHaveBeenCalled();
+        expect(component.props().setCredentialsValue).toHaveBeenCalled();
     });
 });

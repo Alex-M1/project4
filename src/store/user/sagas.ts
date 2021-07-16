@@ -27,7 +27,7 @@ export function* signUpSaga(): SagaIterator {
   }
 }
 
-export function* signInSaga() {
+export function* signInSaga(): SagaIterator {
   const authData = yield select(getAuthData);
   try {
     const valid = yield call(isInvalid, authData);
@@ -45,7 +45,7 @@ export function* signInSaga() {
   }
 }
 
-export default function* userWatcher() {
+export default function* userWatcher(): SagaIterator {
   yield takeEvery(AT.SIGN_UP_REQUEST, signUpSaga);
   yield takeEvery(AT.SIGN_IN_REQUEST, signInSaga);
 }

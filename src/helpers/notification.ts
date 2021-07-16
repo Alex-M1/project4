@@ -14,7 +14,7 @@ export const notifications = (options: INotifications) => {
   });
 };
 
-interface INotifications {
+export interface INotifications {
   message: string;
   type?: 'warn' | 'success' | 'error',
   time?: number

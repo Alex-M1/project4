@@ -12,7 +12,7 @@ import { url } from 'constants/urls';
 import { StGlobalStyle } from './styled';
 import 'react-toastify/dist/ReactToastify.css';
 
-const App = () => {
+const App: React.FC = () => {
   const { colors, theme } = useTheme();
   return (
     <div>

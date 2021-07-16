@@ -3,9 +3,14 @@ import { StInputDiv } from 'src/components/Auth/AuthIpt/styled';
 import ModRedirect from 'common/ModRedirect';
 import Button from 'common/Button';
 import { url } from 'constants/urls';
-import { IRegBtn } from './types';
 
-const RegBtn = ({ isRedirect, signUpRequest, setIsRedirect }: IRegBtn) => {
+export interface IProps {
+  isRedirect: boolean;
+  signUpRequest: () => void;
+  setIsRedirect: (isReg: boolean) => void;
+}
+
+const RegBtn: React.FC<IProps> = ({ isRedirect, signUpRequest, setIsRedirect }: IProps) => {
   const onButtonClick = () => signUpRequest();
   const redirect = useMemo(() => {
     if (isRedirect) {
