@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
-export const StCrossBtn = styled.button < IStyled > `
+export const StCrossBtn = styled.button <IStyled>`
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 35px;
+    right: 30px;
     width: 30px;
     height: 30px;
     border-radius: 50%;

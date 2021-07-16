@@ -11,8 +11,8 @@ const AddRoomBtn: React.FC = () => {
     return (
         <>
             <StBtn
-                colors={colors}
                 theme={theme}
+                colors={colors}
                 onClick={handleClick}
             />
             {isOpen && <Modal header="Choose the game" handleCloseModal={handleClick} />}

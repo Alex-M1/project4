@@ -31,6 +31,8 @@ const Modal: React.FC <IProps> = ({ handleCloseModal }: IProps) => {
           <Title title="choose_the_game" />
           <ModalSelect />
           <ModalButtons
+            tex="cancel_btn"
+            text="create_btn"
             handleCloseModal={handleCloseModal}
           />
         </StModalContainer>

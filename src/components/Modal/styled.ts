@@ -26,7 +26,7 @@ export const StModalContainer = styled.div < IStyled > `
 
 `;
 
-// export const StCrossBtn = styled.button < IStyled > `
+// export const StCrossBtn = styled.button <IStyled>`
 //     position: absolute;
 //     top: 10px;
 //     right: 10px;
@@ -60,7 +60,7 @@ export const StModalContainer = styled.div < IStyled > `
 //         background: ${({ colors, theme }) => colors[theme].AddRoomBtn};
 //     }
 // `;
-// export const StSelect = styled.select < IStyled > `
+// export const StSelect = styled.select <IStyled>`
 //     width: 290px;
 //     height: 40px;
 //     padding: 10px;

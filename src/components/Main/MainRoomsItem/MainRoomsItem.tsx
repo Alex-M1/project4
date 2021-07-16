@@ -4,16 +4,16 @@ import { useTheme } from 'src/components/hooks/useTheme';
 import { StIcon, StItem } from './styled';
 
 interface IProps {
-    value: string;
     type: string;
+    value: string;
 } 
 
 const MainRoomsItem: React.FC <IProps> = ({ value, type }: IProps) => {
     const { colors, theme } = useTheme();
     return (
         <StItem
-            colors={colors}
             theme={theme}
+            colors={colors}
         >
             <p>{value}</p>
             <StIcon>

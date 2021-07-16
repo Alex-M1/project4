@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App: React.FC = () => {
   const { colors, theme } = useTheme();
+  
   return (
     <div>
       <Router>

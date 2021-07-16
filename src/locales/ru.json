@@ -23,6 +23,7 @@
   "list_of_rooms": "Список комнат",
   "choose_the_game": "Выберите игру",
   "cancel_btn": "Отмена",
-  "create_btn": "Создать"
-
+  "create_btn": "Создать",
+  "tic_tac_toe": "Крестики-нолики",
+  "checkers": "Шашки"
 }

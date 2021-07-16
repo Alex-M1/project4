@@ -23,5 +23,7 @@
   "list_of_rooms": "List of rooms",
   "choose_the_game": "Choose the game",
   "cancel_btn": "Cancel",
-  "create_btn": "Create"
+  "create_btn": "Create",
+  "tic_tac_toe": "Tic Tac Toe",
+  "checkers": "Checkers"
 }

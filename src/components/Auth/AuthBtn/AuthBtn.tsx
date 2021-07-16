@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
-import ModRedirect from 'src/components/_common_/ModRedirect';
-import Button from '../../_common_/Button';
+
+import ModRedirect from 'common/ModRedirect';
+import Button from 'common/Button';
 import { StInputDiv } from '../AuthIpt/styled';
 
 interface IProps {
@@ -18,6 +19,7 @@ const AuthBtn: React.FC<IProps> = ({ isRedirect, setIsRedirect, signInRequest }:
     }
     return null;
   }, [isRedirect]);
+  
   return (
     <>
       <StInputDiv>

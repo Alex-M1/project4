@@ -1,16 +1,19 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StSelect } from './styled';
 
 const ModalSelect = () => {
+    const { t } = useTranslation();
     const { colors, theme } = useTheme();
     return (
         <StSelect
-            colors={colors}
             theme={theme}
+            colors={colors}
         >
-            <option>Tic Tac Toe</option>
-            <option>Checkers</option>
+            <option>{t('tic_tac_toe')}</option>
+            <option>{t('checkers')}</option>
         </StSelect>
     );
 };

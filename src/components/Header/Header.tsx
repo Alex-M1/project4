@@ -15,7 +15,7 @@ const Header: React.FC = () => {
             <button
                 onClick={toggleThemeMode}
             >
-x
+                x
             </button>
         </StHeader>
     );
