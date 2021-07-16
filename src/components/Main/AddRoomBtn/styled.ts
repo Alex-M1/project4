@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
-export const StBtn = styled.button <IStyled>`
+export const StBtn = styled.button < IStyled > `
     position: absolute;
     top: 30px;
     right: 35px;
@@ -34,4 +34,4 @@ export const StBtn = styled.button <IStyled>`
         height: 15px;
         background: ${({ colors, theme }) => colors[theme].AddRoomBtnBtn};;
     }
-`
+`;

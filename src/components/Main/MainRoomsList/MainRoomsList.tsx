@@ -5,9 +5,9 @@ import { StRooms, StRoomsContainer } from './styled';
 import MainRoomsItem from '../MainRoomsItem';
 import AddRoomBtn from '../AddRoomBtn';
 
-const MainRoomsList = () => {
+const MainRoomsList: React.FC = () => {
     const { colors, theme } = useTheme();
-    return(
+    return (
         <StRooms
             theme={theme}
             colors={colors}
@@ -33,7 +33,7 @@ const MainRoomsList = () => {
                 <MainRoomsItem value="secondRoom" type="checkers"/>
             </StRoomsContainer>
         </StRooms>
-    )
-}
+    );
+};
 
 export default MainRoomsList;

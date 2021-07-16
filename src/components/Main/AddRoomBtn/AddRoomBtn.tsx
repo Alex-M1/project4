@@ -1,35 +1,30 @@
 import React, { useState } from 'react';
 import { useTheme } from 'src/components/hooks/useTheme';
-import CustomModal from 'src/components/Modal/CustomModal';
-import ModalCreateRoom from 'src/components/Modal/ModalCreateRoom';
+import Modal from 'src/components/Modal';
 import { StBtn } from './styled';
 
-const AddRoomBtn = () => {
-
-    const {colors, theme} = useTheme();
+const AddRoomBtn: React.FC = () => {
+    const { colors, theme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
-    const handleClick = () => setIsOpen(prev => !prev);
+    const handleClick = () => setIsOpen((prev) => !prev);
 
-    return(
+    return (
         <>
             <StBtn
                 colors={colors}
                 theme={theme}
-            >
-            </StBtn>
-            {/* {isOpen && 
-                <CustomModal 
+                onClick={handleClick}
+            />
+            {isOpen 
+                && (
+                <Modal 
                     header="Setup the game" 
-                    content={
-                    <ModalCreateRoom 
-                        handleCloseModal={handleClick}
-                    />
-                    } 
+                    content="iuku"  
                     handleCloseModal={handleClick}
                 />
-            } */}
+)}
         </>
-    )
-}
+    );
+};
 
 export default AddRoomBtn;

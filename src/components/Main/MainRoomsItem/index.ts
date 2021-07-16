@@ -1,3 +1,3 @@
-import MainRoomsItem from "./MainRoomsItem";
+import MainRoomsItem from './MainRoomsItem';
 
 export default MainRoomsItem;

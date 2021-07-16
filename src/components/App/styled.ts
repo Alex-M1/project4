@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
-export const StGlobalStyle = createGlobalStyle <IStyled>`
+export const StGlobalStyle = createGlobalStyle < IStyled > `
   *{
     margin: 0;
     padding: 0;

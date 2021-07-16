@@ -4,11 +4,11 @@ import { StGlobalCredentials } from '../Auth/styled';
 
 import MainRoomsList from './MainRoomsList';
 
-const Main = () => {
-    return(
+const Main: React.FC = () => {
+    return (
         <StGlobalCredentials>
-            <MainRoomsList  />
+            <MainRoomsList />
         </StGlobalCredentials>
-    )
-}
+    );
+};
 export default Main;

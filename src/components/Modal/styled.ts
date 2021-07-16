@@ -9,10 +9,10 @@ export const StModal = styled.div`
     overflow: auto;
     background-color: rgba(0,0,0, 0.8);
     z-index: 1;
-`
+`;
 
 export const StModalContainer = styled.div`
     width: 400px;
     height: 300px;
     border: 2px solid red;
-`
+`;
