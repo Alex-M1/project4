@@ -9,8 +9,12 @@ export const colors = {
     input: '#D1D1D1',
     textColor: '#000',
     placeholderColor: '#55667B',
-    AddRoomBtnBtn: '#fff'
-
+    AddRoomBtn: '#fff',
+    AddRoomBtnHover: '#fff',
+    backgroundModal: 'rgba(0,0,0, 0.8)',
+    backgroundModalShadow: 'rgba(0,0,0, 0.8)',
+    backgroundModalContainer: '#dcd9d9',
+    selectBackground: '#d4d4d4',
   },
   dark: {
     background: '#0E1621',
@@ -22,6 +26,11 @@ export const colors = {
     input: '#242F3D',
     textColor: '#d4d4d4',
     placeholderColor: '#55667B',
-    AddRoomBtnBtn: '#fff'
+    AddRoomBtn: '#fff',
+    AddRoomBtnHover: '#fff',
+    backgroundModal: 'rgba(0,0,0, 0.8)',
+    backgroundModalShadow: '#757575',
+    backgroundModalContainer: '#17212B',
+    selectBackground: '#d4d4d4',
   },
 };

@@ -15,14 +15,7 @@ const AddRoomBtn: React.FC = () => {
                 theme={theme}
                 onClick={handleClick}
             />
-            {isOpen 
-                && (
-                <Modal 
-                    header="Setup the game" 
-                    content="iuku"  
-                    handleCloseModal={handleClick}
-                />
-)}
+            {isOpen && <Modal header="Choose the game" handleCloseModal={handleClick} />}
         </>
     );
 };

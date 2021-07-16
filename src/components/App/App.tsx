@@ -2,12 +2,12 @@ import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import { url } from 'constants/urls';
 import Auth from '../Auth';
 import Registration from '../Registration';
 import Header from '../Header';
 import Main from '../Main';
 import { useTheme } from '../hooks/useTheme';
-import { url } from 'constants/urls';
 
 import { StGlobalStyle } from './styled';
 import 'react-toastify/dist/ReactToastify.css';

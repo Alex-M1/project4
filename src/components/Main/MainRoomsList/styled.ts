@@ -3,7 +3,7 @@ import { IStyled } from 'common/types/styledTypes';
 
 export const StRooms = styled.div < IStyled > `
     width: 500px;
-    height: 90%;
+    height: 89%;
     padding: 0 10px 10px;
     position: relative;
     background: ${({ colors, theme }) => colors[theme].backgroundSecondary};

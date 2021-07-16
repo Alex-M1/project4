@@ -12,7 +12,7 @@ export const StBtn = styled.button < IStyled > `
     border: none;
     background: ${({ colors, theme }) => colors[theme].button};
     &:hover {
-        box-shadow: 0 0 5px ${({ colors, theme }) => colors[theme].AddRoomBtnBtn};;
+        box-shadow: 0 0 5px ${({ colors, theme }) => colors[theme].AddRoomBtn};;
     }
     &::before {
         content: '';
@@ -22,7 +22,7 @@ export const StBtn = styled.button < IStyled > `
         transform: translate(-50%, -50%);
         width: 15px;
         height: 3px;
-        background: ${({ colors, theme }) => colors[theme].AddRoomBtnBtn};;
+        background: ${({ colors, theme }) => colors[theme].AddRoomBtn};;
     }
     &::after {
         content: '';
@@ -32,6 +32,6 @@ export const StBtn = styled.button < IStyled > `
         transform: translate(-50%, -50%);
         width: 3px;
         height: 15px;
-        background: ${({ colors, theme }) => colors[theme].AddRoomBtnBtn};;
+        background: ${({ colors, theme }) => colors[theme].AddRoomBtn};;
     }
 `;
