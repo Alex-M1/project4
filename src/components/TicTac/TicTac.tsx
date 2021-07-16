@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { StTicTacContainer, StTicTacField } from './styled';
+import TicTacItem from './TicTacItem';
 
-const TicTac: React.FC = () => {
+interface IProps {
+  squares: string[]
+  doStep: (square: number) => void
+}
+
+const TicTac: React.FC<IProps> = ({ squares, doStep }: IProps) => {
+  const renderSquares = useMemo(() => {
+    return squares.map((el, i) => (
+      <TicTacItem
+        square={i}
+        content={el}
+        onClick={doStep}
+      />
+    ));
+  }, [squares]);
   return (
-    <div />
+    <StTicTacContainer>
+      <StTicTacField >
+        {renderSquares}
+      </StTicTacField>
+    </StTicTacContainer>
   );
 };
 

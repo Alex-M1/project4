@@ -7,7 +7,6 @@ import './i18n';
 import { rootReducer } from 'store/rootReducer';
 import rootSaga from 'store/rootSaga';
 import App from './components/App';
-import SockJS from './helpers/SockJS';
 
 //@ts-ignore
 const devTools = window?.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
@@ -27,5 +26,3 @@ render(
   </Provider>,
   document.getElementById('root'),
 );
-const a = new SockJS();
-a.connect();
