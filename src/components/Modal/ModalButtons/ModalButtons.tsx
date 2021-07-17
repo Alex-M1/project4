@@ -8,9 +8,15 @@ interface IProps {
     tex: string;
     text: string;
     handleCloseModal: () => void;
+    handleCreateRoom: () => void;
 } 
 
-const ModalButtons: React.FC <IProps> = ({ handleCloseModal, text, tex }: IProps) => {
+const ModalButtons: React.FC <IProps> = ({ 
+        tex, 
+        text, 
+        handleCloseModal, 
+        handleCreateRoom, 
+    }: IProps) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
 
@@ -22,6 +28,7 @@ const ModalButtons: React.FC <IProps> = ({ handleCloseModal, text, tex }: IProps
         <StButton
             theme={theme}
             colors={colors}
+            onClick={handleCreateRoom}
         >
             {t(text)}
         </StButton>

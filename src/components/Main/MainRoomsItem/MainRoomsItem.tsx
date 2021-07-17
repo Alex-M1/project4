@@ -5,17 +5,17 @@ import { StIcon, StItem } from './styled';
 
 interface IProps {
     type: string;
-    value: string;
+    login: string;
 } 
 
-const MainRoomsItem: React.FC <IProps> = ({ value, type }: IProps) => {
+const MainRoomsItem: React.FC <IProps> = ({ login, type }: IProps) => {
     const { colors, theme } = useTheme();
     return (
         <StItem
             theme={theme}
             colors={colors}
         >
-            <p>{value}</p>
+            <p>{login}</p>
             <StIcon>
                 <img src={`${url[type]}`} alt={type}/>
             </StIcon>

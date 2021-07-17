@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
-export const StRooms = styled.div <IStyled>`
+export const StRooms = styled.div < IStyled > `
     width: 500px;
     height: 89%;
     padding: 0 10px 10px;
