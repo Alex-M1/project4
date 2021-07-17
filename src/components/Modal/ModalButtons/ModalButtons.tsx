@@ -10,6 +10,7 @@ interface IProps {
     text: string;
     gameType: string;
     createRoom: (payload: IRoom) => void;
+    user: any;
     handleCloseModal: () => void;
     handleCreateRoom: () => void;
 } 
@@ -17,8 +18,9 @@ interface IProps {
 const ModalButtons: React.FC <IProps> = ({ 
         tex, 
         text, 
-        createRoom,
         gameType,
+        createRoom,
+        user,
         handleCloseModal, 
         handleCreateRoom, 
     }: IProps) => {
@@ -27,11 +29,11 @@ const ModalButtons: React.FC <IProps> = ({
     handleCreateRoom = () => {
         const obj: IRoom = {
             id: Math.random() * 1000,
-            loginName: 'lo',
+            loginName: user.login,
             gameType,
         };
-        console.log(gameType);
         createRoom(obj);
+        handleCloseModal();
     };
 
     return (
