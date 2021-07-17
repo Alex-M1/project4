@@ -19,5 +19,11 @@
   "user_is_reg":"This user already exists",
   "something_wrong":"Something has been wrong, please try again",
   "success_reg": "Success registration",
-  "incorrect_cred": "You entered incorrect data"
+  "incorrect_cred": "You entered incorrect data",
+  "list_of_rooms": "List of rooms",
+  "choose_the_game": "Choose the game",
+  "cancel_btn": "Cancel",
+  "create_btn": "Create",
+  "tic_tac_toe": "Tic Tac Toe",
+  "checkers": "Checkers"
 }

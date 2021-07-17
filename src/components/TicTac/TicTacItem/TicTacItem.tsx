@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from 'src/components/hooks/useTheme';
 import { StTicTacItem } from './styled';
 
 interface IProps {
@@ -9,8 +10,13 @@ interface IProps {
 
 const TicTacItem: React.FC<IProps> = ({ square, content, onClick }: IProps) => {
   const handleClick = () => onClick(square);
+  const { colors, theme } = useTheme();
   return (
-    <StTicTacItem onClick={content ? null : handleClick}>
+    <StTicTacItem
+      theme={theme}
+      colors={colors}
+      onClick={content ? null : handleClick}
+    >
       {content}
     </StTicTacItem>
   );

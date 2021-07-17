@@ -10,8 +10,9 @@ export interface IProps {
 }
 
 const Input: React.FC<IProps> = ({ type, value, onChange }: IProps) => {
-  const { colors, theme } = useTheme();
   const { t } = useTranslation();
+  const { colors, theme } = useTheme();
+  
   return (
     <StInput
       type={type === 'confirm' ? 'password' : type}

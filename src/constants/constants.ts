@@ -10,3 +10,16 @@ export const REG_EXP = {
 };
 
 export const COOKIE_AGE = 20000;
+
+export const ticTac = {
+  winnerLines: [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ],
+};

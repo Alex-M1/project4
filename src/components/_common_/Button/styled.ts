@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IStyled } from '../types/styledTypes';
 
-export const StButton = styled.button <IStyled>`
+export const StButton = styled.button < IStyled > `
   width: 290px;
   height: 40px;
   margin: 20px 0;
@@ -11,6 +11,7 @@ export const StButton = styled.button <IStyled>`
   border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
+
   &:hover {
     background: ${({ colors, theme }) => colors[theme].buttonHover};
   }

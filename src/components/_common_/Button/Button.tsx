@@ -1,5 +1,6 @@
 import React, { SyntheticEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StButton } from './styled';
 
@@ -9,8 +10,9 @@ export interface IProps {
 }
 
 const Button: React.FC<IProps> = ({ text, onClick }: IProps) => {
-  const { colors, theme } = useTheme();
   const { t } = useTranslation();
+  const { colors, theme } = useTheme();
+  
   return (
     <StButton
       type="button"
