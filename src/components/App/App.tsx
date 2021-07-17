@@ -11,6 +11,7 @@ import { useTheme } from '../hooks/useTheme';
 
 import { StGlobalStyle } from './styled';
 import 'react-toastify/dist/ReactToastify.css';
+import Statistic from '../Statistic';
 
 const App: React.FC = () => {
   const { colors, theme } = useTheme();
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           <Route exact path="/" component={Auth} />
           <Route path={url.signUp} component={Registration} />
           <Route path={url.main} component={Main} />
+          <Route path={url.statistic} component={Statistic} />
         </Switch>
       </Router>
       <StGlobalStyle

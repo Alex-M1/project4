@@ -29,7 +29,7 @@ const ModalButtons: React.FC <IProps> = ({
     handleCreateRoom = () => {
         const obj: IRoom = {
             id: Math.random() * 1000,
-            loginName: user.login,
+            loginName: user.login || 'user',
             gameType,
         };
         createRoom(obj);

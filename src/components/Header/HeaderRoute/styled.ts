@@ -15,4 +15,5 @@ export const StP = styled.p < IStyled > `
   color: ${({ colors, theme }) => colors[theme].textColorHeader};
   font-size: 25px;
   letter-spacing: 2px;
+  cursor: pointer;
 `;

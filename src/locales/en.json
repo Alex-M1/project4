@@ -25,5 +25,7 @@
   "cancel_btn": "Cancel",
   "create_btn": "Create",
   "tic_tac_toe": "Tic Tac Toe",
-  "checkers": "Checkers"
+  "checkers": "Checkers",
+  "statistic": "Statistic",
+  "games": "Games"
 }

@@ -8,7 +8,7 @@ export const colors = {
     buttonHover: '#346392',
     input: '#D1D1D1',
     textColor: '#000',
-    textColorHeader: '#d4d4d4',
+    textColorHeader: '#fff',
     placeholderColor: '#55667B',
     AddRoomBtn: '#fff',
     AddRoomBtnHover: '#fff',

@@ -17,6 +17,7 @@ export const StGlobalStyle = createGlobalStyle < IStyled > `
     height: 100%;
   }
   a{
+    color: ${({ colors, theme }) => colors[theme].textColorHeader};
     text-decoration: none;
   }
 `;
