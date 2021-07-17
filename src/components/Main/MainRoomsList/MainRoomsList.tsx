@@ -1,11 +1,16 @@
 import React from 'react';
 import { useTheme } from 'src/components/hooks/useTheme';
 import Title from 'common/Title';
+import { IRoom } from 'store/room/types';
 import { StRooms, StRoomsContainer } from './styled';
 import MainRoomsItem from '../MainRoomsItem';
 import AddRoomBtn from '../AddRoomBtn';
 
-const MainRoomsList: React.FC = () => {
+interface IProps {
+    rooms: IRoom[],
+}
+
+const MainRoomsList: React.FC <IProps> = ({ rooms }: IProps) => {
     const { colors, theme } = useTheme();
     return (
         <StRooms
@@ -15,22 +20,15 @@ const MainRoomsList: React.FC = () => {
             <Title title="list_of_rooms"/>
             <AddRoomBtn />
             <StRoomsContainer>
-                <MainRoomsItem value="newRoom" type="ticTacToe"/>
-                <MainRoomsItem value="secondRoom" type="checkers"/>
-                <MainRoomsItem value="newRoom" type="ticTacToe"/>
-                <MainRoomsItem value="secondRoom" type="checkers"/>
-                <MainRoomsItem value="newRoom" type="ticTacToe"/>
-                <MainRoomsItem value="secondRoom" type="checkers"/>
-                <MainRoomsItem value="secondRoom" type="checkers"/>
-                <MainRoomsItem value="secondRoom" type="checkers"/>
-                <MainRoomsItem value="newRoom" type="ticTacToe"/>
-                <MainRoomsItem value="secondRoom" type="checkers"/>
-                <MainRoomsItem value="newRoom" type="ticTacToe"/>
-                <MainRoomsItem value="secondRoom" type="checkers"/>
-                <MainRoomsItem value="newRoom" type="ticTacToe"/>
-                <MainRoomsItem value="secondRoom" type="checkers"/>
-                <MainRoomsItem value="secondRoom" type="checkers"/>
-                <MainRoomsItem value="secondRoom" type="checkers"/>
+                {rooms.length 
+                    ? rooms.map((room) => (
+                        <MainRoomsItem 
+                            key={room.id} 
+                            login={room.loginName} 
+                            type={room.gameType}
+                        />
+                    ))  
+                    : <p>No rooms</p>}
             </StRoomsContainer>
         </StRooms>
     );
