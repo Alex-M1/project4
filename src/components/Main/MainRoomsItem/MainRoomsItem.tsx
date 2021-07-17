@@ -10,6 +10,9 @@ interface IProps {
 
 const MainRoomsItem: React.FC <IProps> = ({ login, type }: IProps) => {
     const { colors, theme } = useTheme();
+    if (type === 'Tic-tac-toe') {
+        type = 'ticTacToe';
+    }
     return (
         <StItem
             theme={theme}

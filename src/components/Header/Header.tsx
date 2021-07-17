@@ -4,6 +4,7 @@ import { StHeader, StLogo } from './styled';
 import { Theme } from '../hocs';
 import HeaderTheme from './HeaderTheme';
 import HeaderLanguage from './HeaderLanguage';
+import HeaderRoute from './HeaderRoute';
 
 const Header: React.FC = () => {
     const { theme, changeTheme } = useContext(Theme);
@@ -17,6 +18,7 @@ const Header: React.FC = () => {
                 src="src/assets/img/logo.png" 
                 alt="logo"
             />
+            <HeaderRoute/>
             <HeaderTheme 
                 toggleThemeMode={toggleThemeMode}
             />

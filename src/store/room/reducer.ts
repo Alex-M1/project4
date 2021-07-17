@@ -1,3 +1,4 @@
+import { GAME_TYPE } from 'constants/constants';
 import { IInitialState, TReducer } from './types';
 import { ActionTypes as AT } from './actionTypes';
 
@@ -6,15 +7,15 @@ export const initialState: IInitialState = {
     {
       id: 1,
       loginName: 'Alex',
-      gameType: 'ticTacToe',
+      gameType: GAME_TYPE.TIC_TAC_TOE,
     },
     {
       id: 2,
       loginName: 'Marina',
-      gameType: 'checkers',
+      gameType: GAME_TYPE.CHECKERS,
     },
   ],
-  gameType: 'Checkers',
+  gameType: GAME_TYPE.CHECKERS,
 };
 
 export const roomReducer: TReducer = (state = initialState, action) => {

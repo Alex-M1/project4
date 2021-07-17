@@ -10,3 +10,8 @@ export const REG_EXP = {
 };
 
 export const COOKIE_AGE = 20000;
+
+export enum GAME_TYPE {
+  TIC_TAC_TOE = 'Tic-tac-toe',
+  CHECKERS = 'Checkers'
+}
