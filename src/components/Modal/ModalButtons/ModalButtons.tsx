@@ -7,6 +7,7 @@ import { StButtonGroup } from '../styled';
 interface IProps {
     tex: string;
     text: string;
+    createRoom: () => void;
     handleCloseModal: () => void;
     handleCreateRoom: () => void;
 } 
@@ -14,11 +15,15 @@ interface IProps {
 const ModalButtons: React.FC <IProps> = ({ 
         tex, 
         text, 
+        createRoom,
         handleCloseModal, 
         handleCreateRoom, 
     }: IProps) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
+    handleCreateRoom = () => {
+        createRoom();
+    };
 
     return (
         <StButtonGroup 

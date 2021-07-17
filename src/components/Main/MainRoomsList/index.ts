@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { getRoomItem } from 'store/room/selectors';
+import { getRoomList } from 'store/room/selectors';
 import MainRoomsList from './MainRoomsList';
 
 const mapStateToProps = (state) => ({
-  rooms: getRoomItem(state),
+  rooms: getRoomList(state),
 });
 
 export default connect(mapStateToProps, null)(MainRoomsList);
