@@ -3,8 +3,8 @@ import { StTicTacContainer, StTicTacField } from './styled';
 import TicTacItem from './TicTacItem';
 
 interface IProps {
-  squares: string[]
-  doStep: (square: number) => void
+  squares: string[];
+  doStep: (square: number) => void;
 }
 
 const TicTac: React.FC<IProps> = ({ squares, doStep }: IProps) => {

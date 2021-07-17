@@ -12,13 +12,15 @@ export const initialState: ITicTac = {
 export const ticTacReducer: TReducer = (state = initialState, action) => {
   switch (action.type) {
     case AT.DO_STEP:
+      state.squares[action.payload] = state.steps.count % 2 === 0
+        ? 'X' : 'O';
       return {
         ...state,
         steps: {
           ...state.steps,
           count: state.steps.count + 1,
         },
-        squares: [...state.squares, state.squares[action.payload]],
+        squares: [...state.squares],
       };
     default: return state;
   }
