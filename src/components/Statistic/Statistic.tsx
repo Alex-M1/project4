@@ -1,9 +1,9 @@
 import React from 'react';
-import { StContainer } from './styled';
+import Checkers from '../Checkers';
 
 const Statistic = () => {
   return (
-    <StContainer>1</StContainer>
+      <Checkers/>
   );
 };
 export default Statistic;

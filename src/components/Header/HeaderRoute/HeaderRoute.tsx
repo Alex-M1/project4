@@ -10,22 +10,22 @@ const HeaderRoute = () => {
   const { colors, theme } = useTheme();
   return (
       <StWrapper>
-        <StP
-          colors={colors}
-          theme={theme}
-        >
-          <NavLink to={url.main}>
+        <NavLink to={url.main}>
+          <StP
+            colors={colors}
+            theme={theme}
+          >
             {t('games')}
-          </NavLink>
-        </StP>
-        <StP
-          colors={colors}
-          theme={theme}
-        >
-          <NavLink to={url.statistic}>
+          </StP>
+        </NavLink>
+        <NavLink to={url.statistic}>
+          <StP
+            colors={colors}
+            theme={theme}
+          >
             {t('statistic')}
-          </NavLink>
-        </StP>
+          </StP>  
+        </NavLink>
       </StWrapper>
   );
 };

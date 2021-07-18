@@ -8,6 +8,6 @@ export const StLangToggle = styled.button < IStyled > `
   background: transparent;
   color: #fff;
   border: none;
-  font-size: 26px;
+  font-size: 25px;
   cursor: pointer;
 `;
