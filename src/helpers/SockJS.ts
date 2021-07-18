@@ -1,4 +1,4 @@
-// import Sockjs from 'sockjs-client';
+// Это заглушка, потом перепешу в сагу
 import { Stomp, CompatClient } from '@stomp/stompjs';
 import { url } from '../constants/urls';
 import { cookieMaster } from './cookieMaster';
@@ -19,9 +19,7 @@ export default class SockJS {
 
   connect = () => {
     this.socket = new WebSocket(`${url.socket}/game-menu`);
-    console.log(this.socket);
     this.stompClient = Stomp.over(this.socket);
-    console.log(cookieMaster.getCookie('token'));
     const body = { creatorLogin: 'qwerty', gameType: 'Checkers', id: null };
     this.stompClient.connect({ Authorization: `Bearer ${cookieMaster.getCookie('token')}` }, () => {
       4;
