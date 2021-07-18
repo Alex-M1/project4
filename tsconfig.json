@@ -13,7 +13,6 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node", // Формат модулей (на входе)
     "sourceMap": false, // Нужно ли юзать удобные для дебага source map'ы (да, нужно)
-    // "outDir": "src/js/modules", // Куда выплевывать скомпиленный код
     "baseUrl": ".", // Где сам проект находится
     "paths": {
         "*": [
@@ -21,12 +20,15 @@
         ],
         "constants/*":["./src/constants/*"],
         "store/*": ["./src/store/*"],
-        "src/*": ["src/*"],
-        "helpers/*": ["src/helpers/*"],
+        "src/*": ["./src/*"],
+        "helpers/*": ["./src/helpers/*"],
+        "common/*":["./src/components/_common_/*"],
+        "tests/*":["./src/__tests__/*"]
     },
   },
   "include": [
-    "src/**/*"
+    "**/*.ts",
+    "**/*.tsx",
   ], // Что именно компилировать
   "exclude": [
     "node_modules",
@@ -34,7 +36,5 @@
     "**/*.jsx",
     "**/*.test.jsx",
     "**/*.test.js",
-    "**/*.test.ts",
-    "**/*.test.tsx"
   ],
 }

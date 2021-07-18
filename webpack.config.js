@@ -89,8 +89,8 @@ const plugins = () => {
         new CopyWebpackPlugin(
             [
                 {
-                    from: path.resolve(__dirname, 'src/assets/img'),
-                    to: path.resolve(__dirname, 'dist/assets/img'),
+                    from: path.resolve(__dirname, 'src/assets'),
+                    to: path.resolve(__dirname, 'dist/assets'),
                 },
             ],
         ),
@@ -123,6 +123,7 @@ module.exports = {
             store: path.resolve(__dirname, 'src/store'),
             src: path.resolve(__dirname, 'src'),
             helpers: path.resolve(__dirname, 'src/helpers'),
+            common: path.resolve(__dirname, 'src/components/_common_'),
         },
     },
     optimization: optimization(),

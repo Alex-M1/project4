@@ -1,6 +1,7 @@
 import { useContext } from 'react';
+
 import { colors } from 'constants/colors';
-import { Theme } from '../hoks';
+import { Theme } from '../hocs';
 
 export const useTheme = () => ({
   colors,
