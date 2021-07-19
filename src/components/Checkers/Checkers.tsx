@@ -1,7 +1,7 @@
 import React from 'react';
 import { CELL } from 'constants/component';
 import { useTheme } from '../hooks/useTheme';
-import { StCell, StContainer, StTable } from './styled';
+import { StCell, StCellBlack, StCellWhite, StContainer, StTable } from './styled';
 
 const Checkers = () => {
   const { colors, theme } = useTheme();
@@ -18,8 +18,14 @@ const Checkers = () => {
                   colors={colors}
                   theme={theme}
               >
-                <div draggable/>
-                {/*{cell.id}*/}
+                  {
+                      (cell.hasItem)
+                        ?
+                          (cell.color === 'black')
+                          ? <StCellBlack colors={colors} theme={theme} draggable/>
+                          : <StCellWhite colors={colors} theme={theme} draggable/>
+                        : null
+                  }
               </StCell>
           ))}
         </StTable>

@@ -61,42 +61,58 @@ export const StCell = styled.div < IStyled > `
   &:nth-child(63)
   {
     background: #fff;
-    & div {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
-      border: 2px solid #000;
-      box-shadow: 0 0 2px 2px #000;
-      border-radius: 50%;
-      background: #fff;
-      cursor: grab;
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 25px;
-        height: 25px;
-        border: 2px solid #000;
-        border-radius: 50%;
-        background: #fff;
-      }
     }
   }
 `;
-export const StChecker = styled.p`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  border: 2px solid darkred;
+export const StCellWhite = styled.div < IStyled > `
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 2px solid #000;
+  box-shadow: 0 0 2px 2px #000;
   border-radius: 50%;
-  background: red;
+  background: #fff;
   cursor: grab;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    background: #fff;
+  }
+`;
+export const StCellBlack = styled.div < IStyled > `
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 2px solid #000;
+  box-shadow: 0 0 2px 2px #000;
+  border-radius: 50%;
+  background: #777;
+  cursor: grab;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    background: #777;
+  }
 `;

@@ -19,6 +19,8 @@ export const colors = {
     iconTheme: '#ff0',
     iconThemeMoon: 'rgba(0,0,0,0)',
     iconThemeSun: '#ff0',
+    whiteChecker: 'fff',
+    blackChecker: '777',
   },
   dark: {
     background: '#0E1621',
@@ -40,5 +42,7 @@ export const colors = {
     iconTheme: '#fff',
     iconThemeMoon: '#2B5278',
     iconThemeSun: 'rgba(0,0,0,0)',
+    whiteChecker: 'fff',
+    blackChecker: '777',
   },
 };
