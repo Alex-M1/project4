@@ -23,10 +23,12 @@ const Header: React.FC = ({ location }) => {
     return (
         <StHeader>
             <StHeaderContainer>
-                <StLogo
-                    src="src/assets/img/logo.png"
-                    alt="logo"
-                />
+                <StNavContainer>
+                    <StLogo
+                        src="src/assets/img/logo.png"
+                        alt="logo"
+                    />
+                </StNavContainer>
             </StHeaderContainer>
             <StHeaderContainer>
                 {isNav}

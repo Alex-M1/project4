@@ -8,19 +8,16 @@ export const StHeader = styled.div`
     height: 90px;
     background: #2B5278;
 `;
-
 export const StLogo = styled.img`
-    display: block;
+  display: block;
 `;
-
 export const StHeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-
 export const StNavContainer = styled.div`
-  width: 160px;
+  width: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;

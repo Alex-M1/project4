@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
 export const StThemeToggle = styled.button <IStyled>`
+  position: relative;
+  top: 0px;
+  right: 0px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   border: none;
   background: ${({ colors, theme }) => colors[theme].iconTheme};
-  overflow: none;
   cursor: pointer;
   z-index: 1;
   &::after {
