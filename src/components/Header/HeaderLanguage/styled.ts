@@ -10,4 +10,8 @@ export const StLangToggle = styled.button < IStyled > `
   border: none;
   font-size: 25px;
   cursor: pointer;
+
+  &:hover {
+    filter: drop-shadow(0 0 2px #ddd);
+  }
 `;

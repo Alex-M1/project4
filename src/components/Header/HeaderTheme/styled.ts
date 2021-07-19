@@ -36,4 +36,8 @@ export const StThemeToggle = styled.button <IStyled>`
     background: ${({ colors, theme }) => colors[theme].iconThemeSun};
     box-shadow: 0 0 20px ${({ colors, theme }) => colors[theme].iconThemeSun};
   }
+
+  &:hover {
+    filter: drop-shadow(0 0 2px #ddd);
+  }
 `;
