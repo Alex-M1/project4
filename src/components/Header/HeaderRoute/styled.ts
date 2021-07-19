@@ -5,9 +5,6 @@ export const StWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  top: -20px;
-  left: 37%;
   width: 400px;
   margin: 0;
 `;

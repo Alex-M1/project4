@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 
-import { StHeader, StLogo } from './styled';
+import { StHeader, StLogo, StHeaderContainer, StNavContainer } from './styled';
 import { Theme } from '../hocs';
 import HeaderTheme from './HeaderTheme';
 import HeaderLanguage from './HeaderLanguage';
@@ -22,16 +22,24 @@ const Header: React.FC = ({ location }) => {
 
     return (
         <StHeader>
-            <StLogo 
-                src="src/assets/img/logo.png" 
-                alt="logo"
-            />
-            {isNav}
-            <HeaderTheme 
-                toggleThemeMode={toggleThemeMode}
-            />
-            <HeaderLanguage text="En" />
-            <HeaderLogout/>
+            <StHeaderContainer>
+                <StLogo
+                    src="src/assets/img/logo.png"
+                    alt="logo"
+                />
+            </StHeaderContainer>
+            <StHeaderContainer>
+                {isNav}
+            </StHeaderContainer>
+            <StHeaderContainer>
+                <StNavContainer>
+                    <HeaderTheme
+                        toggleThemeMode={toggleThemeMode}
+                    />
+                    <HeaderLanguage/>
+                    <HeaderLogout/>
+                </StNavContainer>
+            </StHeaderContainer>
         </StHeader>
     );
 };
