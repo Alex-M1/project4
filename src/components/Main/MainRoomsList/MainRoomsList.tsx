@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'src/components/hooks/useTheme';
 import Title from 'common/Title';
 import { IRoom } from 'store/room/types';
@@ -10,8 +11,10 @@ interface IProps {
     rooms: IRoom[],
 }
 
-const MainRoomsList: React.FC <IProps> = ({ rooms }: IProps) => {
+const MainRoomsList: React.FC <IProps> = ({ rooms }) => {
+    const { t } = useTranslation();
     const { colors, theme } = useTheme();
+
     return (
         <StRooms
             theme={theme}
@@ -28,7 +31,7 @@ const MainRoomsList: React.FC <IProps> = ({ rooms }: IProps) => {
                             type={room.gameType}
                         />
                     ))  
-                    : <p>No rooms</p>}
+                    : <p>{t('no_rooms')}</p>}
             </StRoomsContainer>
         </StRooms>
     );

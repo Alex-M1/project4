@@ -1,24 +1,26 @@
-import { ICredential } from './types';
+import { GAME_TYPE } from 'constants/constants';
+import { IInitialState, TReducer } from './types';
 import { ActionTypes as AT } from './actionTypes';
 
-export const initialState: ICredential = {
+export const initialState: IInitialState = {
   rooms: [
     {
       id: 1,
       loginName: 'Alex',
-      gameType: 'ticTacToe',
+      gameType: GAME_TYPE.TIC_TAC_TOE,
     },
     {
       id: 2,
       loginName: 'Marina',
-      gameType: 'checkers',
+      gameType: GAME_TYPE.CHECKERS,
     },
   ],
+  gameType: GAME_TYPE.CHECKERS,
 };
 
-export const roomReducer = (state = initialState, action) => {
+export const roomReducer: TReducer = (state = initialState, action) => {
   switch (action.type) {
-    case AT.ADD_ROOM: {
+    case AT.ADD_ROOM: 
       return {
         ...state,
         rooms: [
@@ -26,7 +28,11 @@ export const roomReducer = (state = initialState, action) => {
           action.payload,
         ],
       };
-    }
+    case AT.SET_GAME_TYPE: 
+      return {
+        ...state,
+        gameType: action.payload,
+      };
     default: return state;
   }
 };

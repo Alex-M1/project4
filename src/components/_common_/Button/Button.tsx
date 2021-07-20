@@ -4,12 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StButton } from './styled';
 
-export interface IProps {
+interface IProps {
   text: string;
   onClick: (e: SyntheticEvent<HTMLButtonElement>) => void;
 }
 
-const Button: React.FC<IProps> = ({ text, onClick }: IProps) => {
+const Button: React.FC<IProps> = ({ text, onClick }) => {
   const { t } = useTranslation();
   const { colors, theme } = useTheme();
   

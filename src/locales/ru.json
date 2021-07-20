@@ -25,5 +25,6 @@
   "cancel_btn": "Отмена",
   "create_btn": "Создать",
   "tic_tac_toe": "Крестики-нолики",
-  "checkers": "Шашки"
+  "checkers": "Шашки",
+  "no_rooms": "Нет доступных игр"
 }

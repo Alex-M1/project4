@@ -16,7 +16,7 @@ const ModalButtons: React.FC <IProps> = ({
         text, 
         handleCloseModal, 
         handleCreateRoom, 
-    }: IProps) => {
+    }) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
 

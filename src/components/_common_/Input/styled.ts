@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IStyled } from '../types/styledTypes';
 
-export const StInput = styled.input < IStyled > `
+export const StInput = styled.input <IStyled>`
     width: 290px;
     height: 45px;
     padding: 10px;

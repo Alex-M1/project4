@@ -5,7 +5,7 @@ import { StBtn } from './styled';
 
 const AddRoomBtn: React.FC = () => {
     const { colors, theme } = useTheme();
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const handleClick = () => setIsOpen((prev) => !prev);
 
     return (

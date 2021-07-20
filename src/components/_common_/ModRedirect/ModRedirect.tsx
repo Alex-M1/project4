@@ -6,7 +6,7 @@ interface IProps {
   setIsRedirect: (isReg: boolean) => void;
 }
 
-const ModRedirect: React.FC<IProps> = ({ to, setIsRedirect }: IProps) => {
+const ModRedirect: React.FC<IProps> = ({ to, setIsRedirect }) => {
   setIsRedirect(false);
   return <Redirect to={to} />;
 };

@@ -8,7 +8,7 @@ interface IProps {
     login: string;
 } 
 
-const MainRoomsItem: React.FC <IProps> = ({ login, type }: IProps) => {
+const MainRoomsItem: React.FC <IProps> = ({ login, type }) => {
     const { colors, theme } = useTheme();
     return (
         <StItem

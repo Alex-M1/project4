@@ -1,7 +1,7 @@
 import { IStyled } from 'common/types/styledTypes';
 import styled from 'styled-components';
 
-export const StTicTacItem = styled.div < IStyled > `
+export const StTicTacItem = styled.div <IStyled>`
   border: 1px solid ${({ theme, colors }: IStyled) => colors[theme].ticTacColor};
   color: ${({ theme, colors }: IStyled) => colors[theme].ticTacColor};
   width: 33.333%;

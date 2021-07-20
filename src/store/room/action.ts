@@ -1,4 +1,6 @@
 import { action } from 'typesafe-actions';
 import { ActionTypes as AT } from './actionTypes';
+import { IRoom } from './types';
 
-export const addRoom = (payload) => action(AT.ADD_ROOM, payload);
+export const addRoom = (payload: IRoom) => action(AT.ADD_ROOM, payload);
+export const setGameType = (payload: string) => action(AT.SET_GAME_TYPE, payload);

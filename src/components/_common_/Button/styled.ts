@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IStyled } from '../types/styledTypes';
 
-export const StButton = styled.button < IStyled > `
+export const StButton = styled.button <IStyled>`
   width: 290px;
   height: 40px;
   margin: 20px 0;

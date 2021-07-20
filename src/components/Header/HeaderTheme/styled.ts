@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
-export const StThemeToggle = styled.button < IStyled > `
+export const StThemeToggle = styled.button <IStyled>`
   position: absolute;
   top: 25px;
   right: 10%;
