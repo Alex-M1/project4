@@ -32,6 +32,7 @@
         ]
       }
     ],
+    "react/prop-types": 0,
     "jsx-quotes": "off",
     "quotes": [
       "error",

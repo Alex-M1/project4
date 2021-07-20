@@ -10,7 +10,7 @@ export interface IProps {
   setIsRedirect: (isReg: boolean) => void;
 }
 
-const RegBtn: React.FC<IProps> = ({ isRedirect, signUpRequest, setIsRedirect }: IProps) => {
+const RegBtn: React.FC<IProps> = ({ isRedirect, signUpRequest, setIsRedirect }) => {
   const onButtonClick = () => signUpRequest();
   const redirect = useMemo(() => {
     if (isRedirect) {

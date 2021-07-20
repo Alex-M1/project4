@@ -9,10 +9,13 @@ export const REG_EXP = {
   password: /^[a-z0-9]{6,25}$/,
 };
 
-export const COOKIE_AGE = 20000;
+export const COOKIE_SETTING = {
+  AGE: 20000,
+  SPLIT_LEN: 2,
+};
 
-export const ticTac = {
-  winnerLines: [
+export const TIC_TAC = {
+  WINNER_LINES: [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
