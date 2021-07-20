@@ -14,6 +14,7 @@ export const url = {
   getPossibleSteps: '/get-possible-steps',
   doStep: '/do-step',
   getStepOrder: '/get-step-order',
-  ticTacToe: '/../../assets/img/tic-tac-toe.png',
-  checkers: '/../../assets/img/checkers.png',
+  statistic: '/statistic',
+  'Tic-tac-toe': '/../../assets/img/Tic-tac-toe.png',
+  Checkers: '/../../assets/img/Checkers.png',
 };

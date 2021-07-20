@@ -23,3 +23,7 @@ export const ticTac = {
     [2, 4, 6],
   ],
 };
+export enum GAME_TYPE {
+  TIC_TAC_TOE = 'Tic-tac-toe',
+  CHECKERS = 'Checkers'
+}

@@ -16,3 +16,10 @@ export const StRoomsContainer = styled.div`
     margin: 20px 0 10px;
     overflow-y: scroll;
 `;
+export const StP = styled.p`
+    position: relative;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+`;

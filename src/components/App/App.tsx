@@ -11,6 +11,7 @@ import Header from '../Header';
 import Main from '../Main';
 import { useTheme } from '../hooks/useTheme';
 import TicTac from '../TicTac';
+import Statistic from '../Statistic';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -28,6 +29,7 @@ const App: React.FC = () => {
           <Route path={url.regClient} component={Registration} />
           <Route path={url.main} component={Main} />
           <Route path={url.ticTacClient} component={TicTac} />
+          <Route path={url.statistic} component={Statistic} />
         </Switch>
       </Router>
       <StGlobalStyle

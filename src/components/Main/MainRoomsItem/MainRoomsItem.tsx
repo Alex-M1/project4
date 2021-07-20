@@ -10,6 +10,7 @@ interface IProps {
 
 const MainRoomsItem: React.FC <IProps> = ({ login, type }: IProps) => {
     const { colors, theme } = useTheme();
+
     return (
         <StItem
             theme={theme}

@@ -1,4 +1,4 @@
-import { all, fork } from '@redux-saga/core/effects';
+import { all, fork } from '@redux-saga/core/effects'; феооора\ыые
 import userWatcher from './user/sagas';
 
 const sagas = [
