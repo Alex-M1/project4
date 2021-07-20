@@ -3,18 +3,7 @@ import { IInitialState, TReducer } from './types';
 import { ActionTypes as AT } from './actionTypes';
 
 export const initialState: IInitialState = {
-  rooms: [
-    {
-      id: 1,
-      loginName: 'Alex',
-      gameType: GAME_TYPE.TIC_TAC_TOE,
-    },
-    {
-      id: 2,
-      loginName: 'Marina',
-      gameType: GAME_TYPE.CHECKERS,
-    },
-  ],
+  rooms: [],
   gameType: GAME_TYPE.CHECKERS,
 };
 
