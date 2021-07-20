@@ -16,4 +16,5 @@ export const url = {
   'Tic-tac-toe': '/../../assets/img/Tic-tac-toe.png',
   Checkers: '/../../assets/img/Checkers.png',
   logo: 'src/assets/img/logout.svg',
+  checkers: '/Checkers'
 };
