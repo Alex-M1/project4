@@ -9,7 +9,7 @@ export const StInputDiv = styled.div`
     padding: 10px 0;
 `;
 
-export const StSpan = styled.span < IStyled > `
+export const StSpan = styled.span <IStyled>`
     padding: 5px;
     font-size: 17px;
     color: ${({ colors, theme }) => colors[theme].textColor};

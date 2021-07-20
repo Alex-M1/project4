@@ -9,14 +9,14 @@ const Checkers = () => {
   return (
       <StContainer>
         <StTable
-            colors={colors}
             theme={theme}
+            colors={colors}
         >
           {CELL.map((cell) => (
               <StCell
                   key={cell.id}
-                  colors={colors}
                   theme={theme}
+                  colors={colors}
               >
                   {
                       (cell.hasItem)

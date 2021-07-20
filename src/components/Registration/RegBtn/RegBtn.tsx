@@ -4,13 +4,13 @@ import ModRedirect from 'common/ModRedirect';
 import Button from 'common/Button';
 import { url } from 'constants/urls';
 
-export interface IProps {
+interface IProps {
   isRedirect: boolean;
   signUpRequest: () => void;
   setIsRedirect: (isReg: boolean) => void;
 }
 
-const RegBtn: React.FC<IProps> = ({ isRedirect, signUpRequest, setIsRedirect }: IProps) => {
+const RegBtn: React.FC<IProps> = ({ isRedirect, signUpRequest, setIsRedirect }) => {
   const onButtonClick = () => signUpRequest();
   const redirect = useMemo(() => {
     if (isRedirect) {

@@ -10,8 +10,8 @@ const mapStateToProps = (state: AppStateType) => ({
   gameType: getGameType(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  createRoom: (payload) => dispatch(addRoom(payload)),
-});
+const mapDispatchToProps = {
+  addRoom,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalButtons);

@@ -10,7 +10,7 @@ interface IProps {
     rooms: IRoom[],
 }
 
-const MainRoomsList: React.FC <IProps> = ({ rooms }: IProps) => {
+const MainRoomsList: React.FC <IProps> = ({ rooms }) => {
     const { colors, theme } = useTheme();
     return (
         <StRooms
@@ -24,8 +24,8 @@ const MainRoomsList: React.FC <IProps> = ({ rooms }: IProps) => {
                     ? rooms.map((room) => (
                         <MainRoomsItem 
                             key={room.id} 
-                            login={room.loginName} 
                             type={room.gameType}
+                            login={room.loginName} 
                         />
                     ))  
                     : <StP>No rooms</StP>}
@@ -33,5 +33,4 @@ const MainRoomsList: React.FC <IProps> = ({ rooms }: IProps) => {
         </StRooms>
     );
 };
-
 export default MainRoomsList;

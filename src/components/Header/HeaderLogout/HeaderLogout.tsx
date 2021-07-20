@@ -1,7 +1,7 @@
 import React from 'react';
-import { StDoor } from './styled';
-import { url } from '../../../constants/urls';
 import { NavLink } from 'react-router-dom';
+import { url } from '../../../constants/urls';
+import { StDoor } from './styled';
 
 const HeaderLogout = () => {
     return (

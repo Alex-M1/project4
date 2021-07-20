@@ -6,7 +6,7 @@ interface IProps {
     handleCloseModal: () => void;
 }
 
-const ModalCross: React.FC <IProps> = ({ handleCloseModal }: IProps) => {
+const ModalCross: React.FC <IProps> = ({ handleCloseModal }) => {
     const { colors, theme } = useTheme();
     return (
         <StCrossBtn 

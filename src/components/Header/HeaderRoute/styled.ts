@@ -8,7 +8,7 @@ export const StWrapper = styled.div`
   width: 400px;
   margin: 0;
 `;
-export const StP = styled.p < IStyled > `
+export const StP = styled.p <IStyled>`
   color: ${({ colors, theme }) => colors[theme].textColorHeader};
   font-size: 25px;
   letter-spacing: 2px;

@@ -1,7 +1,7 @@
 import React from 'react';
-import { url } from 'constants/urls';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { url } from 'constants/urls';
 import { useTheme } from '../../hooks/useTheme';
 import { StP, StWrapper } from './styled';
 
@@ -12,16 +12,16 @@ const HeaderRoute = () => {
       <StWrapper>
         <NavLink to={url.main}>
           <StP
-            colors={colors}
             theme={theme}
+            colors={colors}
           >
             {t('games')}
           </StP>
         </NavLink>
         <NavLink to={url.statistic}>
           <StP
-            colors={colors}
             theme={theme}
+            colors={colors}
           >
             {t('statistic')}
           </StP>  

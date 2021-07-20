@@ -5,13 +5,13 @@ import { IInputValue, TField } from 'store/user/types';
 import Input from 'common/Input';
 import { StInputDiv, StSpan } from './styled';
 
-export interface IProps {
+interface IProps {
   type: TField;
   value: string;
   setCredentialsValue: (payload: IInputValue) => void;
 }
 
-const AuthIpt: React.FC<IProps> = ({ type, value, setCredentialsValue }: IProps) => {
+const AuthIpt: React.FC<IProps> = ({ type, value, setCredentialsValue }) => {
   const { t } = useTranslation();
   const { colors, theme } = useTheme();
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

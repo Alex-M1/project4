@@ -9,7 +9,7 @@ interface IProps {
     setGameType: (payload: string) => void;
 }
 
-const ModalSelect: React.FC <IProps> = ({ setGameType, gameType }: IProps) => {
+const ModalSelect: React.FC <IProps> = ({ setGameType, gameType }) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

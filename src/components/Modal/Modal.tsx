@@ -11,7 +11,7 @@ interface IProps {
   handleCloseModal: () => void;
 }
 
-const Modal: React.FC <IProps> = ({ handleCloseModal }: IProps) => {
+const Modal: React.FC <IProps> = ({ handleCloseModal }) => {
   const { colors, theme } = useTheme();
 
   return (

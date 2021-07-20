@@ -6,7 +6,7 @@ interface IProps {
   toggleThemeMode: () => void;
 }
 
-const HeaderTheme: React.FC <IProps> = ({ toggleThemeMode }: IProps) => {
+const HeaderTheme: React.FC <IProps> = ({ toggleThemeMode }) => {
   const { colors, theme } = useTheme();
   
   return (

@@ -4,8 +4,7 @@ import { IStyled } from 'common/types/styledTypes';
 export const StContainer = styled.div`
   width: 100vw;
 `;
-
-export const StTable = styled.div < IStyled > `
+export const StTable = styled.div <IStyled>`
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap;
@@ -16,9 +15,8 @@ export const StTable = styled.div < IStyled > `
   margin: 45px auto;
   background: ${({ colors, theme }) => colors[theme].backgroundSecondary};
   transform: rotate(180deg);
-  
 `;
-export const StCell = styled.div < IStyled > `
+export const StCell = styled.div <IStyled>`
   width: 80px;
   height: 80px;
   border: 1px solid ${({ colors, theme }) => colors[theme].textColor};
@@ -59,60 +57,47 @@ export const StCell = styled.div < IStyled > `
   &:nth-child(59),
   &:nth-child(61),
   &:nth-child(63)
-  {
+    {
     background: #fff;
+    }
+
+  & div {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: grab;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
     }
   }
 `;
-export const StCellWhite = styled.div < IStyled > `
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
+export const StCellWhite = styled.div <IStyled>`
   border: 2px solid #000;
   box-shadow: 0 0 2px 2px #000;
-  border-radius: 50%;
   background: #fff;
-  cursor: grab;
   &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 25px;
-    height: 25px;
     border: 2px solid #000;
-    border-radius: 50%;
     background: #fff;
   }
 `;
-export const StCellBlack = styled.div < IStyled > `
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
+export const StCellBlack = styled.div <IStyled>`
   border: 2px solid #000;
   box-shadow: 0 0 2px 2px #000;
-  border-radius: 50%;
   background: #777;
-  cursor: grab;
   &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 25px;
-    height: 25px;
     border: 2px solid #000;
-    border-radius: 50%;
     background: #777;
   }
 `;
