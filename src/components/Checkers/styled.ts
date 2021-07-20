@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
+interface IStCellStyled extends IStyled {
+  background: string;
+}
+
 export const StContainer = styled.div`
   width: 100vw;
 `;
@@ -16,7 +20,7 @@ export const StTable = styled.div <IStyled>`
   background: ${({ colors, theme }) => colors[theme].backgroundSecondary};
   transform: rotate(180deg);
 `;
-export const StCell = styled.div <IStyled>`
+export const StCell = styled.div <IStCellStyled>`
   width: 80px;
   height: 80px;
   border: 1px solid ${({ colors, theme }) => colors[theme].textColor};
@@ -24,42 +28,7 @@ export const StCell = styled.div <IStyled>`
   color: ${({ colors, theme }) => colors[theme].textColor};
   background: #ccc;
   transform: rotate(180deg);
-  
-  &:nth-child(2),
-  &:nth-child(4),
-  &:nth-child(6),
-  &:nth-child(8),
-  &:nth-child(9),
-  &:nth-child(11),
-  &:nth-child(13),
-  &:nth-child(15),
-  &:nth-child(18),
-  &:nth-child(20),
-  &:nth-child(22),
-  &:nth-child(24),
-  &:nth-child(25),
-  &:nth-child(27),
-  &:nth-child(29),
-  &:nth-child(31),
-  &:nth-child(34),
-  &:nth-child(36),
-  &:nth-child(38),
-  &:nth-child(40),
-  &:nth-child(41),
-  &:nth-child(43),
-  &:nth-child(45),
-  &:nth-child(47),
-  &:nth-child(50),
-  &:nth-child(52),
-  &:nth-child(54),
-  &:nth-child(56),
-  &:nth-child(57),
-  &:nth-child(59),
-  &:nth-child(61),
-  &:nth-child(63)
-    {
-    background: #fff;
-    }
+  background: ${({ background }) => background};
 
   & div {
     content: '';
