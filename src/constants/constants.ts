@@ -26,6 +26,7 @@ export const TIC_TAC = {
     [2, 4, 6],
   ],
 };
+export const COOKIE_AGE = 20000;
 
 export enum GAME_TYPE {
   TIC_TAC_TOE = 'Tic-tac-toe',

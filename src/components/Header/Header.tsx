@@ -1,17 +1,46 @@
-import React from 'react';
-import { StHeader, StLogo } from './styled';
+import React, { useMemo } from 'react';
+import { Location } from 'history';
+import { StHeader, StLogo, StHeaderContainer, StNavContainer } from './styled';
 import HeaderTheme from './HeaderTheme';
 import HeaderLanguage from './HeaderLanguage';
+import HeaderRoute from './HeaderRoute';
+import HeaderLogout from './HeaderLogout';
 
-const Header: React.FC = () => (
-  <StHeader>
-    <StLogo
-      src="src/assets/img/logo.png"
-      alt="logo"
-    />
-    <HeaderTheme />
-    <HeaderLanguage />
-  </StHeader>
-);
+interface IProps {
+    location: Location
+}
+
+const Header: React.FC <IProps> = ({ location }) => {
+    const isNav = useMemo(() => {
+        const path = location.pathname;
+        if (path === '/' || path === '/signup') {
+            return null;
+        }
+        return <HeaderRoute/>;
+    }, [location.pathname]);
+
+    return (
+        <StHeader>
+            <StHeaderContainer>
+                <StNavContainer>
+                    <StLogo
+                        src="src/assets/img/logo.png"
+                        alt="logo"
+                    />
+                </StNavContainer>
+            </StHeaderContainer>
+            <StHeaderContainer>
+                {isNav}
+            </StHeaderContainer>
+            <StHeaderContainer>
+                <StNavContainer>
+                    <HeaderTheme/>
+                    <HeaderLanguage/>
+                    <HeaderLogout/>
+                </StNavContainer>
+            </StHeaderContainer>
+        </StHeader>
+    );
+};
 
 export default Header;

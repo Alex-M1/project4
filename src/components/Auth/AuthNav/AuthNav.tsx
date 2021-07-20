@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { url } from 'constants/urls';
 import { useTheme } from 'src/components/hooks/useTheme';
-import { StNavLink } from '../styled';
+import { StNavLink, StP } from '../styled';
 
 const AuthNav: React.FC = () => {
   const { t } = useTranslation();
@@ -13,10 +13,15 @@ const AuthNav: React.FC = () => {
       theme={theme}
       colors={colors}
     >
-      <p>{t('to_register')}</p>
+      <p>{t('to_register')}</p>  
       &nbsp;
       <NavLink to={url.signUp}>
-        {t('to_register_link')}
+        <StP
+          theme={theme}
+          colors={colors}
+        >
+          {t('to_register_link')}
+        </StP>
       </NavLink>
     </StNavLink>
   );

@@ -19,7 +19,7 @@ export const StModalContainer = styled.div <IStyled>`
     transform: translate(-50%, -47%);
     width: 400px;
     height: auto;
-    padding: 0 55px 10px;
+    padding: 0 55px 15px;
     background: ${({ colors, theme }) => colors[theme].backgroundModalContainer};
     border-radius: 12px;
     box-shadow: 5px 5px 15px ${({ colors, theme }) => colors[theme].backgroundModalShadow};;

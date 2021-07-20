@@ -9,7 +9,6 @@ import ModalSelect from './ModalSelect';
 
 interface IProps {
   handleCloseModal: () => void;
-  header: string;
 }
 
 const Modal: React.FC <IProps> = ({ handleCloseModal }) => {

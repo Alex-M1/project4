@@ -8,6 +8,7 @@ export const colors = {
     buttonHover: '#346392',
     input: '#D1D1D1',
     textColor: '#000',
+    textColorHeader: '#fff',
     placeholderColor: '#55667B',
     AddRoomBtn: '#fff',
     AddRoomBtnHover: '#fff',
@@ -19,6 +20,8 @@ export const colors = {
     iconThemeMoon: 'rgba(0,0,0,0)',
     iconThemeSun: '#ff0',
     ticTacColor: '#000',
+    whiteChecker: 'fff',
+    blackChecker: '777',
   },
   dark: {
     background: '#0E1621',
@@ -29,6 +32,7 @@ export const colors = {
     buttonHover: '#346392',
     input: '#242F3D',
     textColor: '#d4d4d4',
+    textColorHeader: '#d4d4d4',
     placeholderColor: '#55667B',
     AddRoomBtn: '#fff',
     AddRoomBtnHover: '#fff',
@@ -40,5 +44,7 @@ export const colors = {
     iconThemeMoon: '#2B5278',
     iconThemeSun: 'rgba(0,0,0,0)',
     ticTacColor: '#fff',
+    whiteChecker: 'fff',
+    blackChecker: '777',
   },
 };

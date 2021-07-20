@@ -2,15 +2,14 @@ import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
 export const StThemeToggle = styled.button <IStyled>`
-  position: absolute;
-  top: 25px;
-  right: 10%;
+  position: relative;
+  top: 0px;
+  right: 0px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   border: none;
   background: ${({ colors, theme }) => colors[theme].iconTheme};
-  overflow: none;
   cursor: pointer;
   z-index: 1;
   &::after {
@@ -35,5 +34,9 @@ export const StThemeToggle = styled.button <IStyled>`
     border: none;
     background: ${({ colors, theme }) => colors[theme].iconThemeSun};
     box-shadow: 0 0 20px ${({ colors, theme }) => colors[theme].iconThemeSun};
+  }
+
+  &:hover {
+    filter: drop-shadow(0 0 2px #ddd);
   }
 `;

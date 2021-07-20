@@ -5,7 +5,7 @@ import { useTheme } from 'src/components/hooks/useTheme';
 import Input from 'common/Input';
 import { IInputValue, TField } from 'store/user/types';
 
-export interface IProps {
+interface IProps {
   type: TField;
   value: string;
   setCredentialsValue: (payload: IInputValue) => void;

@@ -4,9 +4,9 @@ import { useTheme } from 'src/components/hooks/useTheme';
 import { StLangToggle } from './styled';
 
 const HeaderLanguage: React.FC = () => {
-  const [lang, setLang] = useState<string>(localStorage.getItem('lang') || 'en');
-  const { colors, theme } = useTheme();
   const { i18n } = useTranslation();
+  const { colors, theme } = useTheme();
+  const [lang, setLang] = useState<string>(localStorage.getItem('lang') || 'en');
   const translateHandler = () => {
     i18n.changeLanguage(lang === 'en' ? 'ru' : 'en');
     localStorage.setItem('lang', lang === 'en' ? 'ru' : 'en');

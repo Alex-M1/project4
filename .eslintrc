@@ -114,5 +114,6 @@
     "document": true,
     "localStorage": true
   },
-  "parser": "babel-eslint"
+  "parser": "babel-eslint",
+  "react/prop-types": 0
 }
