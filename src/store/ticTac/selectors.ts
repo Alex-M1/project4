@@ -5,5 +5,5 @@ export const getTicTac = (state: AppStateType) => state.ticTac;
 
 export const getSquares = createSelector(
   getTicTac,
-  (ticTac) => ticTac.squares,
+  (ticTac): string[] => ticTac.squares,
 );

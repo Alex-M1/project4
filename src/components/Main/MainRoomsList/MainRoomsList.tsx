@@ -8,7 +8,7 @@ import MainRoomsItem from '../MainRoomsItem';
 import AddRoomBtn from '../AddRoomBtn';
 
 interface IProps {
-    rooms: IRoom[],
+    rooms: Array<IRoom>,
 }
 
 const MainRoomsList: React.FC <IProps> = ({ rooms }) => {
