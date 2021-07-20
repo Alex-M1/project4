@@ -11,7 +11,6 @@ import Header from '../Header';
 import Main from '../Main';
 import { useTheme } from '../hooks/useTheme';
 import TicTac from '../TicTac';
-import 'react-toastify/dist/ReactToastify.css';
 import Statistic from '../Statistic';
 import Checkers from '../Checkers';
 

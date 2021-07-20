@@ -1,3 +1,4 @@
+import { TIC_TAC_ITEM } from 'constants/constants';
 import { ITicTac, TReducer } from './types';
 import { ActionTypes as AT } from './actionTypes';
 
@@ -13,7 +14,7 @@ export const ticTacReducer: TReducer = (state = initialState, action) => {
   switch (action.type) {
     case AT.DO_STEP:
       state.squares[action.payload] = state.steps.count % 2 === 0
-        ? 'X' : 'O';
+        ? TIC_TAC_ITEM.X : TIC_TAC_ITEM.O;
       return {
         ...state,
         steps: {

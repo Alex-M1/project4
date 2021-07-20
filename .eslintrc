@@ -65,6 +65,7 @@
     "import/no-dynamic-require": "off",
     "consistent-return": "off",
     "react/forbid-prop-types": "off",
+    "space-infix-ops": ["off", { "int32Hint": false }],
     "no-use-before-define": [
       "error",
       {
@@ -114,6 +115,5 @@
     "document": true,
     "localStorage": true
   },
-  "parser": "babel-eslint",
-  "react/prop-types": 0
+  "parser": "babel-eslint"
 }

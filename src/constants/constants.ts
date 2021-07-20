@@ -32,3 +32,8 @@ export enum GAME_TYPE {
   TIC_TAC_TOE = 'Tic-tac-toe',
   CHECKERS = 'Checkers'
 }
+
+export const TIC_TAC_ITEM = {
+  X: 'X',
+  O: 'O',
+};
