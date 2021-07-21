@@ -8,10 +8,10 @@ import ModalCross from './ModalCross';
 import ModalSelect from './ModalSelect';
 
 interface IProps {
-  handleCloseModal: () => void;
+  onCloseModal: () => void;
 }
 
-const Modal: React.FC <IProps> = ({ handleCloseModal }) => {
+const Modal: React.FC <IProps> = ({ onCloseModal }) => {
   const { colors, theme } = useTheme();
 
   return (
@@ -25,14 +25,12 @@ const Modal: React.FC <IProps> = ({ handleCloseModal }) => {
           colors={colors}
         >
           <ModalCross 
-            handleCloseModal={handleCloseModal}
+            onCloseModal={onCloseModal}
           />
           <Title title="choose_the_game" />
           <ModalSelect />
           <ModalButtons
-            tex="cancel_btn"
-            text="create_btn"
-            handleCloseModal={handleCloseModal}
+            onCloseModal={onCloseModal}
           />
         </StModalContainer>
       </StModal>

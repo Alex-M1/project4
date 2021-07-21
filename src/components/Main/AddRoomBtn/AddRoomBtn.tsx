@@ -15,7 +15,7 @@ const AddRoomBtn: React.FC = () => {
                 colors={colors}
                 onClick={handleClick}
             />
-            {isOpen && <Modal handleCloseModal={handleClick} />}
+            {isOpen && <Modal onCloseModal={handleClick} />}
         </>
     );
 };

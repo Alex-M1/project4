@@ -22,6 +22,9 @@ export const colors = {
     ticTacColor: '#000',
     whiteChecker: 'fff',
     blackChecker: '777',
+    gray: '#ccc',
+    white: '#fff',
+    black: '#000',
   },
   dark: {
     background: '#0E1621',
@@ -46,5 +49,8 @@ export const colors = {
     ticTacColor: '#fff',
     whiteChecker: 'fff',
     blackChecker: '777',
+    gray: '#ccc',
+    white: '#fff',
+    black: '#000',
   },
 };

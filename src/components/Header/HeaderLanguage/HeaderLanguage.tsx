@@ -7,11 +7,11 @@ import { StLangToggle } from './styled';
 const HeaderLanguage: React.FC = () => {
   const { i18n } = useTranslation();
   const { colors, theme } = useTheme();
-  const [lang, setLang] = useState<string>(localStorage.getItem('lang') || LANGUAGE.en);
+  const [lang, setLang] = useState<string>(localStorage.getItem(LANGUAGE.LANG) || LANGUAGE.EN);
   const translateHandler = () => {
-    i18n.changeLanguage(lang === LANGUAGE.en ? LANGUAGE.ru : LANGUAGE.en);
-    localStorage.setItem('lang', lang === LANGUAGE.en ? LANGUAGE.ru : LANGUAGE.en);
-    setLang(lang === LANGUAGE.en ? LANGUAGE.ru : LANGUAGE.en);
+    i18n.changeLanguage(lang === LANGUAGE.EN ? LANGUAGE.RU : LANGUAGE.EN);
+    localStorage.setItem(LANGUAGE.LANG, lang === LANGUAGE.EN ? LANGUAGE.RU : LANGUAGE.EN);
+    setLang(lang === LANGUAGE.EN ? LANGUAGE.RU : LANGUAGE.EN);
   };
   return (
     <StLangToggle

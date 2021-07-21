@@ -1,4 +1,6 @@
-export const CELL = [
+import { ICell } from 'src/components/_common_/types/constantsTypes';
+
+export const CELL:ICell[][] = [
   [
     {
       id: 1,

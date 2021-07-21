@@ -1,69 +1,16 @@
 import React from 'react';
 import { CELL } from 'constants/component';
-import { DndProvider, useDrag, useDrop } from 'react-dnd'; 
+import { DndProvider } from 'react-dnd'; 
 import { HTML5Backend } from 'react-dnd-html5-backend'; 
 import { CHESS_DESK } from 'constants/constants';
 import { useTheme } from '../hooks/useTheme';
-import { StCell, StCellBlack, StCellWhite, StContainer, StTable } from './styled';
+import { StContainer, StTable } from './styled';
+import Cell from './Cell';
 
-const Checker = ({ isBlack, colors, theme }) => {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'checker',
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
-
-  return (
-    <div ref={drag} style={{ opacity: isDragging ? '0.3' : '1' }}>
-        {
-          isBlack 
-          ? <StCellBlack colors={colors} theme={theme}/> 
-          : <StCellWhite colors={colors} theme={theme}/>
-        }
-    </div>
-  );
-};
-
-const Cell = ({ colors, theme, col, row, cell }) => {
-  const [, drop] = useDrop(
-    () => ({
-      accept: 'checker',
-      drop: () => {
-        console.log(`drop ${row} ${col}`);
-      },
-    }),
-    [row, col],
-  );
-
-  const getCellBackground = (row, col) => {
-    return row % 2 === 1 
-      ? (col % 2 === 1 ? '#ccc' : '#fff') 
-      : (col % 2 === 0 ? '#ccc' : '#fff');
-  };
-
-  return (
-    <StCell
-      ref={drop}
-      theme={theme}
-      colors={colors}
-      background={getCellBackground(row, col)}
-    >
-      {
-        (cell.hasItem)
-        ? (cell.color === 'black')
-          ? <Checker isBlack colors={colors} theme={theme}/>
-          : <Checker isBlack={false} colors={colors} theme={theme}/>
-        : null
-      }
-    </StCell>
-  );
-};
-
-const Checkers = () => {
+const Checkers: React.FC = () => {
   const { colors, theme } = useTheme();
-  const rows = CHESS_DESK.rows;
-  const cols = CHESS_DESK.cols;
+  const rows = CHESS_DESK.ROWS;
+  const cols = CHESS_DESK.COLS;
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -79,11 +26,9 @@ const Checkers = () => {
 
                 return (
                   <Cell
-                    key={`row_${row}_col_${col}`}
-                    theme={theme}
-                    colors={colors}
-                    row={row}
                     col={col}
+                    key={`row_${row}_col_${col}`}
+                    row={row}
                     cell={cell}
                   />
                 );

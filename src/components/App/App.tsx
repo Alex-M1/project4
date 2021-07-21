@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import SockJS from 'src/helpers/SockJS';
 import { url } from 'constants/urls';
 import { StGlobalStyle } from './styled';
 import Auth from '../Auth';
@@ -15,10 +14,6 @@ import Statistic from '../Statistic';
 import Checkers from '../Checkers';
 
 const App: React.FC = () => {
-  useEffect(() => {
-    const sock = new SockJS();
-    sock.connect();
-  });
   const { colors, theme } = useTheme();
 
   return (

@@ -25,12 +25,13 @@ export const TIC_TAC = {
     [0, 4, 8],
     [2, 4, 6],
   ],
+  FIELD_SIZE: 480,
 };
 export const COOKIE_AGE = 20000;
 
-export enum GAME_TYPE {
-  TIC_TAC_TOE = 'Tic-tac-toe',
-  CHECKERS = 'Checkers'
+export const GAME_TYPE = {
+  TIC_TAC_TOE: 'Tic-tac-toe',
+  CHECKERS: 'Checkers',
 }
 
 export const TIC_TAC_ITEM = {
@@ -39,11 +40,20 @@ export const TIC_TAC_ITEM = {
 };
 
 export const CHESS_DESK = {
-  cols: [1, 2, 3, 4, 5, 6, 7, 8],
-  rows: [1, 2, 3, 4, 5, 6, 7, 8],
+  COLS: [1, 2, 3, 4, 5, 6, 7, 8],
+  ROWS: [1, 2, 3, 4, 5, 6, 7, 8],
 };
 
 export const LANGUAGE = {
-  en: 'en',
-  ru: 'ru',
+  LANG: 'lang',
+  EN: 'en',
+  RU: 'ru',
+};
+
+export const VIEW_OPTIONS = {
+  HEADER_HEIGHT: 90, 
+  DRAGGIN_OPACITY: {
+    IS_DRAGGING: 0.3,
+    NOT_DRAGGING: 1,
+  },
 };

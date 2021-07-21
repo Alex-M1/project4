@@ -6,32 +6,28 @@ import { useTheme } from '../../hooks/useTheme';
 import { StButtonGroup } from '../styled';
 
 interface IProps {
-    tex: string;
-    text: string;
-    user: any;
+    user: string;
     gameType: string;
     addRoom: (payload: IRoom) => void;
-    handleCloseModal: () => void;
+    onCloseModal: () => void;
 } 
 
 const ModalButtons: React.FC <IProps> = ({ 
-        tex, 
-        text, 
         user,
         addRoom,
         gameType,
-        handleCloseModal
+        onCloseModal,
     }) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
     const handleCreateRoom = () => {
-        const obj: IRoom = {
+        const rooms: IRoom = {
             id: Math.random() * 1000,
-            loginName: user.login || 'user',
+            loginName: user,
             gameType,
         };
-        addRoom(obj);
-        handleCloseModal();
+        addRoom(rooms);
+        onCloseModal();
     };
 
     return (
@@ -44,14 +40,14 @@ const ModalButtons: React.FC <IProps> = ({
             colors={colors}
             onClick={handleCreateRoom}
         >
-            {t(text)}
+            {t('create_btn')}
         </StButton>
         <StButton 
             theme={theme}
             colors={colors}
-            onClick={handleCloseModal}
+            onClick={onCloseModal}
         >
-            {t(tex)}
+            {t('cancel_btn')}
         </StButton>
         </StButtonGroup>  
     );
