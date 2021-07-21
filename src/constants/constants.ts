@@ -32,7 +32,7 @@ export const COOKIE_AGE = 20000;
 export const GAME_TYPE = {
   TIC_TAC_TOE: 'Tic-tac-toe',
   CHECKERS: 'Checkers',
-}
+};
 
 export const TIC_TAC_ITEM = {
   X: 'X',
@@ -55,5 +55,9 @@ export const VIEW_OPTIONS = {
   DRAGGIN_OPACITY: {
     IS_DRAGGING: 0.3,
     NOT_DRAGGING: 1,
+  },
+  CELL_BACKGROUND: {
+    GRAY: '#ccc',
+    WHITE: '#fff',
   },
 };

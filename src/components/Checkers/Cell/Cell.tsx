@@ -2,6 +2,7 @@ import React from 'react';
 import { useDrop } from 'react-dnd';
 import { useTheme } from 'src/components/hooks/useTheme';
 import { ICell } from 'src/components/_common_/types/constantsTypes';
+import { VIEW_OPTIONS } from 'constants/constants';
 import Checker from '../Checker';
 import { StCell } from './styled';
 
@@ -24,9 +25,10 @@ const Cell: React.FC <IProps> = ({ col, row, cell }) => {
   );
 
   const getCellBackground = (row: number, col: number) => {
+    const cellBg = VIEW_OPTIONS.CELL_BACKGROUND;
     return row % 2 === 1 
-      ? (col % 2 === 1 ? '#ccc' : '#fff') 
-      : (col % 2 === 0 ? '#ccc' : '#fff');
+      ? (col % 2 === 1 ? cellBg.GRAY : cellBg.WHITE) 
+      : (col % 2 === 0 ? cellBg.GRAY : cellBg.WHITE);
   };
 
   return (
