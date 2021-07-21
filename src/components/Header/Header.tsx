@@ -6,22 +6,26 @@ import HeaderTheme from './HeaderTheme';
 import HeaderLanguage from './HeaderLanguage';
 import HeaderRoute from './HeaderRoute';
 import HeaderLogout from './HeaderLogout';
+import { useTheme } from '../hooks/useTheme';
 
 interface IProps {
     location: Location
 }
 
-const Header: React.FC <IProps> = ({ location }) => {
+const Header: React.FC<IProps> = ({ location }) => {
     const isNav = useMemo(() => {
         const path = location.pathname;
         if (path === url.authClient || path === url.regClient) {
             return null;
         }
-        return <HeaderRoute/>;
+        return <HeaderRoute />;
     }, [location.pathname]);
-
+    const { colors, theme } = useTheme();
     return (
-        <StHeader>
+        <StHeader
+            theme={theme}
+            colors={colors}
+        >
             <StHeaderContainer>
                 <StNavContainer>
                     <StLogo
@@ -35,9 +39,9 @@ const Header: React.FC <IProps> = ({ location }) => {
             </StHeaderContainer>
             <StHeaderContainer>
                 <StNavContainer>
-                    <HeaderTheme/>
-                    <HeaderLanguage/>
-                    <HeaderLogout/>
+                    <HeaderTheme />
+                    <HeaderLanguage />
+                    <HeaderLogout />
                 </StNavContainer>
             </StHeaderContainer>
         </StHeader>
