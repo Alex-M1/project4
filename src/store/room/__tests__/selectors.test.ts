@@ -1,15 +1,14 @@
 import { expect } from '@jest/globals';
+import { AppStateType } from 'store/rootReducer';
+import { initialState } from '../reducer';
 import * as selectors from '../selectors';
 
 describe('userSelectors', () => {
-  const store = {
-      room: 
-      { rooms: {
-        id: 1,
-        loginName: 'login',
-        gameType: 'checkers',
-      },
-      gameType: '' },
+  //@ts-ignore
+  const store: AppStateType = {
+    room: {
+      ...initialState,
+    },
   };
   it('getRoom', () => {
     expect(selectors.getRoom(store)).toEqual(store.room);
