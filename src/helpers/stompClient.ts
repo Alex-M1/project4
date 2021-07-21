@@ -9,12 +9,12 @@ export const connection = (token: string) => {
     const socket = new WebSocket(`${server.socket}${server.gameMenu}`);
     stompClient = Stomp.over(socket);
     return new Promise((resolve) => stompClient
-         .connect({ Authorization: `Bearer ${token}` }, () => resolve(stompClient)));
+        .connect({ Authorization: `Bearer ${token}` }, () => resolve(stompClient)));
 };
 export const createStompChannel = (stompClient: CompatClient) => eventChannel((emit) => {
     const roomsSub = stompClient.subscribe(
-     server.rooms, 
-      ({ body }) => emit(addRoom(JSON.parse(body))),
+        server.rooms,
+        ({ body }) => emit(addRoom(JSON.parse(body))),
     );
     const errorSub = stompClient.subscribe(server.errors, ({ body }) => console.log(body));
     return () => {
@@ -23,5 +23,5 @@ export const createStompChannel = (stompClient: CompatClient) => eventChannel((e
     };
 });
 export const init = (stompClient: CompatClient) => {
-    stompClient.send(server.createRoom);
+    stompClient.send(server.updateRoom);
 };

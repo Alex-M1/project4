@@ -27,3 +27,8 @@ export enum GAME_TYPE {
   TIC_TAC_TOE = 'Tic-tac-toe',
   CHECKERS = 'Checkers'
 }
+
+export const LOCAL_STORAGE = {
+  login: 'login',
+  token: 'token',
+};

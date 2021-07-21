@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addRoom } from 'store/room/actions';
+import { createRoom } from 'store/room/actions';
 import { getGameType } from 'store/room/selectors';
 import { AppStateType } from 'store/rootReducer';
 import { getAuthData } from 'store/user/selectors';
@@ -10,8 +10,8 @@ const mapStateToProps = (state: AppStateType) => ({
   gameType: getGameType(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  createRoom: (payload) => dispatch(addRoom(payload)),
-});
+const mapDispatchToProps = {
+  createRoom,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalButtons);

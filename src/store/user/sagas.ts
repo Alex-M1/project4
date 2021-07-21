@@ -1,3 +1,4 @@
+import { LOCAL_STORAGE as LS } from 'constants/constants';
 import { server } from 'constants/urls';
 import { SagaIterator } from 'redux-saga';
 import { takeEvery, select, call, put } from 'redux-saga/effects';
@@ -8,6 +9,7 @@ import { cookieMaster } from '../../helpers/cookieMaster';
 import { clearUserFields, setIsRedirect } from './action';
 import { ActionTypes as AT } from './actionTypes';
 import { getRegData, getAuthData } from './selectors';
+import { IAuth } from './types';
 
 export function* signUpSaga(): SagaIterator {
   const regData = yield select(getRegData);
@@ -28,7 +30,7 @@ export function* signUpSaga(): SagaIterator {
 }
 
 export function* signInSaga(): SagaIterator {
-  const authData = yield select(getAuthData);
+  const authData: IAuth = yield select(getAuthData);
   try {
     const valid = yield call(isInvalid, authData);
     if (valid) return yield call(notifications, { message: valid });
@@ -36,6 +38,7 @@ export function* signInSaga(): SagaIterator {
     const token: string = yield call([response, 'text']);
     yield call([cookieMaster, 'setTokenInCookie'], token);
     yield put(setIsRedirect(true));
+    yield call([localStorage, 'setItem'], LS.login, authData.login);
     yield put(clearUserFields('auth'));
   } catch (err) {
     if (err === 'Incorrect credentials' || err === `User ${authData.login} was not found`) {

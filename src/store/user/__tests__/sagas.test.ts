@@ -4,6 +4,7 @@ import { notifications } from 'helpers/notification';
 import { server } from 'constants/urls';
 import { request } from 'helpers/requests';
 import { isInvalid } from 'helpers/validation';
+import { LOCAL_STORAGE } from 'constants/constants';
 import { clearUserFields, setIsRedirect } from '../action';
 import userWatcher, { signUpSaga, signInSaga } from '../sagas';
 import { ActionTypes as AT } from '../actionTypes';
@@ -98,6 +99,8 @@ describe('credentials Saga', () => {
         .call([cookieMaster, 'setTokenInCookie'], mockToken)
         .next()
         .put(setIsRedirect(true))
+        .next()
+        .call([localStorage, 'setItem'], LOCAL_STORAGE.login, authValue.login)
         .next()
         .put(clearUserFields('auth'))
         .next()

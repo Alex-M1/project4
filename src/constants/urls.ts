@@ -1,6 +1,6 @@
 export const client = {
   authClient: '/',
-  regClient: '/registration',
+  regClient: '/signup',
   ticTacClient: '/tic-tac',
   signUp: '/signup',
   main: '/main',

@@ -9,53 +9,45 @@ interface IProps {
     tex: string;
     text: string;
     gameType: string;
-    createRoom: (payload: IRoom) => void;
+    createRoom: () => void;
     user: any;
     handleCloseModal: () => void;
     handleCreateRoom: () => void;
-} 
+}
 
-const ModalButtons: React.FC <IProps> = ({ 
-        tex, 
-        text, 
-        gameType,
-        createRoom,
-        user,
-        handleCloseModal, 
-        handleCreateRoom, 
-    }: IProps) => {
+const ModalButtons: React.FC<IProps> = ({
+    createRoom,
+    handleCloseModal,
+    handleCreateRoom,
+}: IProps) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
     handleCreateRoom = () => {
-        const obj: IRoom = {
-            id: Math.random() * 1000,
-            loginName: user.login || 'user',
-            gameType,
-        };
-        createRoom(obj);
+        createRoom();
         handleCloseModal();
     };
 
     return (
-        <StButtonGroup 
+        <StButtonGroup
             theme={theme}
             colors={colors}
         >
-        <StButton
-            theme={theme}
-            colors={colors}
-            onClick={handleCreateRoom}
-        >
-            {t(text)}
-        </StButton>
-        <StButton 
-            theme={theme}
-            colors={colors}
-            onClick={handleCloseModal}
-        >
-            {t(tex)}
-        </StButton>
-        </StButtonGroup>  
+            <StButton
+                theme={theme}
+                colors={colors}
+                onClick={handleCreateRoom}
+            >
+                {t('create_btn')}
+            </StButton>
+            <StButton
+                theme={theme}
+                colors={colors}
+                onClick={handleCloseModal}
+            >
+                {t('cancel_btn')}
+            </StButton>
+        </StButtonGroup>
     );
 };
+
 export default ModalButtons;
