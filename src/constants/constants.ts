@@ -37,3 +37,13 @@ export const TIC_TAC_ITEM = {
   X: 'X',
   O: 'O',
 };
+
+export const CHESS_DESK = {
+  cols: [1, 2, 3, 4, 5, 6, 7, 8],
+  rows: [1, 2, 3, 4, 5, 6, 7, 8],
+};
+
+export const LANGUAGE = {
+  en: 'en',
+  ru: 'ru',
+};

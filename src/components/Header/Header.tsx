@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Location } from 'history';
+import { url } from 'constants/urls';
 import { StHeader, StLogo, StHeaderContainer, StNavContainer } from './styled';
 import HeaderTheme from './HeaderTheme';
 import HeaderLanguage from './HeaderLanguage';
@@ -13,7 +14,7 @@ interface IProps {
 const Header: React.FC <IProps> = ({ location }) => {
     const isNav = useMemo(() => {
         const path = location.pathname;
-        if (path === '/' || path === '/signup') {
+        if (path === url.authClient || path === url.regClient) {
             return null;
         }
         return <HeaderRoute/>;

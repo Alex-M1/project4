@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { url } from '../../../constants/urls';
+import { url } from 'constants/urls';
 import { StDoor } from './styled';
 
 const HeaderLogout = () => {

@@ -2,6 +2,7 @@ import React from 'react';
 import { CELL } from 'constants/component';
 import { DndProvider, useDrag, useDrop } from 'react-dnd'; 
 import { HTML5Backend } from 'react-dnd-html5-backend'; 
+import { CHESS_DESK } from 'constants/constants';
 import { useTheme } from '../hooks/useTheme';
 import { StCell, StCellBlack, StCellWhite, StContainer, StTable } from './styled';
 
@@ -43,10 +44,10 @@ const Cell = ({ colors, theme, col, row, cell }) => {
 
   return (
     <StCell
+      ref={drop}
       theme={theme}
       colors={colors}
       background={getCellBackground(row, col)}
-      ref={drop}
     >
       {
         (cell.hasItem)
@@ -61,8 +62,8 @@ const Cell = ({ colors, theme, col, row, cell }) => {
 
 const Checkers = () => {
   const { colors, theme } = useTheme();
-  const rows = [1, 2, 3, 4, 5, 6, 7, 8];
-  const cols = [1, 2, 3, 4, 5, 6, 7, 8];
+  const rows = CHESS_DESK.rows;
+  const cols = CHESS_DESK.cols;
 
   return (
     <DndProvider backend={HTML5Backend}>
