@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import SockJS from 'src/helpers/SockJS';
-import { url } from 'constants/urls';
+import { client } from 'constants/urls';
 import { StGlobalStyle } from './styled';
 import Auth from '../Auth';
 import Registration from '../Registration';
@@ -14,22 +13,17 @@ import TicTac from '../TicTac';
 import Statistic from '../Statistic';
 
 const App: React.FC = () => {
-  useEffect(() => {
-    const sock = new SockJS();
-    sock.connect();
-  });
   const { colors, theme } = useTheme();
-
   return (
     <>
       <Router>
         <Header />
         <Switch>
-          <Route exact path={url.authClient} component={Auth} />
-          <Route path={url.regClient} component={Registration} />
-          <Route path={url.main} component={Main} />
-          <Route path={url.ticTacClient} component={TicTac} />
-          <Route path={url.statistic} component={Statistic} />
+          <Route exact path={client.authClient} component={Auth} />
+          <Route path={client.regClient} component={Registration} />
+          <Route path={client.main} component={Main} />
+          <Route path={client.ticTacClient} component={TicTac} />
+          <Route path={client.statistic} component={Statistic} />
         </Switch>
       </Router>
       <StGlobalStyle

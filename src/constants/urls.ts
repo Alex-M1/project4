@@ -1,20 +1,27 @@
-export const url = {
+export const client = {
   authClient: '/',
   regClient: '/registration',
   ticTacClient: '/tic-tac',
-  server: 'http://35.176.167.155:8089',
-  socket: 'ws://35.176.167.155:8082',
-  registration: '/registration/reg',
-  auth: '/authorization/auth',
   signUp: '/signup',
   main: '/main',
-  updateRoom: '/updateRoom',
-  getBotStep: '/get-bot-step',
-  joinRoom: '/joinRoom',
-  getPossibleSteps: '/get-possible-steps',
-  doStep: '/do-step',
-  getStepOrder: '/get-step-order',
   statistic: '/statistic',
   'Tic-tac-toe': '/../../assets/img/Tic-tac-toe.png',
   Checkers: '/../../assets/img/Checkers.png',
+};
+
+export const server = {
+  auth: '/authorization/auth',
+  rooms: '/topic/rooms',
+  errors: '/user/topic/errors',
+  doStep: '/do-step',
+  server: 'http://35.176.167.155:8089',
+  socket: 'ws://35.176.167.155:8082',
+  gameMenu: '/game-menu',
+  joinRoom: '/radioactive/join-room',
+  createRoom: '/radioactive/create-room',
+  updateRoom: '/radioactive/update-room',
+  getBotStep: '/radioactive/get-bot-step',
+  getStepOrder: '/radioactive/get-step-order',
+  registration: '/registration/reg',
+  getPossibleSteps: '/get-possible-steps',
 };

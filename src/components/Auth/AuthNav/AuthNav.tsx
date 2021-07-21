@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { url } from 'constants/urls';
+import { client } from 'constants/urls';
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StNavLink, StP } from '../styled';
 
@@ -15,7 +15,7 @@ const AuthNav: React.FC = () => {
     >
       <p>{t('to_register')}</p>  
       &nbsp;
-      <NavLink to={url.signUp}>
+      <NavLink to={client.signUp}>
         <StP
           theme={theme}
           colors={colors}

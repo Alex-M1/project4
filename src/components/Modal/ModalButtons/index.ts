@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addRoom } from 'store/room/action';
+import { addRoom } from 'store/room/actions';
 import { getGameType } from 'store/room/selectors';
 import { AppStateType } from 'store/rootReducer';
 import { getAuthData } from 'store/user/selectors';

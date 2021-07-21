@@ -1,7 +1,7 @@
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import { cookieMaster } from 'helpers/cookieMaster';
 import { notifications } from 'helpers/notification';
-import { url } from 'constants/urls';
+import { server } from 'constants/urls';
 import { request } from 'helpers/requests';
 import { isInvalid } from 'helpers/validation';
 import { clearUserFields, setIsRedirect } from '../action';
@@ -26,7 +26,7 @@ describe('credentials Saga', () => {
         .next(regValue)
         .call(isInvalid, regValue)
         .next(false)
-        .call(request, url.registration, { login: 'login123', password: '11111111' }, 'POST')
+        .call(request, server.registration, { login: 'login123', password: '11111111' }, 'POST')
         .next()
         .put(setIsRedirect(true))
         .next()
@@ -91,7 +91,7 @@ describe('credentials Saga', () => {
         .next(authValue)
         .call(isInvalid, authValue)
         .next(false)
-        .call(request, url.auth, authValue, 'POST')
+        .call(request, server.auth, authValue, 'POST')
         .next(mockResponse)
         .call([mockResponse, 'text'])
         .next(mockToken)

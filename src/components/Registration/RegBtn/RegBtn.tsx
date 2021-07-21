@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { StInputDiv } from 'src/components/Auth/AuthIpt/styled';
 import ModRedirect from 'common/ModRedirect';
 import Button from 'common/Button';
-import { url } from 'constants/urls';
+import { client } from 'constants/urls';
 
 export interface IProps {
   isRedirect: boolean;
@@ -15,7 +15,7 @@ const RegBtn: React.FC<IProps> = ({ isRedirect, signUpRequest, setIsRedirect }: 
   const redirect = useMemo(() => {
     if (isRedirect) {
       setIsRedirect(false);
-      return <ModRedirect to={url.authClient} />;
+      return <ModRedirect to={client.authClient} />;
     }
     return null;
   }, [isRedirect]);

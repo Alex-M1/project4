@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StNavLink, StP } from 'src/components/Auth/styled';
-import { url } from 'constants/urls';
+import {client} from 'constants/urls';
 
 const RegNavigation: React.FC = () => {
   const { colors, theme } = useTheme();
@@ -15,7 +15,7 @@ const RegNavigation: React.FC = () => {
     >
       <p>{t('to_login')}</p>
       &nbsp;
-      <NavLink to={url.authClient}>
+      <NavLink to={client.authClient}>
         <StP
           theme={theme}
           colors={colors}

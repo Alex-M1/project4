@@ -1,5 +1,5 @@
 import React from 'react';
-import { url } from 'constants/urls';
+import { client } from 'constants/urls';
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StIcon, StItem } from './styled';
 
@@ -18,7 +18,7 @@ const MainRoomsItem: React.FC <IProps> = ({ login, type }: IProps) => {
         >
             <p>{login}</p>
             <StIcon>
-                <img src={`${url[type]}`} alt={type}/>
+                <img src={`${client[type]}`} alt={type}/>
             </StIcon>
         </StItem>
     );

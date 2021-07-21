@@ -1,4 +1,4 @@
-import { url as urls } from 'constants/urls';
+import { server as urls } from 'constants/urls';
 
 export const request = async (url: string, body: any, method: TMethod) => {
   const response = await fetch(urls.server + url, {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTheme } from 'src/components/hooks/useTheme';
 import Title from 'common/Title';
 import { IRoom } from 'store/room/types';
@@ -8,10 +8,14 @@ import AddRoomBtn from '../AddRoomBtn';
 
 interface IProps {
     rooms: IRoom[],
+    socketConnection :()=>void
 }
 
-const MainRoomsList: React.FC <IProps> = ({ rooms }: IProps) => {
+const MainRoomsList: React.FC <IProps> = ({ rooms, socketConnection }) => {
     const { colors, theme } = useTheme();
+    useEffect(() => {
+        socketConnection();
+    }, []);
     return (
         <StRooms
             theme={theme}
@@ -24,7 +28,7 @@ const MainRoomsList: React.FC <IProps> = ({ rooms }: IProps) => {
                     ? rooms.map((room) => (
                         <MainRoomsItem 
                             key={room.id} 
-                            login={room.loginName} 
+                            login={room.creatorLogin} 
                             type={room.gameType}
                         />
                     ))  

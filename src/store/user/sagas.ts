@@ -1,4 +1,4 @@
-import { url } from 'constants/urls';
+import { server } from 'constants/urls';
 import { SagaIterator } from 'redux-saga';
 import { takeEvery, select, call, put } from 'redux-saga/effects';
 import { notifications } from 'src/helpers/notification';
@@ -15,7 +15,7 @@ export function* signUpSaga(): SagaIterator {
     const valid = yield call(isInvalid, regData);
     if (valid) return yield call(notifications, { message: valid });
     const { confirm, ...newRegData } = regData;
-    yield call(request, url.registration, newRegData, 'POST');
+    yield call(request, server.registration, newRegData, 'POST');
     yield put(setIsRedirect(true));
     yield put(clearUserFields('registration'));
     yield call(notifications, { message: 'success_reg', type: 'success' });
@@ -32,7 +32,7 @@ export function* signInSaga(): SagaIterator {
   try {
     const valid = yield call(isInvalid, authData);
     if (valid) return yield call(notifications, { message: valid });
-    const response = yield call(request, url.auth, authData, 'POST');
+    const response = yield call(request, server.auth, authData, 'POST');
     const token: string = yield call([response, 'text']);
     yield call([cookieMaster, 'setTokenInCookie'], token);
     yield put(setIsRedirect(true));

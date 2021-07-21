@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setGameType } from 'store/room/action';
+import { setGameType } from 'store/room/actions';
 import { getGameType } from 'store/room/selectors';
 import { AppStateType } from 'store/rootReducer';
 import ModalSelect from './ModalSelect';

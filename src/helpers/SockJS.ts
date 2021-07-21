@@ -1,6 +1,6 @@
 // Это заглушка, потом перепешу в сагу
 import { Stomp, CompatClient } from '@stomp/stompjs';
-import { url } from '../constants/urls';
+import { server } from '../constants/urls';
 import { cookieMaster } from './cookieMaster';
 
 let isInstance = null;
@@ -18,7 +18,7 @@ export default class SockJS {
   }
 
   connect = () => {
-    this.socket = new WebSocket(`${url.socket}/game-menu`);
+    this.socket = new WebSocket(`${server.socket}/game-menu`);
     this.stompClient = Stomp.over(this.socket);
     const body = { creatorLogin: 'qwerty', gameType: 'Checkers', id: null };
     this.stompClient.connect({ Authorization: `Bearer ${cookieMaster.getCookie('token')}` }, () => {
