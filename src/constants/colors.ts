@@ -2,6 +2,7 @@ export const colors = {
   light: {
     background: '#fff',
     backgroundSecondary: '#ECECEC',
+    headerBg: '#2B5278',
     backgroundItem: '#d7d8e2',
     button: '#2B5278',
     buttonColor: '#fff',
@@ -25,10 +26,12 @@ export const colors = {
     gray: '#ccc',
     white: '#fff',
     black: '#000',
+    hoverLight: '#ddd',
   },
   dark: {
     background: '#0E1621',
     backgroundSecondary: '#17212B',
+    headerBg: '#2B5278',
     backgroundItem: '#25323f',
     button: '#2B5278',
     buttonColor: '#fff',
@@ -52,5 +55,6 @@ export const colors = {
     gray: '#ccc',
     white: '#fff',
     black: '#000',
+    hoverLight: '#ddd',
   },
 };

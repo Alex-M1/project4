@@ -1,12 +1,14 @@
+import { changeTheme } from 'src/helpers/changeTheme';
 import styled from 'styled-components';
+import { IStyled } from '../_common_/types/styledTypes';
 
-export const StHeader = styled.div`
+export const StHeader = styled.div<IStyled>`
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100vw;
     height: 90px;
-    background: #2B5278;
+    background: ${(props) => changeTheme(props, 'headerBg')}
 `;
 export const StLogo = styled.img`
   display: block;
