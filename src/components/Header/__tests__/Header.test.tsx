@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mountSmart, shallowSmart } from 'src/__tests__/testHelper';
 import Header from '../Header';
 
 jest.mock('react-i18next', () => ({
@@ -10,12 +10,21 @@ jest.mock('react-i18next', () => ({
 );
 
 describe('Header', () => {
+  const props = {
+    location: {
+      pathname: '',
+      search: '',
+      state: {},
+      hash: '',
+
+    },
+  };
   it('Should match snapshot', () => {
-    const component = shallow(<Header />);
+    const component = shallowSmart(<Header {...props} />);
     expect(component.html()).toMatchSnapshot();
   });
   it('should render StHeader', () => {
-    const component = shallow(<Header />);
+    const component = mountSmart(<Header {...props} />);
     expect(component.find('styled__StHeader')).toHaveLength(1);
   });
 });
