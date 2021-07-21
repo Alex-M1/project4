@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HeaderLanguage Should match snapshot 1`] = `"<button class=\\"styled__StLangToggle-gXeXkO fOrifi\\">En</button>"`;
+exports[`HeaderLanguage Should match snapshot 1`] = `"<button class=\\"styled__StLangToggle-gXeXkO cwoxAJ\\">En</button>"`;
