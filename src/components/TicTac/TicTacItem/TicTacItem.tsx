@@ -8,7 +8,7 @@ interface IProps {
   onClick: (square: number) => void
 }
 
-const TicTacItem: React.FC<IProps> = ({ square, content, onClick }: IProps) => {
+const TicTacItem: React.FC<IProps> = ({ square, content, onClick }) => {
   const handleClick = () => onClick(square);
   const { colors, theme } = useTheme();
   return (

@@ -1,3 +1,4 @@
+import { GAME_TYPE } from 'constants/constants';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -9,7 +10,7 @@ interface IProps {
     setGameType: (payload: string) => void;
 }
 
-const ModalSelect: React.FC <IProps> = ({ setGameType, gameType }: IProps) => {
+const ModalSelect: React.FC <IProps> = ({ setGameType, gameType }) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -22,8 +23,8 @@ const ModalSelect: React.FC <IProps> = ({ setGameType, gameType }: IProps) => {
             colors={colors}
             onChange={handleChange}
         >
-            <option value="Tic-tac-toe">{t('tic_tac_toe')}</option>
-            <option value="Checkers">{t('checkers')}</option>
+            <option value={GAME_TYPE.TIC_TAC_TOE}>{t('tic_tac_toe')}</option>
+            <option value={GAME_TYPE.CHECKERS}>{t('checkers')}</option>
         </StSelect>
     );
 };

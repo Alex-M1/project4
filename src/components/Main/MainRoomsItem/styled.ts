@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
-export const StItem = styled.div < IStyled > `
+export const StItem = styled.div <IStyled>`
     display: flex;
     justify-content: space-between;
     align-items: center;

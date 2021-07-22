@@ -10,7 +10,7 @@ interface IProps {
   signInRequest: () => void;
 }
 
-const AuthBtn: React.FC<IProps> = ({ isRedirect, setIsRedirect, signInRequest }: IProps) => {
+const AuthBtn: React.FC<IProps> = ({ isRedirect, setIsRedirect, signInRequest }) => {
   const onButtonClick = () => signInRequest();
   const redirect = useMemo(() => {
     if (isRedirect) {

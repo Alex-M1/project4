@@ -11,6 +11,7 @@ import Main from '../Main';
 import { useTheme } from '../hooks/useTheme';
 import TicTac from '../TicTac';
 import Statistic from '../Statistic';
+import Checkers from '../Checkers';
 
 const App: React.FC = () => {
   const { colors, theme } = useTheme();
@@ -24,6 +25,7 @@ const App: React.FC = () => {
           <Route path={client.main} component={Main} />
           <Route path={client.ticTacClient} component={TicTac} />
           <Route path={client.statistic} component={Statistic} />
+          <Route path={client.checkers} component={Checkers} />
         </Switch>
       </Router>
       <StGlobalStyle

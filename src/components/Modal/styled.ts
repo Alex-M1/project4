@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
-export const StModal = styled.div < IStyled > `
+export const StModal = styled.div <IStyled>`
     position: fixed;
     left: 0;
     top: 0;
@@ -12,7 +12,7 @@ export const StModal = styled.div < IStyled > `
     z-index: 1;
 `;
 
-export const StModalContainer = styled.div < IStyled > `
+export const StModalContainer = styled.div <IStyled>`
     position: absolute;
     top: 50%;
     left: 50%;
@@ -26,7 +26,7 @@ export const StModalContainer = styled.div < IStyled > `
 
 `;
 
-export const StButtonGroup = styled.div < IStyled > `
+export const StButtonGroup = styled.div <IStyled>`
     display: flex;
     flex-direction: column;
     justify-content: center;

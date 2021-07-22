@@ -1,32 +1,49 @@
 import React, { useMemo } from 'react';
 import { Location } from 'history';
-import { StHeader, StLogo } from './styled';
+import { client } from 'constants/urls';
+import { StHeader, StLogo, StHeaderContainer, StNavContainer } from './styled';
 import HeaderTheme from './HeaderTheme';
 import HeaderLanguage from './HeaderLanguage';
 import HeaderRoute from './HeaderRoute';
+import HeaderLogout from './HeaderLogout';
+import { useTheme } from '../hooks/useTheme';
 
 interface IProps {
   location: Location
 }
 
-const Header: React.FC<IProps> = ({ location }: IProps) => {
+const Header: React.FC<IProps> = ({ location }) => {
   const isNav = useMemo(() => {
     const path = location.pathname;
-    if (path === '/' || path === '/signup') {
+    if (path === client.authClient || path === client.regClient) {
       return null;
     }
     return <HeaderRoute />;
   }, [location.pathname]);
-
+  const { colors, theme } = useTheme();
   return (
-    <StHeader>
-      <StLogo
-        src="src/assets/img/logo.png"
-        alt="logo"
-      />
-      {isNav}
-      <HeaderTheme />
-      <HeaderLanguage />
+    <StHeader
+      theme={theme}
+      colors={colors}
+    >
+      <StHeaderContainer>
+        <StNavContainer>
+          <StLogo
+            src="src/assets/img/logo.png"
+            alt="logo"
+          />
+        </StNavContainer>
+      </StHeaderContainer>
+      <StHeaderContainer>
+        {isNav}
+      </StHeaderContainer>
+      <StHeaderContainer>
+        <StNavContainer>
+          <HeaderTheme />
+          <HeaderLanguage />
+          <HeaderLogout />
+        </StNavContainer>
+      </StHeaderContainer>
     </StHeader>
   );
 };

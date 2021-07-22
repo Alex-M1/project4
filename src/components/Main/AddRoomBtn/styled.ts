@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
+import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StBtn = styled.button <IStyled>`
     position: absolute;
@@ -8,12 +9,12 @@ export const StBtn = styled.button <IStyled>`
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    box-shadow: 0 0 4px #000;
+    box-shadow: 0 0 4px ${(props) => changeTheme(props, 'black')};
     border: none;
-    background: ${({ colors, theme }) => colors[theme].button};
+    background: ${(props) => changeTheme(props, 'button')};
     cursor: pointer;
     &:hover {
-        box-shadow: 0 0 5px ${({ colors, theme }) => colors[theme].AddRoomBtn};;
+        box-shadow: 0 0 5px ${(props) => changeTheme(props, 'AddRoomBtn')};
     }
     &::before {
         content: '';
@@ -23,7 +24,7 @@ export const StBtn = styled.button <IStyled>`
         transform: translate(-50%, -50%);
         width: 15px;
         height: 3px;
-        background: ${({ colors, theme }) => colors[theme].AddRoomBtn};;
+        background: ${(props) => changeTheme(props, 'AddRoomBtn')};
     }
     &::after {
         content: '';
@@ -33,6 +34,6 @@ export const StBtn = styled.button <IStyled>`
         transform: translate(-50%, -50%);
         width: 3px;
         height: 15px;
-        background: ${({ colors, theme }) => colors[theme].AddRoomBtn};;
+        background: ${(props) => changeTheme(props, 'AddRoomBtn')};
     }
 `;

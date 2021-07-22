@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 export const Theme = React.createContext({ theme: 'dark', changeTheme: () => { } });
 
 export const withTheme = (Component: React.ComponentType<any>) => () => {
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+  const [theme, setTheme] = useState<string>(localStorage.getItem('theme') || 'dark');
   const changeTheme = () => {
     setTheme((theme) => (theme === 'dark' ? 'light' : 'dark'));
   };

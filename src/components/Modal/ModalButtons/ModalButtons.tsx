@@ -1,53 +1,45 @@
 import React from 'react';
-import { StButton } from 'common/Button/styled';
 import { useTranslation } from 'react-i18next';
-import { IRoom } from 'store/room/types';
+import { StButton } from 'common/Button/styled';
 import { useTheme } from '../../hooks/useTheme';
 import { StButtonGroup } from '../styled';
 
 interface IProps {
-    tex: string;
-    text: string;
-    gameType: string;
-    createRoom: () => void;
-    user: any;
-    handleCloseModal: () => void;
-    handleCreateRoom: () => void;
+  user: string;
+  gameType: string;
+  createRoom: () => void;
+  onCloseModal: () => void;
 }
 
-const ModalButtons: React.FC<IProps> = ({
-    createRoom,
-    handleCloseModal,
-    handleCreateRoom,
-}: IProps) => {
-    const { t } = useTranslation();
-    const { colors, theme } = useTheme();
-    handleCreateRoom = () => {
-        createRoom();
-        handleCloseModal();
-    };
+const ModalButtons: React.FC<IProps> = ({ createRoom, onCloseModal }) => {
+  const { t } = useTranslation();
+  const { colors, theme } = useTheme();
+  const handleCreateRoom = () => {
+    createRoom();
+    onCloseModal();
+  };
 
-    return (
-        <StButtonGroup
-            theme={theme}
-            colors={colors}
-        >
-            <StButton
-                theme={theme}
-                colors={colors}
-                onClick={handleCreateRoom}
-            >
-                {t('create_btn')}
-            </StButton>
-            <StButton
-                theme={theme}
-                colors={colors}
-                onClick={handleCloseModal}
-            >
-                {t('cancel_btn')}
-            </StButton>
-        </StButtonGroup>
-    );
+  return (
+    <StButtonGroup
+      theme={theme}
+      colors={colors}
+    >
+      <StButton
+        theme={theme}
+        colors={colors}
+        onClick={handleCreateRoom}
+      >
+        {t('create_btn')}
+      </StButton>
+      <StButton
+        theme={theme}
+        colors={colors}
+        onClick={onCloseModal}
+      >
+        {t('cancel_btn')}
+      </StButton>
+    </StButtonGroup >
+  );
 };
 
 export default ModalButtons;

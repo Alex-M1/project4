@@ -3,19 +3,17 @@ import { StCrossBtn } from './styled';
 import { useTheme } from '../../hooks/useTheme';
 
 interface IProps {
-    handleCloseModal: () => void;
+    onCloseModal: () => void;
 }
 
-const ModalCross: React.FC <IProps> = ({ handleCloseModal }: IProps) => {
+const ModalCross: React.FC <IProps> = ({ onCloseModal }) => {
     const { colors, theme } = useTheme();
     return (
         <StCrossBtn 
             theme={theme}
             colors={colors}
-            onClick={handleCloseModal}
-        >
-            x
-        </StCrossBtn>
+            onClick={onCloseModal}
+        />
     );
 };
 

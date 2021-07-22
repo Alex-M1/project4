@@ -12,16 +12,16 @@ const HeaderRoute = () => {
       <StWrapper>
         <NavLink to={client.main}>
           <StP
-            colors={colors}
             theme={theme}
+            colors={colors}
           >
             {t('games')}
           </StP>
         </NavLink>
         <NavLink to={client.statistic}>
           <StP
-            colors={colors}
             theme={theme}
+            colors={colors}
           >
             {t('statistic')}
           </StP>  

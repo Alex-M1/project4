@@ -9,7 +9,7 @@ export interface IRoom {
 }
 
 export interface IInitialState {
-  rooms: IRoom[];
+  rooms: Array<IRoom>;
   gameType: string;
 }
 

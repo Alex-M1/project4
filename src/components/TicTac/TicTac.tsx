@@ -7,10 +7,11 @@ interface IProps {
   doStep: (square: number) => void;
 }
 
-const TicTac: React.FC<IProps> = ({ squares, doStep }: IProps) => {
+const TicTac: React.FC<IProps> = ({ squares, doStep }) => {
   const renderSquares = useMemo(() => {
     return squares.map((el, i) => (
       <TicTacItem
+        key={new Date().getDate()}
         square={i}
         content={el}
         onClick={doStep}
