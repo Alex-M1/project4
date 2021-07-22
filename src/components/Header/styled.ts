@@ -8,7 +8,7 @@ export const StHeader = styled.div<IStyled>`
     align-items: center;
     width: 100vw;
     height: 90px;
-    background: ${(props) => changeTheme(props, 'headerBg')}
+    background: ${(props) => changeTheme(props, 'headerBg')};
 `;
 export const StLogo = styled.img <IStyled>`
   display: block;

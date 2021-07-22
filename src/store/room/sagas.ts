@@ -5,7 +5,7 @@ import { notifications } from 'src/helpers/notification';
 import { cookieMaster } from 'src/helpers/cookieMaster';
 import { connection, createStompChannel, init, stompClient } from 'src/helpers/stompClient';
 import { LOCAL_STORAGE as LS } from 'constants/constants';
-import { server } from 'constants/urls';
+import { SERVER } from 'constants/urls';
 import { ActionTypes as AT } from './actionTypes';
 import { getGameType } from './selectors';
 
@@ -33,7 +33,7 @@ export function* createRoomSaga(): SagaIterator {
             gameType,
             creatorLogin,
         };
-        yield call([stompClient, 'send'], server.createRoom, {}, JSON.stringify(createRoomBody));
+        yield call([stompClient, 'send'], SERVER.createRoom, {}, JSON.stringify(createRoomBody));
     } catch (err) { console.log(err); }
 }
 

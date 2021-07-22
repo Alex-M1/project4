@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
+import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StWrapper = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ export const StWrapper = styled.div`
   margin: 0;
 `;
 export const StP = styled.p <IStyled>`
-  color: ${({ colors, theme }) => colors[theme].textColorHeader};
+  color: ${(props) => changeTheme(props, 'textColorHeader')};
   font-size: 25px;
   letter-spacing: 2px;
   cursor: pointer;

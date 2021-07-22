@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
+import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StContainer = styled.div <IStyled>`
   display: flex;
