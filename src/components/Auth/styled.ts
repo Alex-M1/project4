@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
+import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StContainer = styled.div <IStyled>`    
     width: 440px;
@@ -8,7 +9,7 @@ export const StContainer = styled.div <IStyled>`
     padding: 0 70px 30px;
     border: none;
     border-radius: 12px;
-    background: ${({ colors, theme }) => colors[theme].backgroundSecondary};
+    background: ${(props) => changeTheme(props, 'backgroundSecondary')};
 `;
 export const StGlobalCredentials = styled.div`
     display: flex;
@@ -22,10 +23,10 @@ export const StNavLink = styled.div <IStyled>`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: ${({ colors, theme }) => colors[theme].textColor};
+    color: ${(props) => changeTheme(props, 'textColor')};
 `;
 export const StP = styled.p <IStyled>`
-    color: ${({ colors, theme }) => colors[theme].textColor}; 
+    color: ${(props) => changeTheme(props, 'textColor')}; 
     &:hover {
         text-decoration: underline;
     }
