@@ -3,7 +3,7 @@ import { server } from 'constants/urls';
 import { eventChannel } from 'redux-saga';
 import { addRoom } from 'store/room/actions';
 
-export let stompClient: CompatClient = {};
+export let stompClient: CompatClient | null = null;
 
 export const connection = (token: string) => {
     const socket = new WebSocket(`${server.socket}${server.gameMenu}`);
