@@ -14,7 +14,7 @@ export const connection = (token: string) => {
 export const createStompChannel = (stompClient: CompatClient) => eventChannel((emit) => {
     const roomsSub = stompClient.subscribe(
         server.rooms,
-        ({ body }) => emit(addRoom(JSON.parse(body))),
+        ({ body }) => emit(addRoom(JSON.parse(body)), console.log(body)),
     );
     const errorSub = stompClient.subscribe(server.errors, ({ body }) => console.log(body));
     return () => {
