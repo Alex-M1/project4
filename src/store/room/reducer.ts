@@ -7,7 +7,12 @@ export const initialState: IInitialState = {
     {
       id: 1,
       loginName: 'user',
-      gameType: 'checkers',
+      gameType: 'Checkers',
+    },
+    {
+      id: 2,
+      loginName: 'user',
+      gameType: 'Tic-tac-toe',
     },
   ],
   gameType: GAME_TYPE.CHECKERS,

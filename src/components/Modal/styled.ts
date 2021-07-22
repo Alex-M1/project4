@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
+import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StModal = styled.div <IStyled>`
     position: fixed;
@@ -8,7 +9,7 @@ export const StModal = styled.div <IStyled>`
     width: 100vw;
     height: 100vh;
     overflow: auto;
-    background-color: ${({ colors, theme }) => colors[theme].backgroundModal};
+    background-color: ${(props) => changeTheme(props, 'backgroundModal')};
     z-index: 1;
 `;
 
@@ -20,9 +21,9 @@ export const StModalContainer = styled.div <IStyled>`
     width: 400px;
     height: auto;
     padding: 0 55px 15px;
-    background: ${({ colors, theme }) => colors[theme].backgroundModalContainer};
+    background: ${(props) => changeTheme(props, 'backgroundModalContainer')};
     border-radius: 12px;
-    box-shadow: 5px 5px 15px ${({ colors, theme }) => colors[theme].backgroundModalShadow};;
+    box-shadow: 5px 5px 15px ${(props) => changeTheme(props, 'backgroundModalShadow')};
 
 `;
 
