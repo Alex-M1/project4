@@ -22,7 +22,7 @@ export const colors = {
     iconThemeSun: '#ff0',
     ticTacColor: '#000',
     whiteChecker: '#fff',
-    blackChecker: '777',
+    blackChecker: '#777',
     gray: '#ccc',
     white: '#fff',
     black: '#000',

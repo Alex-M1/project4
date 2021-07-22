@@ -1,7 +1,7 @@
 import React from 'react';
+import { CLIENT } from 'constants/urls';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { url } from 'constants/urls';
 import { useTheme } from '../../hooks/useTheme';
 import { StP, StWrapper } from './styled';
 
@@ -10,7 +10,7 @@ const HeaderRoute = () => {
   const { colors, theme } = useTheme();
   return (
       <StWrapper>
-        <NavLink to={url.main}>
+        <NavLink to={CLIENT.main}>
           <StP
             theme={theme}
             colors={colors}
@@ -18,7 +18,7 @@ const HeaderRoute = () => {
             {t('games')}
           </StP>
         </NavLink>
-        <NavLink to={url.statistic}>
+        <NavLink to={CLIENT.statistic}>
           <StP
             theme={theme}
             colors={colors}

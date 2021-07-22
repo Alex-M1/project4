@@ -1,10 +1,10 @@
 import { ActionType } from 'typesafe-actions';
 import { Reducer } from 'redux';
-import * as Actions from './action';
+import * as Actions from './actions';
 
 export interface IRoom {
-  id: number;
-  loginName: string;
+  id: string;
+  creatorLogin: string;
   gameType: string;
 }
 

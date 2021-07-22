@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'src/components/hooks/useTheme';
 import Title from 'common/Title';
@@ -8,32 +8,36 @@ import MainRoomsItem from '../MainRoomsItem';
 import AddRoomBtn from '../AddRoomBtn';
 
 interface IProps {
-    rooms: Array<IRoom>,
+    rooms: IRoom[],
+    socketConnection: () => void
 }
 
-const MainRoomsList: React.FC <IProps> = ({ rooms }) => {
+const MainRoomsList: React.FC<IProps> = ({ rooms, socketConnection }) => {
+    useEffect(() => {
+        socketConnection();
+    }, []);
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
-
     return (
         <StRooms
             theme={theme}
             colors={colors}
         >
-            <Title title="list_of_rooms"/>
+            <Title title="list_of_rooms" />
             <AddRoomBtn />
             <StRoomsContainer>
-                {rooms.length 
+                {rooms.length
                     ? rooms.map((room) => (
-                        <MainRoomsItem 
-                            key={room.id} 
+                        <MainRoomsItem
+                            key={room.id}
+                            login={room.creatorLogin}
                             type={room.gameType}
-                            login={room.loginName} 
                         />
-                    ))  
+                    ))
                     : <StP>{t('no_rooms')}</StP>}
             </StRoomsContainer>
         </StRooms>
     );
 };
+
 export default MainRoomsList;

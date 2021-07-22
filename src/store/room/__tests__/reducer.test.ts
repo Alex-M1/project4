@@ -1,29 +1,25 @@
-import { initialState, roomReducer } from '../reducer';
-import * as actions from '../action';
+import { roomReducer, initialState } from '../reducer';
+import * as actions from '../actions';
 
-describe('roomReducer', () => {
+describe('userReducer', () => {
   it('ADD_ROOM', () => {
-    expect(roomReducer(initialState, actions.addRoom({
-      id: 1,
-      loginName: 'login',
-      gameType: 'checkers',
-    })))
+    const rooms = [{
+      id: 'string',
+      creatorLogin: 'string',
+      gameType: 'string',
+    }]
+    expect(roomReducer(initialState, actions.addRoom(rooms)))
       .toEqual({
         ...initialState,
-        rooms: [
-          ...initialState.rooms,
-          { id: 1,
-            loginName: 'login',
-            gameType: 'checkers' },
-        ],
+        rooms: rooms
       });
   });
-  it('SET_GAME_TYPE', () => {
-    expect(roomReducer(initialState, actions.setGameType('Checkers')))
+  it('SET_IS_REDIRECT', () => {
+    const payload = 'Tic-tac-toe'
+    expect(roomReducer(initialState, actions.setGameType(payload)))
       .toEqual({
         ...initialState,
-        gameType: 
-          'Checkers',
+        gameType: payload
       });
   });
 });

@@ -51,7 +51,7 @@ export const LANGUAGE = {
 };
 
 export const VIEW_OPTIONS = {
-  HEADER_HEIGHT: 90, 
+  HEADER_HEIGHT: 90,
   DRAGGIN_OPACITY: {
     IS_DRAGGING: 0.3,
     NOT_DRAGGING: 1,
@@ -60,4 +60,9 @@ export const VIEW_OPTIONS = {
     GRAY: '#ccc',
     WHITE: '#fff',
   },
+};
+
+export const LOCAL_STORAGE = {
+  login: 'login',
+  token: 'token',
 };

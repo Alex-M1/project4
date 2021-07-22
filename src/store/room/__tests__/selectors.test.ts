@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import { AppStateType } from 'store/rootReducer';
+import { AppStateType } from '../../rootReducer';
 import { initialState } from '../reducer';
 import * as selectors from '../selectors';
 
@@ -10,13 +10,13 @@ describe('userSelectors', () => {
       ...initialState,
     },
   };
-  it('getRoom', () => {
+  it('getUser', () => {
     expect(selectors.getRoom(store)).toEqual(store.room);
   });
-  it('getRoomList', () => {
+  it('getAuthData', () => {
     expect(selectors.getRoomList(store)).toEqual(store.room.rooms);
   });
-  it('getGameType', () => {
+  it('getIsRedirect', () => {
     expect(selectors.getGameType(store)).toEqual(store.room.gameType);
   });
 });

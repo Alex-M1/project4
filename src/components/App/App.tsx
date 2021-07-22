@@ -2,7 +2,7 @@ import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { url } from 'constants/urls';
+import { CLIENT } from 'constants/urls';
 import { StGlobalStyle } from './styled';
 import Auth from '../Auth';
 import Registration from '../Registration';
@@ -15,18 +15,17 @@ import Checkers from '../Checkers';
 
 const App: React.FC = () => {
   const { colors, theme } = useTheme();
-
   return (
     <>
       <Router>
         <Header />
         <Switch>
-          <Route exact path={url.authClient} component={Auth} />
-          <Route path={url.regClient} component={Registration} />
-          <Route path={url.main} component={Main} />
-          <Route path={url.ticTacClient} component={TicTac} />
-          <Route path={url.statistic} component={Statistic} />
-          <Route path={url.checkers} component={Checkers} />
+          <Route exact path={CLIENT.authClient} component={Auth} />
+          <Route path={CLIENT.regClient} component={Registration} />
+          <Route path={CLIENT.main} component={Main} />
+          <Route path={CLIENT.ticTacClient} component={TicTac} />
+          <Route path={CLIENT.statistic} component={Statistic} />
+          <Route path={CLIENT.checkers} component={Checkers} />
         </Switch>
       </Router>
       <StGlobalStyle
