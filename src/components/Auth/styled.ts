@@ -10,7 +10,6 @@ export const StContainer = styled.div <IStyled>`
     border-radius: 12px;
     background: ${({ colors, theme }) => colors[theme].backgroundSecondary};
 `;
-
 export const StGlobalCredentials = styled.div`
     display: flex;
     justify-content: center;
@@ -25,3 +24,9 @@ export const StNavLink = styled.div <IStyled>`
     align-items: center;
     color: ${({ colors, theme }) => colors[theme].textColor};
 `;
+export const StP = styled.p <IStyled>`
+    color: ${({ colors, theme }) => colors[theme].textColor}; 
+    &:hover {
+        text-decoration: underline;
+    }
+`; 

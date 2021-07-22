@@ -1,13 +1,14 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useTheme } from '../../hooks/useTheme';
-import { StTitle } from './styled';
 import { ITitle } from './types';
+import { StTitle } from './styled';
+import { useTheme } from '../../hooks/useTheme';
 
 const Title = ({ title }: ITitle) => {
-  const { colors, theme } = useTheme();
   const { t } = useTranslation();
+  const { colors, theme } = useTheme();
+  
   return (
     <StTitle
       theme={theme}

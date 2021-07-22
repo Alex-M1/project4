@@ -11,6 +11,7 @@ export const StButton = styled.button <IStyled>`
   border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
+
   &:hover {
     background: ${({ colors, theme }) => colors[theme].buttonHover};
   }

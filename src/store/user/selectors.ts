@@ -1,22 +1,22 @@
 import { createSelector } from 'reselect';
 import { AppStateType } from '../rootReducer';
-import { IGetInputValue } from './types';
+import { IAuth, IGetInputValue, IRegistration } from './types';
 
 export const getUser = (state: AppStateType) => state.user;
 export const getAuthData = createSelector(
   getUser,
-  (user) => user.auth,
+  (user): IAuth => user.auth,
 );
 export const getRegData = createSelector(
   getUser,
-  (user) => user.registration,
+  (user): IRegistration => user.registration,
 );
 export const getIsRedirect = createSelector(
   getUser,
-  (user) => user.isRedirect,
+  (user): boolean => user.isRedirect,
 );
 export const getInputValue = createSelector(
   getUser,
-  (_state: AppStateType, payload: IGetInputValue) => payload,
+  (_state: AppStateType, payload: IGetInputValue): IGetInputValue => payload,
   (user, { page, field }) => user[page][field],
 );
