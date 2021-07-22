@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
+import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StCrossBtn = styled.button <IStyled>`
     position: absolute;
@@ -9,11 +10,11 @@ export const StCrossBtn = styled.button <IStyled>`
     height: 30px;
     border-radius: 50%;
     border: none;
-    box-shadow: 0 0 3px ${({ colors, theme }) => colors[theme].AddRoomBtn};
-    background: ${({ colors, theme }) => colors[theme].button};
+    box-shadow: 0 0 3px ${(props) => changeTheme(props, 'AddRoomBtn')};
+    background: ${(props) => changeTheme(props, 'button')};
     cursor: pointer;
     &:hover {
-        box-shadow: inset 0 0 3px ${({ colors, theme }) => colors[theme].AddRoomBtnHover};
+        box-shadow: inset 0 0 3px ${(props) => changeTheme(props, 'AddRoomBtnHover')};
     }
     &::before {
         content: '';
@@ -23,7 +24,7 @@ export const StCrossBtn = styled.button <IStyled>`
         transform: translate(-50%, -50%) rotate(45deg);
         width: 12px;
         height: 2px;
-        background: ${({ colors, theme }) => colors[theme].AddRoomBtn};
+        background: ${(props) => changeTheme(props, 'AddRoomBtn')};
     }
     &::after {
         content: '';
@@ -33,6 +34,6 @@ export const StCrossBtn = styled.button <IStyled>`
         transform: translate(-50%, -50%) rotate(45deg);
         width: 2px;
         height: 12px;
-        background: ${({ colors, theme }) => colors[theme].AddRoomBtn};
+        background: ${(props) => changeTheme(props, 'AddRoomBtn')};
     }
 `;

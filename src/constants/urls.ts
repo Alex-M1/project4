@@ -5,8 +5,8 @@ export const CLIENT = {
   signUp: '/signup',
   main: '/main',
   statistic: '/statistic',
-  'Tic-tac-toe': '/../../assets/img/Tic-tac-toe.png',
-  Checkers: '/../../assets/img/Checkers.png',
+  'Tic-tac-toe': 'src/assets/img/Tic-tac-toe.png',
+  Checkers: 'src/assets/img/Checkers.png',
   logo: 'src/assets/img/logout.svg',
   checkers: '/Checkers',
 };
