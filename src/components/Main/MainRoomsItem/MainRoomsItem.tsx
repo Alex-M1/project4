@@ -4,11 +4,12 @@ import { useTheme } from 'src/components/hooks/useTheme';
 import { StIcon, StItem } from './styled';
 
 interface IProps {
+    id: string,
     type: string;
     login: string;
-} 
+}
 
-const MainRoomsItem: React.FC <IProps> = ({ login, type }) => {
+const MainRoomsItem: React.FC<IProps> = ({ id, login, type }) => {
     const { colors, theme } = useTheme();
 
     return (
@@ -18,7 +19,7 @@ const MainRoomsItem: React.FC <IProps> = ({ login, type }) => {
         >
             <p>{login}</p>
             <StIcon>
-                <img src={`${client[type]}`} alt={type}/>
+                <img src={`${client[type]}`} alt={type} />
             </StIcon>
         </StItem>
     );

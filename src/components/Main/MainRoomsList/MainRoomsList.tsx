@@ -29,6 +29,7 @@ const MainRoomsList: React.FC<IProps> = ({ rooms, socketConnection }) => {
                 {rooms.length
                     ? rooms.map((room) => (
                         <MainRoomsItem
+                            id={room.id}
                             key={room.id}
                             login={room.creatorLogin}
                             type={room.gameType}
