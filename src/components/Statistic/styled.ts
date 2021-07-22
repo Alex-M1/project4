@@ -2,8 +2,17 @@ import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
 
 export const StContainer = styled.div <IStyled>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: ${({ colors, theme }) => colors[theme].white};
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 90%;
+  border: 1px solid red;
+  background: violet;
+`;
+export const StWrapper = styled.div`
+  width: 40%;
+  height: 95%;
+  border: 1px solid red;
+  background: green;
 `;
