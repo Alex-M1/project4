@@ -9,6 +9,15 @@ import watcherGame, { workerConnection, createRoomSaga } from '../sagas';
 import { ActionTypes as AT } from '../actionTypes';
 import { getGameType } from '../selectors';
 
+jest.mock('src/helpers/stompClient', () => ({
+  connection: jest.fn(),
+  createStompChannel: jest.fn(),
+  init: jest.fn(),
+  stompClient: {
+    send: jest.fn(),
+  },
+}));
+
 describe('credentials Saga', () => {
   describe('workerConnection', () => {
     let action: any;
@@ -30,14 +39,13 @@ describe('credentials Saga', () => {
         .call(connection, token)
         .next(stompClient)
         .call(createStompChannel, stompClient)
-        .next()
+        .next([])
         .call(init, stompClient)
         .next()
         .take(stompChannel)
         .next(payload)
         .put(payload)
-        .next()
-        .isDone();
+        .next();
     });
     it('should call workerConnection with error', () => {
       //@ts-ignore
@@ -58,21 +66,18 @@ describe('credentials Saga', () => {
     });
     it('should call createRoomSaga without error', () => {
       const gameType = 'Checkers';
-      const login = 'login';
+      const creatorLogin = 'login';
       const id = 'id';
-      const stompClient = {
-        send: jest.fn(),
-      };
       //@ts-ignore
       testSaga(createRoomSaga, action)
         .next()
         .select(getGameType)
         .next(gameType)
         .call([localStorage, 'getItem'], LS.login)
-        .next(login)
+        .next(creatorLogin)
         .call(uuidv4)
         .next(id)
-        .call([stompClient, 'send'], server.createRoom, {}, JSON.stringify({ id, login, gameType }))
+        .call([stompClient, 'send'], server.createRoom, {}, JSON.stringify({ id, gameType, creatorLogin }))
         .next()
         .isDone();
     });

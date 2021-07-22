@@ -38,7 +38,6 @@
       "error",
       "single"
     ],
-    "react/prop-types": 0,
     "no-unused-expressions":"off",
     "no-case-declarations": "off",
     "import/no-named-as-default": "off",
