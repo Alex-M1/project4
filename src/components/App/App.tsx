@@ -2,7 +2,7 @@ import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { client } from 'constants/urls';
+import { CLIENT } from 'constants/urls';
 import { StGlobalStyle } from './styled';
 import Auth from '../Auth';
 import Registration from '../Registration';
@@ -20,12 +20,12 @@ const App: React.FC = () => {
       <Router>
         <Header />
         <Switch>
-          <Route exact path={client.authClient} component={Auth} />
-          <Route path={client.regClient} component={Registration} />
-          <Route path={client.main} component={Main} />
-          <Route path={client.ticTacClient} component={TicTac} />
-          <Route path={client.statistic} component={Statistic} />
-          <Route path={client.checkers} component={Checkers} />
+          <Route exact path={CLIENT.authClient} component={Auth} />
+          <Route path={CLIENT.regClient} component={Registration} />
+          <Route path={CLIENT.main} component={Main} />
+          <Route path={CLIENT.ticTacClient} component={TicTac} />
+          <Route path={CLIENT.statistic} component={Statistic} />
+          <Route path={CLIENT.checkers} component={Checkers} />
         </Switch>
       </Router>
       <StGlobalStyle

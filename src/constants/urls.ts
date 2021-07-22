@@ -1,4 +1,4 @@
-export const client = {
+export const CLIENT = {
   authClient: '/',
   regClient: '/signup',
   ticTacClient: '/tic-tac',
@@ -11,7 +11,7 @@ export const client = {
   checkers: '/Checkers',
 };
 
-export const server = {
+export const SERVER = {
   auth: '/authorization/auth',
   rooms: '/topic/rooms',
   errors: '/user/topic/errors',

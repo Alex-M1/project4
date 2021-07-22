@@ -1,15 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { client } from 'constants/urls';
+import { CLIENT } from 'constants/urls';
 import { useTheme } from 'src/components/hooks/useTheme';
 import { StDoor } from './styled';
 
 const HeaderLogout = () => {
     const { colors, theme } = useTheme();
     return (
-        <NavLink to={client.authClient}>
+        <NavLink to={CLIENT.authClient}>
             <StDoor
-                src={client.logo}
+                src={CLIENT.logo}
                 theme={theme}
                 colors={colors}
             />
