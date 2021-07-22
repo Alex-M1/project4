@@ -1,19 +1,13 @@
 import { expect } from '@jest/globals';
+import { initialState } from 'store/user/reducer';
+import { AppStateType } from 'store/rootReducer';
 import * as selectors from '../selectors';
 
 describe('userSelectors', () => {
-  const store = {
+  //@ts-ignore
+  const store: AppStateType = {
     user: {
-      auth: {
-        login: '',
-        password: '',
-      },
-      registration: {
-        login: '',
-        password: '',
-        confirm: '',
-      },
-      isRedirect: false,
+      ...initialState,
     },
   };
   it('getUser', () => {

@@ -1,5 +1,5 @@
-import { all, fork } from '@redux-saga/core/effects'; 
-import { watcherGame } from './room/saga';
+import { all, fork } from '@redux-saga/core/effects';
+import watcherGame from './room/sagas';
 import userWatcher from './user/sagas';
 
 const sagas = [

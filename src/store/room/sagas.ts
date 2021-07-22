@@ -23,20 +23,21 @@ export function* workerConnection(): SagaIterator {
         yield call(notifications, { message: 'something_wrong' });
     }
 }
-export function* createRoom(): SagaIterator {
+export function* createRoomSaga(): SagaIterator {
     try {
         const gameType = yield select(getGameType);
-        const login = yield call([localStorage, 'getItem'], LS.login);
+        const creatorLogin = yield call([localStorage, 'getItem'], LS.login);
+        const id = yield call(uuidv4);
         const createRoomBody = {
-            creatorLogin: login,
+            id,
             gameType,
-            id: uuidv4(),
+            creatorLogin,
         };
         yield call([stompClient, 'send'], server.createRoom, {}, JSON.stringify(createRoomBody));
     } catch (err) { console.log(err); }
 }
 
-export function* watcherGame() {
+export default function* watcherGame() {
     yield takeEvery(AT.SOCKET_CONNECTION, workerConnection);
-    yield takeEvery(AT.CREATE_ROOM, createRoom);
+    yield takeEvery(AT.CREATE_ROOM, createRoomSaga);
 }
