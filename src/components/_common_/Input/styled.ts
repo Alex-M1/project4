@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { IStyled } from '../types/styledTypes';
 
 export const StInput = styled.input <IStyled>`
-    width: 290px;
+    width: 100%;
     height: 45px;
     padding: 10px;
     outline: none;

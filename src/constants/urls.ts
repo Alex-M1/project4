@@ -1,17 +1,19 @@
-export const client = {
+export const CLIENT = {
   authClient: '/',
   regClient: '/signup',
   ticTacClient: '/tic-tac',
   signUp: '/signup',
   main: '/main',
   statistic: '/statistic',
-  'Tic-tac-toe': '/../../assets/img/Tic-tac-toe.png',
-  Checkers: '/../../assets/img/Checkers.png',
+  'Tic-tac-toe': 'src/assets/img/Tic-tac-toe.png',
+  Checkers: 'src/assets/img/Checkers.png',
+  play: 'src/assets/img/play.png',
+  bot: 'src/assets/img/ai.png',
   logo: 'src/assets/img/logout.svg',
   checkers: '/Checkers',
 };
 
-export const server = {
+export const SERVER = {
   auth: '/authorization/auth',
   rooms: '/topic/rooms',
   errors: '/user/topic/errors',

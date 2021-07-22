@@ -1,7 +1,7 @@
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import { cookieMaster } from 'helpers/cookieMaster';
 import { notifications } from 'helpers/notification';
-import { server } from 'constants/urls';
+import { SERVER } from 'constants/urls';
 import { v4 as uuidv4 } from 'uuid';
 import { LOCAL_STORAGE as LS } from 'constants/constants';
 import { connection, createStompChannel, init, stompClient } from 'src/helpers/stompClient';
@@ -44,6 +44,7 @@ describe('credentials Saga', () => {
         .next()
         .take(stompChannel)
         .next(payload)
+        //@ts-ignore
         .put(payload)
         .next();
     });
@@ -77,7 +78,7 @@ describe('credentials Saga', () => {
         .next(creatorLogin)
         .call(uuidv4)
         .next(id)
-        .call([stompClient, 'send'], server.createRoom, {}, JSON.stringify({ id, gameType, creatorLogin }))
+        .call([stompClient, 'send'], SERVER.createRoom, {}, JSON.stringify({ id, gameType, creatorLogin }))
         .next()
         .isDone();
     });
