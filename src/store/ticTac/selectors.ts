@@ -7,3 +7,8 @@ export const getSquares = createSelector(
   getTicTac,
   (ticTac): string[] => ticTac.squares,
 );
+
+export const getIsGame = createSelector(
+  getTicTac,
+  (ticTac): boolean => ticTac.isGameEnd,
+);

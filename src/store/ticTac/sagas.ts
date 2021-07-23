@@ -5,12 +5,12 @@ import { takeEvery, call, put, take } from 'redux-saga/effects';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
 import { notifications } from 'src/helpers/notification';
 import { createRoomChanel, stompClient } from 'src/helpers/stompClient';
-import { createRoomChanel as roomChannel, doBotStep, doStep, setStepHistory, stepWithBot } from './actions';
-
+import { createRoomChanel as roomChannel, doBotStep, doStep, setIsGameEnd, setStepHistory, stepWithBot } from './actions';
 import { ActionTypes as AT } from './actionTypes';
 
 export function* roomChannelSaga({ payload }: ReturnType<typeof roomChannel>): SagaIterator {
   try {
+    yield put(setIsGameEnd(false));
     yield call(
       [stompClient, 'send'],
       SERVER.joinRoom,
@@ -34,7 +34,7 @@ export function* withBotGameSaga({ payload }: ReturnType<typeof stepWithBot>): S
   try {
     const login = yield call([localStorage, 'getItem'], LS.login);
     const gameData = yield call([localStorage, 'getItem'], LS.gameOptions);
-    const parsedGameData: IGameData = yield JSON.parse(gameData);
+    const parsedGameData: IGameData = yield call([JSON, 'parse'], gameData);
     const stepBody = {
       gameType: parsedGameData.gameType,
       stepDto: {
@@ -60,7 +60,7 @@ export function* withBotGameSaga({ payload }: ReturnType<typeof stepWithBot>): S
 export function* doBotStepSaga({ payload }: ReturnType<typeof doBotStep>): SagaIterator {
   try {
     const gameData = yield call([localStorage, 'getItem'], LS.gameOptions);
-    const parsedGameData: IGameData = yield JSON.parse(gameData);
+    const parsedGameData: IGameData = yield call([JSON, 'parse'], gameData);
     const stepBody = {
       gameType: parsedGameData.gameType,
       stepDto: {
@@ -81,6 +81,7 @@ export function* stepHistory({ payload }: ReturnType<typeof setStepHistory>): Sa
   try {
     const login = yield call([localStorage, 'getItem'], LS.login);
     if (payload.winner) {
+      yield put(setIsGameEnd(true));
       payload.winner === login
         ? yield call(notifications, { message: 'you_win', type: 'info' })
         : yield call(notifications, { message: 'you_loose', type: 'warn' });

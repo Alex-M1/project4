@@ -5,7 +5,6 @@ import { eventChannel } from 'redux-saga';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
 import { addRoom } from 'store/room/actions';
 import { doBotStep, setStepHistory } from 'store/ticTac/actions';
-import { notifications } from './notification';
 
 export let stompClient: CompatClient | null = null;
 
@@ -37,7 +36,7 @@ export const createStompChannel = (stompClient: CompatClient) => eventChannel((e
     SERVER.rooms,
     ({ body }) => emit(addRoom(JSON.parse(body))),
   );
-  const errorSub = stompClient.subscribe(SERVER.errors, () => notifications({ message: 'something_wrong' }));
+  const errorSub = stompClient.subscribe(SERVER.errors, ({ body }) => console.log(body));
   return () => {
     roomsSub.unsubscribe();
     errorSub.unsubscribe();

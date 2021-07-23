@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { Location } from 'history';
 import { CLIENT } from 'constants/urls';
+import { Link } from 'react-router-dom';
 import { StHeader, StLogo, StHeaderContainer, StNavContainer } from './styled';
 import HeaderTheme from './HeaderTheme';
 import HeaderLanguage from './HeaderLanguage';
@@ -28,10 +29,12 @@ const Header: React.FC<IProps> = ({ location }) => {
     >
       <StHeaderContainer>
         <StNavContainer>
-          <StLogo
-            src="src/assets/img/logo.png"
-            alt="logo"
-          />
+          <Link to={CLIENT.main}>
+            <StLogo
+              src="src/assets/img/logo.png"
+              alt="logo"
+            />
+          </Link>
         </StNavContainer>
       </StHeaderContainer>
       <StHeaderContainer>

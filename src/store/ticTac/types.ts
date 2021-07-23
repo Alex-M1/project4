@@ -7,7 +7,8 @@ export interface ITicTac {
   steps: {
     count: number;
     isUserStep: boolean;
-  }
+  };
+  isGameEnd: boolean
 }
 
 export interface IPlayWithBot {

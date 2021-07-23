@@ -8,12 +8,18 @@ import TicTacItem from './TicTacItem';
 interface IProps {
   match: IMatch,
   squares: string[],
-  gameWith: string,
+  isGameEnd: boolean,
   createRoomChanel: (id: string) => void,
   stepWithBot: (payload: IPlayWithBot) => void
 }
 
-const TicTac: React.FC<IProps> = ({ match, gameWith, squares, createRoomChanel, stepWithBot }) => {
+const TicTac: React.FC<IProps> = ({
+  match,
+  squares,
+  isGameEnd,
+  stepWithBot,
+  createRoomChanel,
+}) => {
   useEffect(() => {
     createRoomChanel(match.params.id);
   }, []);
@@ -27,6 +33,7 @@ const TicTac: React.FC<IProps> = ({ match, gameWith, squares, createRoomChanel, 
         square={i}
         content={el}
         onClick={stepHandler}
+        isGameEnd={isGameEnd}
       />
     ));
   }, [squares]);

@@ -5,8 +5,6 @@ import { useTheme } from '../../hooks/useTheme';
 import { StButtonGroup } from '../styled';
 
 interface IProps {
-  user: string;
-  gameType: string;
   createRoom: () => void;
   onCloseModal: () => void;
 }
