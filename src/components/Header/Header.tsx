@@ -33,6 +33,8 @@ const Header: React.FC<IProps> = ({ location }) => {
             <StLogo
               src="src/assets/img/logo.png"
               alt="logo"
+              theme={theme}
+              colors={colors}
             />
           </Link>
         </StNavContainer>

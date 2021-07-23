@@ -32,5 +32,11 @@
   "join_room": "Join",
   "play_with_bot": "Play with bot",
   "you_win": "You winner",
-  "you_loose": "You loose"
+  "you_loose": "You loose",
+  "game_statistic": "Game statistic",
+  "result": "Result",
+  "user_name": "User name",
+  "game_type": "Game Type",
+  "Tic-tac-toe": "Tic-tac-toe",
+  "Checkers": "Checkers"
 }

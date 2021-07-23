@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
-import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StContainer = styled.div <IStyled>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: ${(props) => changeTheme(props, 'white')};
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 90%;
 `;
