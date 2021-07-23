@@ -12,7 +12,6 @@ interface IProps {
 const TicTacItem: React.FC<IProps> = ({ isGameEnd, square, content, onClick }) => {
   const handleClick = () => onClick(square);
   const { colors, theme } = useTheme();
-  console.log(isGameEnd);
   return (
     <StTicTacItem
       theme={theme}
