@@ -1,4 +1,6 @@
-export const statistic = [
+import { IStatUUID } from 'store/statistic/types';
+
+export const STATISTIC_DATA: Array<IStatUUID> = [
   { 
     creatorLogin: 'qwertyui', 
     gameType: 'Tic-tac-toe', 

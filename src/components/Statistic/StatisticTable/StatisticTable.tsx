@@ -29,8 +29,6 @@ const StatisticTable = () => {
         colors={colors}
       >
         <StatisticItem/>
-        <StatisticItem/>
-        <StatisticItem/>
       </StResultsWrapper>
     </StWrapper>
   );

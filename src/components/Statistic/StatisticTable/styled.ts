@@ -3,7 +3,7 @@ import { IStyled } from 'common/types/styledTypes';
 import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StWrapper = styled.div <IStyled>`
-  width: 40%;
+  width: 47%;
   height: 75%;
   border-radius: 12px;
   overflow: hidden;
