@@ -1,7 +1,7 @@
 export const CLIENT = {
   authClient: '/',
   regClient: '/signup',
-  ticTacClient: '/tic-tac',
+  ticTacClient: '/Tic-tac-toe',
   signUp: '/signup',
   main: '/main',
   statistic: '/statistic',
@@ -16,8 +16,9 @@ export const CLIENT = {
 export const SERVER = {
   auth: '/authorization/auth',
   rooms: '/topic/rooms',
+  game: '/topic/game',
   errors: '/user/topic/errors',
-  doStep: '/do-step',
+  doStep: '/radioactive/do-step',
   server: 'http://35.176.167.155:8089',
   socket: 'ws://35.176.167.155:8082',
   gameMenu: '/game-menu',
@@ -25,6 +26,7 @@ export const SERVER = {
   createRoom: '/radioactive/create-room',
   updateRoom: '/radioactive/update-room',
   getBotStep: '/radioactive/get-bot-step',
+  topicBotStep: '/topic/bot',
   getStepOrder: '/radioactive/get-step-order',
   registration: '/registration/reg',
   getPossibleSteps: '/get-possible-steps',

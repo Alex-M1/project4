@@ -16,6 +16,6 @@ export const notifications = (options: INotifications) => {
 
 export interface INotifications {
   message: string;
-  type?: 'warn' | 'success' | 'error',
+  type?: 'warn' | 'success' | 'error' | 'info',
   time?: number
 }

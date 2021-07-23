@@ -10,5 +10,10 @@ export interface ITicTac {
   }
 }
 
+export interface IPlayWithBot {
+  id: string,
+  square: number
+}
+
 export type TActions = typeof Actions
 export type TReducer = Reducer<ITicTac, ActionType<TActions>>

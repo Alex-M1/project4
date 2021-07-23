@@ -5,8 +5,8 @@ export const MESSAGES = {
 };
 
 export const REG_EXP = {
-  login: /^[a-z0-9]{1,25}/,
-  password: /^[a-z0-9]{6,25}$/,
+  login: /^[A-Za-z0-9]{1,25}/,
+  password: /^[A-Za-z0-9]{6,25}$/,
 };
 
 export const COOKIE_SETTING = {
@@ -65,4 +65,10 @@ export const VIEW_OPTIONS = {
 export const LOCAL_STORAGE = {
   login: 'login',
   token: 'token',
+  gameOptions: 'gameOptions',
+};
+
+export const GAME_SETTINGS = {
+  bot: 'Bot',
+  user: 'User',
 };

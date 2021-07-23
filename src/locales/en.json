@@ -30,5 +30,7 @@
   "statistic": "Statistic",
   "games": "Games",
   "join_room": "Join",
-  "play_with_bot": "Play with bot"
+  "play_with_bot": "Play with bot",
+  "you_win": "You winner",
+  "you_loose": "You loose"
 }
