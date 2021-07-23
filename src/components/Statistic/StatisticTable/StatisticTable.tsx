@@ -20,6 +20,7 @@ const StatisticTable = () => {
         <h1>{t('game_statistic')}</h1>
         <div>
           <span>{t('user_name')}</span>
+          <span>{t('game_type')}</span>
           <span>{t('result')}</span>
         </div>
       </StHeaderWrapper>

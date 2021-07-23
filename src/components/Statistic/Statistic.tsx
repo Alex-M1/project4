@@ -5,7 +5,7 @@ import StatisticTable from './StatisticTable';
 import { StContainer } from './styled';
 
 interface IProps {
-  getStatUUID: IStatUUID[],
+  getStatUUID: Array<IStatUUID>,
 }
 
 const Statistic: React.FC <IProps> = () => {

@@ -24,8 +24,7 @@ export const StHeaderWrapper = styled.div <IStyled>`
   & div {
     display: flex;
     justify-content: space-around;
-    width: 85%;
-
+    width: 80%;
     height: 30px;
     margin: 10px;
 
@@ -58,6 +57,12 @@ export const StResultsWrapper = styled.div <IStyled>`
     }
 
     & span:first-child {
+      width: 30%;
+    }
+    & span:nth-child(2) {
+      width: 25%;
+    }
+    & span:last-child {
       width: 45%;
     }
   }
