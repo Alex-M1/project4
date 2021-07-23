@@ -28,5 +28,11 @@
   "checkers": "Checkers",
   "no_rooms": "No rooms",
   "statistic": "Statistic",
-  "games": "Games"
+  "games": "Games",
+  "game_statistic": "Game statistic",
+  "result": "Result",
+  "user_name": "User name",
+  "game_type": "Game Type",
+  "Tic-tac-toe": "Tic-tac-toe",
+  "Checkers": "Checkers"
 }

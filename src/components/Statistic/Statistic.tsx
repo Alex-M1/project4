@@ -1,15 +1,22 @@
 import React from 'react';
+import { IStatUUID } from 'store/statistic/types';
 import { useTheme } from '../hooks/useTheme';
+import StatisticTable from './StatisticTable';
+import { StContainer } from './styled';
 
-const Statistic = () => {
+interface IProps {
+  getStatUUID: Array<IStatUUID>,
+}
+
+const Statistic: React.FC <IProps> = () => {
   const { colors, theme } = useTheme();
   return (
-      <div
+      <StContainer
         theme={theme}
         colors={colors}
       >
-        Statistic will be here
-      </div>
+        <StatisticTable/>
+      </StContainer>
   );
 };
 export default Statistic;
