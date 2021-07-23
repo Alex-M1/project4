@@ -34,11 +34,6 @@ export const statisticReducer = (state = initialState, action) => {
         ...state,
         statistic: action.payload,
       };
-    // case AT.SET_GAME_TYPE:
-    //   return {
-    //     ...state,
-    //     gameType: action.payload,
-    //   };
     default: return state;
   }
 };

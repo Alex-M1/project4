@@ -7,7 +7,3 @@ export const getStatisticByUuid = createSelector(
   getStatistic,
   (data): Array<IStatUUID> => data.statistic,
 );
-// export const getGameType = createSelector(
-//   getRoom,
-//   (data): string => data.gameType,
-// );
