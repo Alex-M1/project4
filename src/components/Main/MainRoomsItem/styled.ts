@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
+import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StItem = styled.div <IStyled>`
     display: grid;
@@ -11,7 +12,7 @@ export const StItem = styled.div <IStyled>`
     margin: 10px auto;
     padding: 0 20px;
     border-radius: 12px;
-    background: ${({ colors, theme }) => colors[theme].backgroundItem};
-    color: ${({ colors, theme }) => colors[theme].textColor};
+    background: ${(props) => changeTheme(props, 'backgroundItem')};
+    color: ${(props) => changeTheme(props, 'textColor')};
     cursor: pointer;
 `;

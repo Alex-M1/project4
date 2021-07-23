@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
+import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StInputDiv = styled.div`
     display: flex;
@@ -12,6 +13,6 @@ export const StInputDiv = styled.div`
 export const StSpan = styled.span <IStyled>`
     padding: 5px;
     font-size: 17px;
-    color: ${({ colors, theme }) => colors[theme].textColor};
+    color: ${(props) => changeTheme(props, 'textColor')};
     cursor: default;
 `;
