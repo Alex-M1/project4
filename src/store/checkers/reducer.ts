@@ -15,6 +15,16 @@ export const checkerReducer: TReducer = (state = initialState, action) => {
         ...state,
         possibleSteps: action.payload,
       };
+    case AT.REFRESH_FIELD:
+      return {
+        ...state,
+        field: action.payload,
+      };
+    case AT.CHOOSE_CELL:
+      return {
+        ...state,
+        currentCell: action.payload,
+      };
     default: return state;
   }
 };

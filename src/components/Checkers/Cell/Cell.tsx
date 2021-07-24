@@ -9,14 +9,21 @@ export interface IProps {
   fieldItem: ICheckerModel,
   cellNumber: number,
   possibleCell?: boolean,
-  chooseCell: (cell: number) => void
+  doStep: (cellNum: number) => void,
+  chooseCell: (cell: number) => void,
 }
 
-const Cell: React.FC<IProps> = ({ cellNumber, possibleCell, fieldItem, chooseCell }) => {
+const Cell: React.FC<IProps> = ({
+  doStep,
+  fieldItem,
+  cellNumber,
+  chooseCell,
+  possibleCell,
+}) => {
   const { colors, theme } = useTheme();
   const cellBg = VIEW_OPTIONS.CELL_BACKGROUND;
   const cellHandler = () => chooseCell(cellNumber);
-  const possibleHandler = () => { console.log('123'); };
+  const possibleHandler = () => doStep(cellNumber);
   const setBg = () => {
     if (possibleCell) return cellBg.POSSIBLE;
     return fieldItem.blackSquare ? cellBg.GRAY : cellBg.WHITE;

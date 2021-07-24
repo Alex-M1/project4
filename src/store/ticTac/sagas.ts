@@ -18,8 +18,8 @@ export function* roomChannelSaga(): SagaIterator {
       SERVER.joinRoom,
       {},
       JSON.stringify({
-        guestLogin: 'Bot',
         id: parseOption.roomId,
+        guestLogin: parseOption.playWith,
       }),
     );
     const roomChannel = yield call(createRoomChanel);
