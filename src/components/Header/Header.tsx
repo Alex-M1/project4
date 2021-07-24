@@ -10,10 +10,11 @@ import HeaderLogout from './HeaderLogout';
 import { useTheme } from '../hooks/useTheme';
 
 interface IProps {
-  location: Location
+  location: Location,
+  leaveRoom: () => void
 }
 
-const Header: React.FC<IProps> = ({ location }) => {
+const Header: React.FC<IProps> = ({ location, leaveRoom }) => {
   const isNav = useMemo(() => {
     const path = location.pathname;
     if (path === CLIENT.authClient || path === CLIENT.regClient) {
@@ -22,6 +23,7 @@ const Header: React.FC<IProps> = ({ location }) => {
     return <HeaderRoute />;
   }, [location.pathname]);
   const { colors, theme } = useTheme();
+  const handleLeaveRoom = () => leaveRoom();
   return (
     <StHeader
       theme={theme}
@@ -29,7 +31,7 @@ const Header: React.FC<IProps> = ({ location }) => {
     >
       <StHeaderContainer>
         <StNavContainer>
-          <Link to={CLIENT.main}>
+          <Link to={CLIENT.main} onClick={handleLeaveRoom}>
             <StLogo
               src="src/assets/img/logo.png"
               alt="logo"

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { CELL } from 'constants/component';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { CHESS_DESK } from 'constants/constants';
@@ -29,12 +28,10 @@ const Checkers: React.FC<IProps> = ({ connectCheckersChannel }) => {
           {
             rows.map((row) => {
               return cols.map((col) => {
-                const cell = CELL[row - 1][col - 1];
                 cellNumber++;
                 return (
                   <Cell
                     key={`row_${row}_col_${col}`}
-                    cell={cell}
                     cellNumber={cellNumber}
                   />
                 );

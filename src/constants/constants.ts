@@ -60,6 +60,7 @@ export const VIEW_OPTIONS = {
   CELL_BACKGROUND: {
     GRAY: '#ccc',
     WHITE: '#fff',
+    POSSIBLE: '#b2ff65',
   },
 };
 

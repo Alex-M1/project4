@@ -9,3 +9,9 @@ export const getFieldItem = createSelector(
   (_checkers, cell: number) => cell,
   (checkers, cell): ICheckerModel => checkers.field[cell],
 );
+
+export const getPossibleStepsCells = createSelector(
+  getCheckers,
+  (_checker, cell) => cell,
+  (checkers, cell) => checkers.possibleSteps.includes(cell),
+);

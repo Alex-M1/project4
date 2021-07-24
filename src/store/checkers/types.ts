@@ -12,8 +12,8 @@ export interface ICheckerModel {
 
 export interface IInitialState {
   currentCell: number,
-  field: Array<ICheckerModel>
+  field: Array<ICheckerModel>,
+  possibleSteps: Array<number>
 }
-
 export type TActions = typeof Actions
 export type TReducer = Reducer<IInitialState, ActionType<TActions>>

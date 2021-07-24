@@ -3,6 +3,7 @@ import { LOCAL_STORAGE } from 'constants/constants';
 import { SERVER } from 'constants/urls';
 import { eventChannel } from 'redux-saga';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
+import { setPossibleSteps } from 'store/checkers/actions';
 import { addRoom } from 'store/room/actions';
 import { doBotStep, setStepHistory } from 'store/ticTac/actions';
 import { cookieMaster } from './cookieMaster';
@@ -45,8 +46,13 @@ export const createCheckerChannel = () => eventChannel((emit) => {
     ({ body }) => console.log(JSON.parse(body)),
   );
   const userTopic = stompClient.subscribe(
-    '/user/topic/game/ ',
-    ({ body }) => console.log(JSON.parse(body)),
+    SERVER.userTopic,
+    ({ body }) => {
+      if (Array.isArray(JSON.parse(body))) {
+        const cells = JSON.parse(body).map((el) => el.stepIndex);
+        return emit(setPossibleSteps(cells));
+      }
+    },
   );
   return () => {
     botStep.unsubscribe();

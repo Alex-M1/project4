@@ -1,4 +1,5 @@
 export enum ActionTypes {
   CHOOSE_CELL = '@@checkers/CHOOSE_CELL',
+  SET_POSSIBLE_STEPS = '@@checkers/SET_POSSIBLE_STEPS',
   CONNECT_CHECKERS_CHANNEL = '@@checkers/CONNECT_CHECKERS_CHANNEL'
 }
