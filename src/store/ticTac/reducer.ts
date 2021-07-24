@@ -8,6 +8,7 @@ export const initialState: ITicTac = {
     count: 0,
     isUserStep: null,
   },
+  isGameEnd: false,
 };
 
 export const ticTacReducer: TReducer = (state = initialState, action) => {
@@ -22,6 +23,11 @@ export const ticTacReducer: TReducer = (state = initialState, action) => {
           count: state.steps.count + 1,
         },
         squares: [...state.squares],
+      };
+    case AT.SET_IS_GAME_END:
+      return {
+        ...state,
+        isGameEnd: action.payload,
       };
     default: return state;
   }

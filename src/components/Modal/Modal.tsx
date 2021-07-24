@@ -11,30 +11,26 @@ interface IProps {
   onCloseModal: () => void;
 }
 
-const Modal: React.FC <IProps> = ({ onCloseModal }) => {
+const Modal: React.FC<IProps> = ({ onCloseModal }) => {
   const { colors, theme } = useTheme();
 
   return (
     <Portal>
       <StModal
-          theme={theme}
-          colors={colors}
+        theme={theme}
+        colors={colors}
       >
         <StModalContainer
           theme={theme}
           colors={colors}
         >
-          <ModalCross 
-            onCloseModal={onCloseModal}
-          />
+          <ModalCross onCloseModal={onCloseModal} />
           <Title title="choose_the_game" />
           <ModalSelect />
-          <ModalButtons
-            onCloseModal={onCloseModal}
-          />
+          <ModalButtons onCloseModal={onCloseModal} />
         </StModalContainer>
       </StModal>
-      
+
     </Portal>
   );
 };

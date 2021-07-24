@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TicTac Should match snapshot 1`] = `"<div class=\\"styled__StTicTacContainer-cgfTf rRmff\\"><div class=\\"styled__StTicTacField-cIDziS fthusY\\"><div class=\\"styled__StTicTacItem-erJWA-d cemGHT\\">ad</div><div class=\\"styled__StTicTacItem-erJWA-d cemGHT\\">dasda</div></div></div>"`;

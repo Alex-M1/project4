@@ -13,6 +13,13 @@ describe('ticTacReducer', () => {
         squares: [...initialState.squares],
       });
   });
+  it('SET_IS_GAME_END', () => {
+    expect(ticTacReducer(initialState, actions.setIsGameEnd(true)))
+      .toEqual({
+        ...initialState,
+        isGameEnd: true,
+      });
+  });
   it('return state', () => {
     expect(ticTacReducer(initialState, actions))
       .toEqual({

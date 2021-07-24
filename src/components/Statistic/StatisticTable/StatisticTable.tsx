@@ -1,6 +1,6 @@
-/* eslint-disable no-plusplus */
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { v4 as uuidv4 } from 'uuid';
 import { useTheme } from 'src/components/hooks/useTheme';
 import { IStatUUID } from 'store/statistic/types';
 import StatisticItem from '../StatisticItem';
@@ -17,9 +17,8 @@ const StatisticTable: React.FC <IProps> = ({ getStatistic, statisticData }) => {
   }, []);
   const { t } = useTranslation();
   const { colors, theme } = useTheme();
-  let i = 0;
   const statistic = statisticData.map((el) => {
-    return <StatisticItem {...el} key={i++}/>;
+    return <StatisticItem {...el} key={uuidv4()}/>;
   });
 
   return (

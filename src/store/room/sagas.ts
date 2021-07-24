@@ -34,7 +34,9 @@ export function* createRoomSaga(): SagaIterator {
             creatorLogin,
         };
         yield call([stompClient, 'send'], SERVER.createRoom, {}, JSON.stringify(createRoomBody));
-    } catch (err) { console.log(err); }
+    } catch (err) {
+        yield call(notifications, { message: 'something_wrong' });
+    }
 }
 
 export default function* watcherGame() {

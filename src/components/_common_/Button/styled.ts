@@ -3,7 +3,7 @@ import { changeTheme } from 'src/helpers/changeTheme';
 import { IStyled } from '../types/styledTypes';
 
 export const StButton = styled.button <IStyled>`
-  width: 290px;
+  width: 100%;
   height: 40px;
   margin: 20px 0;
   background: ${(props) => changeTheme(props, 'button')};
