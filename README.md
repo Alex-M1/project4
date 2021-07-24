@@ -2,7 +2,7 @@
 
 ### Requests for registration ###
 
-- URL: http://35.178.162.6:8089/registration/reg;
+- URL: http://35.176.167.155:8089/registration/reg;
 - requestType: POST;
 - bodyType: raw/json;
 - requestBody:
@@ -106,7 +106,7 @@
 
 ### Requests for authorization ###
 
-- URL: http://35.178.162.6:8089/authorization/auth;
+- URL: http://35.176.167.155:8089/authorization/auth;
 - requestType: POST;
 - bodyType: raw/json;
 - requestBody:
@@ -162,7 +162,7 @@
 
 ### Requests for statistic ###
 #### Search by uuid:
-- URL: http://35.178.162.6:8089/statistic/search-by-uuid;
+- URL: http://35.176.167.155:8089/statistic/search-by-uuid;
 - requestType: POST;
 - bodyType: raw/json;
 - requestBody:
@@ -252,7 +252,7 @@
         body : "";
 
 #### Search by username:
-- URL: http://35.178.162.6:8089/statistic/search-by-username;
+- URL: http://35.176.167.155:8089/statistic/search-by-username;
 - requestType: POST;
 - bodyType: raw/json;
 - requestBody:
@@ -340,7 +340,7 @@
         body : ""
 
 #### Search by time period:
-- URL: http://35.178.162.6:8089/statistic/search-by-time-period;
+- URL: http://35.176.167.155:8089/statistic/search-by-time-period;
 - requestType: POST;
 - bodyType: raw/json;
 - requestBody:
@@ -420,7 +420,7 @@
 
 # README - Websocket Requests #
 
-      WebSocket connection url - ws://35.178.162.6:8089/game-menu
+      WebSocket connection url - ws://35.176.167.155:8089/game-menu
       Note: before connect you have to authorize user and get Json Web Token,
       then you have to set it in to the connection request header in format:
       Authorization: "Bearer " + token
@@ -437,7 +437,7 @@
 
 (before mapping put application destination - "/radioactive". Example - "/radioactive/createRoom" )
 
- -     1)/createRoom  (validation: already existing room, not empty, not null creatorLogin and gameType)
+ -     1)/create-room  (validation: already existing room, not empty, not null creatorLogin and gameType)
        valid: {"creatorLogin":"trolan", "gameType":"Checkers", "id":null}
        answer: all existing rooms:
        [{"creatorLogin":"ufora","gameType":"Checkers","id":"a1b56ce2-bce1-44eb-b6c1-eee5ff112f2c"},
@@ -449,7 +449,7 @@
        "statusCodeValue":400}
 
 -
-      2)/updateRoom (empty request)
+      2)/update-room (empty request)
       valid: {}
       answer: all existing rooms:
       [{"creatorLogin":"ufora","gameType":"Checkers","id":"a1b56ce2-bce1-44eb-b6c1-eee5ff112f2c"},
@@ -458,7 +458,7 @@
       {"creatorLogin":"trolan","gameType":"Checkers","id":"0a90c4f2-2227-47a7-8041-fcacbe2f7d44"}]
 
 -
-      3)/deleteRoom (validation: don`t existing room, empty or blank login, incorrect uuid signature or null uuid)
+      3)/delete-room (validation: don`t existing room, empty or blank login, incorrect uuid signature or null uuid)
       valid: {"guestLogin":"radioactive","id":" 63ab1b83-9231-43f2-9dd6-95cfc3aa8830"}
       answer: all existing rooms:
       [{"creatorLogin":"ufora","gameType":"Checkers","id":"a1b56ce2-bce1-44eb-b6c1-eee5ff112f2c"},
@@ -472,7 +472,7 @@
       
 
 - After joining room game will automatically start
-      4)/joinRoom (validation: don`t existing room, empty or blank login, incorrect uuid signature or null uuid)
+      4)/join-room (validation: don`t existing room, empty or blank login, incorrect uuid signature or null uuid)
       valid: {"guestLogin":"Vurado","id":"3e9961bb-518b-48b3-907e-19d63310e9ec"}
       answer: {"gameType":"Checkers","creatorLogin":"RadioActive","guestLogin":"Vurado","id":"3e9961bb-518b-48b3-907e-19d63310e9ec"
       ,"winner":null,"stepDtoList":null,"gameField":null}
@@ -494,11 +494,12 @@
       5)/do-step (validation: don`t existing game, empty or blank login, incorrect uuid signature or null uuid)
       valid: {"gameType":"Checkers", "stepDto" : {login: "Vurado", step: "17_26", "time":"514651511651561", "id":"3e9961bb-518b-48b3-907e-19d63310e9ec"}} headers: uuid : {uuid}
       If step is valid both users will get this step back
-      answer: {"login":"trolan","step":"17_26","time":1625473827079,"id":"e3a0e943-5489-40d0-8536-858ba0fa6473"}
-
+      answer: {"field", {object that reperesents field of currentGame} "stepDto" : {"login":"trolan","step":"17_26","time":1625473827079,"id":"e3a0e943-5489-40d0-8536-858ba0fa6473"}}
 
       invalid: {"gameType":"Checkers","stepDto":{"login":"trolan","step":"35_17","time":1625473832479,"id":"e3a0e943-5489-40d0-8536-858ba0fa6473"}}
       answer:   {"headers":{"Content-Type":["application/json"]},"body":"NOT YOU TURN trolan","statusCode":"BAD_REQUEST","statusCodeValue":400}
+
+      if game is ended or draw occured you will get {"winner":"trolan"}
 
 -
       6)/get-bot-step (validation: don`t existing game, incorrect uuid signature or null uuid)
@@ -511,7 +512,17 @@
 -
       7)/get-step-order (validation: don`t existing game, incorrect uuid signature or null uuid)
       valid: {"gameType": "Checkers"} headers: uuid : {uuid}
-      answer: Trolan
+      answer: {"stepOrderLogin":"trolan"}
 
       invalid: {"gameType": "Hz4221"} headers: uuid : {uuid}
       answer:   {"headers":{"Content-Type":["application/json"]},"body":"Game type Hz4221 does not exists","statusCode":"BAD_REQUEST","statusCodeValue":400}
+
+      7)/leave-the-game (validation: don`t existing game, dont have enough permissions)
+      guestLogin - it is login of player who wants to end the game. No matter guest or creator
+      valid: {"guestLogin": "trolan", "id":"e3a0e943-5489-40d0-8536-858ba0fa6473"} headers: uuid : {uuid}
+      answer: game e3a0e943-5489-40d0-8536-858ba0fa6473 closed by trolan
+
+      invalid: {"gameType": "Hz4221"} headers: uuid : {uuid}
+      answer:   {"headers":{"Content-Type":["application/json"]},"body":"Game type Hz4221 does not exists","statusCode":"BAD_REQUEST","statusCodeValue":400}
+      
+      
