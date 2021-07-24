@@ -24,6 +24,7 @@ export const SERVER = {
   updateRoom: '/radioactive/update-room',
   getBotStep: '/radioactive/get-bot-step',
   getStepOrder: '/radioactive/get-step-order',
+  statisticByUsername: '/statistic/search-by-username',
   registration: '/registration/reg',
   getPossibleSteps: '/get-possible-steps',
 };

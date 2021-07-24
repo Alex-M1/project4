@@ -13,4 +13,10 @@ describe('ticTacReducer', () => {
         squares: [...initialState.squares],
       });
   });
+  it('return state', () => {
+    expect(ticTacReducer(initialState, actions))
+      .toEqual({
+        ...initialState,
+    });
+  });
 });

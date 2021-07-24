@@ -23,12 +23,13 @@ export const StHeaderWrapper = styled.div <IStyled>`
 
   & div {
     display: flex;
-    justify-content: space-around;
-    width: 80%;
+    justify-content: space-between;
+    width: 90%;
     height: 30px;
-    margin: 10px;
+    margin: 10px auto;
 
-    & span:first-child {
+    & span {
+      width: 100%;
       text-align: center;
     }
   }
@@ -53,17 +54,8 @@ export const StResultsWrapper = styled.div <IStyled>`
     padding: 15px 0;
     border-bottom: 1px solid ${(props) => changeTheme(props, 'gray')};
     & span {
+      width: 100%;
       text-align: center;
-    }
-
-    & span:first-child {
-      width: 30%;
-    }
-    & span:nth-child(2) {
-      width: 25%;
-    }
-    & span:last-child {
-      width: 45%;
     }
   }
 `;

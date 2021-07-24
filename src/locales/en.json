@@ -34,5 +34,7 @@
   "user_name": "User name",
   "game_type": "Game Type",
   "Tic-tac-toe": "Tic-tac-toe",
-  "Checkers": "Checkers"
+  "Checkers": "Checkers",
+  "winner": "Winner",
+  "opposer": "Opposer"
 }
