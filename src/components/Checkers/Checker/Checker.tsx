@@ -4,7 +4,7 @@ import { useTheme } from 'src/components/hooks/useTheme';
 import { StCellBlack, StCellWhite, StOpacity } from './styled';
 
 interface IProps {
-  isBlack: boolean
+  isBlack?: boolean
 }
 
 const Checker: React.FC <IProps> = ({ isBlack }) => {

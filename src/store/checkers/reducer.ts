@@ -1,11 +1,12 @@
-import { IInitialState } from 'store/checkers/types';
+import { CHECKER_FIELD_INIT } from 'constants/constants';
+import { IInitialState, TReducer } from './types';
 
 export const initialState: IInitialState = {
-  field: null,
+  field: CHECKER_FIELD_INIT,
   currentCell: null,
 };
 
-export const checkerReducer = (state = initialState, action) => {
+export const checkerReducer: TReducer = (state = initialState, action) => {
   switch (action.type) {
     default: return state;
   }

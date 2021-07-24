@@ -38,15 +38,20 @@ export const createCheckerChannel = () => eventChannel((emit) => {
   const gameData: IGameData = JSON.parse(localStorage.getItem(LOCAL_STORAGE.gameOptions));
   const botStep = stompClient.subscribe(
     `${SERVER.topicBotStep}/${gameData.roomId}`,
-    ({ body }) => emit(doBotStep(JSON.parse(body))),
+    ({ body }) => console.log(JSON.parse(body)),
   );
-  const roomWatcher = stompClient.subscribe(
+  const checketWatcher = stompClient.subscribe(
     `${SERVER.game}/${gameData.roomId}`,
-    ({ body }) => emit(setStepHistory(JSON.parse(body) || body)),
+    ({ body }) => console.log(JSON.parse(body)),
+  );
+  const userTopic = stompClient.subscribe(
+    '/user/topic/game/ ',
+    ({ body }) => console.log(JSON.parse(body)),
   );
   return () => {
     botStep.unsubscribe();
-    roomWatcher.unsubscribe();
+    userTopic.unsubscribe();
+    checketWatcher.unsubscribe();
   };
 });
 

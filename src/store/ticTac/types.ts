@@ -12,7 +12,6 @@ export interface ITicTac {
 }
 
 export interface IPlayWithBot {
-  id: string,
   square: number
 }
 

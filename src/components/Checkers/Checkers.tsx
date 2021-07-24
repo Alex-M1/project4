@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CELL } from 'constants/component';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -7,11 +7,18 @@ import { useTheme } from '../hooks/useTheme';
 import { StContainer, StTable } from './styled';
 import Cell from './Cell';
 
-const Checkers: React.FC = () => {
+interface IProps {
+  connectCheckersChannel: () => void
+}
+
+const Checkers: React.FC<IProps> = ({ connectCheckersChannel }) => {
+  useEffect(() => {
+    connectCheckersChannel();
+  }, []);
   const { colors, theme } = useTheme();
   const rows = CHESS_DESK.ROWS;
   const cols = CHESS_DESK.COLS;
-
+  let cellNumber = 0;
   return (
     <DndProvider backend={HTML5Backend}>
       <StContainer>
@@ -23,14 +30,12 @@ const Checkers: React.FC = () => {
             rows.map((row) => {
               return cols.map((col) => {
                 const cell = CELL[row - 1][col - 1];
-
+                cellNumber++;
                 return (
                   <Cell
-                    col={col}
                     key={`row_${row}_col_${col}`}
-                    row={row}
                     cell={cell}
-                    cellNumber={row * (col - 1) + col}
+                    cellNumber={cellNumber}
                   />
                 );
               });

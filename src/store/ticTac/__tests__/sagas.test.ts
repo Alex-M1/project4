@@ -1,5 +1,4 @@
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
-import { cookieMaster } from 'helpers/cookieMaster';
 import { notifications } from 'helpers/notification';
 import { SERVER } from 'constants/urls';
 import { LOCAL_STORAGE as LS } from 'constants/constants';
@@ -28,17 +27,27 @@ describe('TicTacSagas', () => {
     it('should call roomChannelSaga without error', () => {
       const roomChannel = [];
       const actionMock = { type: '' };
+      const gameData = 'sad';
+      const parsedGameData: IGameData = {
+        roomId: '123',
+        gameType: 'asdasd',
+        playWith: 'bot',
+      };
       testSaga(roomChannelSaga, action)
         .next()
         .put(setIsGameEnd(false))
         .next()
+        .call([localStorage, 'getItem'], LS.gameOptions)
+        .next(gameData)
+        .call([JSON, 'parse'], gameData)
+        .next(parsedGameData)
         .call(
           [stompClient, 'send'],
           SERVER.joinRoom,
           {},
           JSON.stringify({
             guestLogin: 'Bot',
-            id: action.payload,
+            id: parsedGameData.roomId,
           }),
         )
         .next()
@@ -88,7 +97,7 @@ describe('TicTacSagas', () => {
           login,
           step: action.payload.square.toString(),
           time: mockDate,
-          id: action.payload.id,
+          id: parsedGameData.roomId,
         },
       };
 
@@ -103,7 +112,7 @@ describe('TicTacSagas', () => {
         .call(
           [stompClient, 'send'],
           SERVER.doStep,
-          { uuid: action.payload.id },
+          { uuid: parsedGameData.roomId },
           JSON.stringify(stepBody),
         )
         .next()
@@ -114,7 +123,7 @@ describe('TicTacSagas', () => {
           SERVER.getBotStep,
           {},
           JSON.stringify({
-            id: action.payload.id,
+            id: parsedGameData.roomId,
             gameType: parsedGameData.gameType,
           }),
         )
