@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AuthBtn Should match snapshot 1`] = `"<div class=\\"styled__StInputDiv-iTvJvh gqdFEH\\"><button type=\\"button\\" class=\\"styled__StButton-iwFefC jJqhBl\\"></button></div>"`;
+exports[`AuthBtn Should match snapshot 1`] = `"<div class=\\"styled__StInputDiv-iTvJvh gqdFEH\\"><button type=\\"button\\" class=\\"styled__StButton-iwFefC kBDupe\\"></button></div>"`;

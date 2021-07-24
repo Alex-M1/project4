@@ -16,4 +16,7 @@ describe('ticTacSelectors', () => {
   it('getSquares', () => {
     expect(selectors.getSquares(store)).toEqual(store.ticTac.squares);
   });
+  it('getIsGame', () => {
+    expect(selectors.getIsGame(store)).toEqual(store.ticTac.isGameEnd);
+  });
 });

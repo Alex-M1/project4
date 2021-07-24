@@ -7,7 +7,16 @@ export interface ITicTac {
   steps: {
     count: number;
     isUserStep: boolean;
-  }
+  };
+  isGameEnd: boolean
+}
+
+export interface IPlayWithBot {
+  id: string,
+  square: number
+}
+export interface IStepHistory {
+  winner: string
 }
 
 export type TActions = typeof Actions

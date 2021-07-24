@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RegForm Should match snapshot 1`] = `"<div class=\\"styled__StInputDiv-iTvJvh gqdFEH\\"><span class=\\"styled__StSpan-bbjaPg hFPkpt\\"></span><input type=\\"login\\" value=\\"value\\" class=\\"styled__StInput-ifVcmW fkrHSd\\"/></div>"`;
+exports[`RegForm Should match snapshot 1`] = `"<div class=\\"styled__StInputDiv-iTvJvh gqdFEH\\"><span class=\\"styled__StSpan-bbjaPg hFPkpt\\"></span><input type=\\"login\\" value=\\"value\\" class=\\"styled__StInput-ifVcmW gvVFSK\\"/></div>"`;

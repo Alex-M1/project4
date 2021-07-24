@@ -32,16 +32,25 @@
         ]
       }
     ],
+    "no-undef": [
+      "off",
+      {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
     "react/prop-types": 0,
     "jsx-quotes": "off",
     "quotes": [
       "error",
       "single"
     ],
-    "no-unused-expressions":"off",
+    "no-unused-expressions": "off",
     "no-case-declarations": "off",
     "import/no-named-as-default": "off",
-    "import/no-absolute-path":"off",
+    "import/no-absolute-path": "off",
     "react/jsx-props-no-spreading": "off",
     "linebreak-style": "off",
     "camelcase": "off",
@@ -65,7 +74,12 @@
     "import/no-dynamic-require": "off",
     "consistent-return": "off",
     "react/forbid-prop-types": "off",
-    "space-infix-ops": ["off", { "int32Hint": false }],
+    "space-infix-ops": [
+      "off",
+      {
+        "int32Hint": false
+      }
+    ],
     "no-use-before-define": [
       "error",
       {
