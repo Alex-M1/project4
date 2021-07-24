@@ -34,4 +34,10 @@ describe('userReducer', () => {
         },
       });
   });
+  it('return state', () => {
+    expect(userReducer(initialState, actions))
+      .toEqual({
+        ...initialState,
+    });
+  });
 });

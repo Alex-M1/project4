@@ -20,4 +20,10 @@ describe('ticTacReducer', () => {
         isGameEnd: true,
       });
   });
+  it('return state', () => {
+    expect(ticTacReducer(initialState, actions))
+      .toEqual({
+        ...initialState,
+    });
+  });
 });
