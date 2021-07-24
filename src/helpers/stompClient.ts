@@ -5,6 +5,7 @@ import { eventChannel } from 'redux-saga';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
 import { addRoom } from 'store/room/actions';
 import { doBotStep, setStepHistory } from 'store/ticTac/actions';
+import { cookieMaster } from './cookieMaster';
 
 export let stompClient: CompatClient | null = null;
 
@@ -16,6 +17,24 @@ export const connection = (token: string) => {
 };
 
 export const createRoomChanel = () => eventChannel((emit) => {
+  if (!stompClient) connection(cookieMaster.getCookie(LOCAL_STORAGE.token));
+  const gameData: IGameData = JSON.parse(localStorage.getItem(LOCAL_STORAGE.gameOptions));
+  const botStep = stompClient.subscribe(
+    `${SERVER.topicBotStep}/${gameData.roomId}`,
+    ({ body }) => emit(doBotStep(JSON.parse(body))),
+  );
+  const roomWatcher = stompClient.subscribe(
+    `${SERVER.game}/${gameData.roomId}`,
+    ({ body }) => emit(setStepHistory(JSON.parse(body) || body)),
+  );
+  return () => {
+    botStep.unsubscribe();
+    roomWatcher.unsubscribe();
+  };
+});
+
+export const createCheckerChannel = () => eventChannel((emit) => {
+  if (!stompClient) connection(cookieMaster.getCookie(LOCAL_STORAGE.token));
   const gameData: IGameData = JSON.parse(localStorage.getItem(LOCAL_STORAGE.gameOptions));
   const botStep = stompClient.subscribe(
     `${SERVER.topicBotStep}/${gameData.roomId}`,

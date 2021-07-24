@@ -1,7 +1,7 @@
 import React from 'react';
 import { CELL } from 'constants/component';
-import { DndProvider } from 'react-dnd'; 
-import { HTML5Backend } from 'react-dnd-html5-backend'; 
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { CHESS_DESK } from 'constants/constants';
 import { useTheme } from '../hooks/useTheme';
 import { StContainer, StTable } from './styled';
@@ -16,8 +16,8 @@ const Checkers: React.FC = () => {
     <DndProvider backend={HTML5Backend}>
       <StContainer>
         <StTable
-            theme={theme}
-            colors={colors}
+          theme={theme}
+          colors={colors}
         >
           {
             rows.map((row) => {
@@ -30,6 +30,7 @@ const Checkers: React.FC = () => {
                     key={`row_${row}_col_${col}`}
                     row={row}
                     cell={cell}
+                    cellNumber={row * (col - 1) + col}
                   />
                 );
               });

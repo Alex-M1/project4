@@ -92,8 +92,8 @@ export function* stepHistory({ payload }: ReturnType<typeof setStepHistory>): Sa
 }
 
 export default function* ticTacWatcher() {
-  yield takeEvery(AT.STEP_WITH_BOT, withBotGameSaga);
-  yield takeEvery(AT.CREATE_ROOM_CHANNEL, roomChannelSaga);
   yield takeEvery(AT.DO_BOT_STEP, doBotStepSaga);
   yield takeEvery(AT.SET_STEP_HISTORY, stepHistory);
+  yield takeEvery(AT.STEP_WITH_BOT, withBotGameSaga);
+  yield takeEvery(AT.CREATE_ROOM_CHANNEL, roomChannelSaga);
 }
