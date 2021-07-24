@@ -14,6 +14,9 @@ export interface ITicTac {
 export interface IPlayWithBot {
   square: number
 }
+export interface IStepHistory {
+  winner: string
+}
 
 export type TActions = typeof Actions
 export type TReducer = Reducer<ITicTac, ActionType<TActions>>

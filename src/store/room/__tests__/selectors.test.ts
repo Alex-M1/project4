@@ -3,20 +3,20 @@ import { AppStateType } from '../../rootReducer';
 import { initialState } from '../reducer';
 import * as selectors from '../selectors';
 
-describe('userSelectors', () => {
+describe('roomSelectors', () => {
   //@ts-ignore
   const store: AppStateType = {
     room: {
       ...initialState,
     },
   };
-  it('getUser', () => {
+  it('getRoom', () => {
     expect(selectors.getRoom(store)).toEqual(store.room);
   });
-  it('getAuthData', () => {
+  it('getRoomList', () => {
     expect(selectors.getRoomList(store)).toEqual(store.room.rooms);
   });
-  it('getIsRedirect', () => {
+  it('getGameType', () => {
     expect(selectors.getGameType(store)).toEqual(store.room.gameType);
   });
 });

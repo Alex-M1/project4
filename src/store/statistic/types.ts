@@ -5,7 +5,8 @@ import * as Actions from './action';
 export interface IStatUUID {
   creatorLogin: string;
   gameType: string;
-  id: string;
+  guestLogin: string;
+  winnerLogin: string;
 }
 
 export interface IInitialState {

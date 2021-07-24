@@ -7,7 +7,7 @@ export const initialState: IInitialState = {
 
 export const statisticReducer = (state = initialState, action) => {
   switch (action.type) {
-    case AT.SET_GAME_STATISTIC_BY_UUID:
+    case AT.SET_GAME_STATISTIC:
       return {
         ...state,
         statistic: action.payload,

@@ -30,6 +30,7 @@ export const SERVER = {
   getBotStep: '/radioactive/get-bot-step',
   topicBotStep: '/topic/bot',
   getStepOrder: '/radioactive/get-step-order',
+  statisticByUsername: '/statistic/search-by-username',
   registration: '/registration/reg',
   getPossibleSteps: '/radioactive/get-possible-steps',
 };

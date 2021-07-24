@@ -1,23 +1,24 @@
+/* eslint-disable no-plusplus */
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { IStatUUID } from 'store/statistic/types';
 
 interface IProps {
-  statistic: Array<IStatUUID>;
+  creatorLogin: string, 
+  gameType: string, 
+  guestLogin: string, 
+  winnerLogin: string,
 }
 
-const StatisticItem: React.FC <IProps> = ({ statistic }) => {
+const StatisticItem: React.FC <IProps> = ({ creatorLogin, gameType, guestLogin, winnerLogin }) => {
   const { t } = useTranslation();
+  let counter = 0;
   return (
-    statistic.map((data) => {
-      return (
-      <div key={data.id}>
-        <span>{data.creatorLogin}</span>
-        <span>{t(data.gameType)}</span>
-        <span>{data.id}</span>
+      <div key={counter++}>
+        <span>{creatorLogin}</span>
+        <span>{t(gameType)}</span>
+        <span>{guestLogin}</span>
+        <span>{winnerLogin}</span>
       </div>
-      );
-    })
   );
 };
 
