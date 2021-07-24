@@ -5,12 +5,12 @@ import { useTheme } from 'src/components/hooks/useTheme';
 import Input from 'common/Input';
 import { IInputValue, TField } from 'store/user/types';
 
-export interface IProps {
+interface IProps {
   type: TField;
   value: string;
   setCredentialsValue: (payload: IInputValue) => void;
 }
-const RegForm: React.FC<IProps> = ({ type, value, setCredentialsValue }: IProps) => {
+const RegForm: React.FC<IProps> = ({ type, value, setCredentialsValue }) => {
   const { colors, theme } = useTheme();
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCredentialsValue({ page: 'registration', field: type, value: e.target.value });

@@ -1,9 +1,10 @@
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import { cookieMaster } from 'helpers/cookieMaster';
 import { notifications } from 'helpers/notification';
-import { url } from 'constants/urls';
+import { SERVER } from 'constants/urls';
 import { request } from 'helpers/requests';
 import { isInvalid } from 'helpers/validation';
+import { LOCAL_STORAGE } from 'constants/constants';
 import { clearUserFields, setIsRedirect } from '../action';
 import userWatcher, { signUpSaga, signInSaga } from '../sagas';
 import { ActionTypes as AT } from '../actionTypes';
@@ -26,7 +27,7 @@ describe('credentials Saga', () => {
         .next(regValue)
         .call(isInvalid, regValue)
         .next(false)
-        .call(request, url.registration, { login: 'login123', password: '11111111' }, 'POST')
+        .call(request, SERVER.registration, { login: 'login123', password: '11111111' }, 'POST')
         .next()
         .put(setIsRedirect(true))
         .next()
@@ -91,13 +92,15 @@ describe('credentials Saga', () => {
         .next(authValue)
         .call(isInvalid, authValue)
         .next(false)
-        .call(request, url.auth, authValue, 'POST')
+        .call(request, SERVER.auth, authValue, 'POST')
         .next(mockResponse)
         .call([mockResponse, 'text'])
         .next(mockToken)
         .call([cookieMaster, 'setTokenInCookie'], mockToken)
         .next()
         .put(setIsRedirect(true))
+        .next()
+        .call([localStorage, 'setItem'], LOCAL_STORAGE.login, authValue.login)
         .next()
         .put(clearUserFields('auth'))
         .next()

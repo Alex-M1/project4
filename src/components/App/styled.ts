@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
+import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StGlobalStyle = createGlobalStyle <IStyled>`
   *{
@@ -11,7 +12,7 @@ export const StGlobalStyle = createGlobalStyle <IStyled>`
   body {
     height: ${window.innerHeight}px;
     overflow: hidden;
-    background: ${({ colors, theme }) => colors[theme].background};
+    background: ${(props) => changeTheme(props, 'background')};
   }
   #root{
     height: 100%;

@@ -32,6 +32,7 @@
         ]
       }
     ],
+    "react/prop-types": 0,
     "jsx-quotes": "off",
     "quotes": [
       "error",
@@ -64,6 +65,7 @@
     "import/no-dynamic-require": "off",
     "consistent-return": "off",
     "react/forbid-prop-types": "off",
+    "space-infix-ops": ["off", { "int32Hint": false }],
     "no-use-before-define": [
       "error",
       {

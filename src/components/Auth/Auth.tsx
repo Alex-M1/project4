@@ -1,6 +1,6 @@
 import React from 'react';
+import Title from 'common/Title';
 import { useTheme } from '../hooks/useTheme';
-import Title from '../_common_/Title';
 import AuthIpt from './AuthIpt';
 import AuthBtn from './AuthBtn';
 import { StGlobalCredentials, StContainer } from './styled';
@@ -8,6 +8,7 @@ import AuthNav from './AuthNav';
 
 const Auth: React.FC = () => {
   const { colors, theme } = useTheme();
+
   return (
     <>
       <StGlobalCredentials>

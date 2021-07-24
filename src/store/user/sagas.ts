@@ -1,4 +1,5 @@
-import { url } from 'constants/urls';
+import { LOCAL_STORAGE as LS } from 'constants/constants';
+import { SERVER } from 'constants/urls';
 import { SagaIterator } from 'redux-saga';
 import { takeEvery, select, call, put } from 'redux-saga/effects';
 import { notifications } from 'src/helpers/notification';
@@ -8,6 +9,7 @@ import { cookieMaster } from '../../helpers/cookieMaster';
 import { clearUserFields, setIsRedirect } from './action';
 import { ActionTypes as AT } from './actionTypes';
 import { getRegData, getAuthData } from './selectors';
+import { IAuth } from './types';
 
 export function* signUpSaga(): SagaIterator {
   const regData = yield select(getRegData);
@@ -15,7 +17,7 @@ export function* signUpSaga(): SagaIterator {
     const valid = yield call(isInvalid, regData);
     if (valid) return yield call(notifications, { message: valid });
     const { confirm, ...newRegData } = regData;
-    yield call(request, url.registration, newRegData, 'POST');
+    yield call(request, SERVER.registration, newRegData, 'POST');
     yield put(setIsRedirect(true));
     yield put(clearUserFields('registration'));
     yield call(notifications, { message: 'success_reg', type: 'success' });
@@ -28,14 +30,15 @@ export function* signUpSaga(): SagaIterator {
 }
 
 export function* signInSaga(): SagaIterator {
-  const authData = yield select(getAuthData);
+  const authData: IAuth = yield select(getAuthData);
   try {
     const valid = yield call(isInvalid, authData);
     if (valid) return yield call(notifications, { message: valid });
-    const response = yield call(request, url.auth, authData, 'POST');
+    const response = yield call(request, SERVER.auth, authData, 'POST');
     const token: string = yield call([response, 'text']);
     yield call([cookieMaster, 'setTokenInCookie'], token);
     yield put(setIsRedirect(true));
+    yield call([localStorage, 'setItem'], LS.login, authData.login);
     yield put(clearUserFields('auth'));
   } catch (err) {
     if (err === 'Incorrect credentials' || err === `User ${authData.login} was not found`) {
