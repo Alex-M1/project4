@@ -12,3 +12,13 @@ export const getIsGame = createSelector(
   getTicTac,
   (ticTac): boolean => ticTac.isGameEnd,
 );
+
+export const getMyOpponentGame = createSelector(
+    getTicTac,
+    (ticTac): any => ticTac.myOpponentGame,
+);
+
+export const getIsMyTurn = createSelector(
+    getTicTac,
+    (ticTac): any => ticTac.isMyTurn,
+);

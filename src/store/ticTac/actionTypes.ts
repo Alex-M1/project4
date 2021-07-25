@@ -1,9 +1,13 @@
 export enum ActionTypes {
   DO_STEP = '@@ticTac/DO_STEP',
   DO_BOT_STEP = '@@ticTac/DO_BOT_STEP',
+  SET_SQUARES = '@@ticTac/SET_SQUARES',
+  SET_TURN = '@@ticTac/SET_TURN',
   CLEAR_FIELDS = '@@ticTac/CLEAR_FIELDS',
   STEP_WITH_BOT = '@@ticTac/STEP_WITH_BOT',
+  STEP_WITH_OPPONENT = '@@ticTac/STEP_WITH_OPPONENT',
   SET_IS_GAME_END = '@@ticTac/SET_IS_GAME',
   SET_STEP_HISTORY = '@@ticTac/SET_STEP_HISTORY',
   CREATE_ROOM_CHANNEL = '@@ticTac/CREATE_ROOM_CHANNEL',
+  JOIN_MY_GAME = '@@ticTac/JOIN_MY_GAME',
 }

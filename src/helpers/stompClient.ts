@@ -4,7 +4,7 @@ import { SERVER } from 'constants/urls';
 import { eventChannel } from 'redux-saga';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
 import { addRoom } from 'store/room/actions';
-import { doBotStep, setStepHistory } from 'store/ticTac/actions';
+import { clearFields, doBotStep, joinMyGame, setStepHistory } from 'store/ticTac/actions';
 
 export let stompClient: CompatClient | null = null;
 
@@ -32,10 +32,46 @@ export const createRoomChanel = () => eventChannel((emit) => {
 });
 
 export const createStompChannel = (stompClient: CompatClient) => eventChannel((emit) => {
+  let gameStepSub;
+  let myRoomId = null;
+
   const roomsSub = stompClient.subscribe(
     SERVER.rooms,
-    ({ body }) => emit(addRoom(JSON.parse(body))),
-  );
+    ({ body }) => {
+      const login = localStorage.getItem(LOCAL_STORAGE.login);
+      const parsedBody = JSON.parse(body);
+      const myRoom = parsedBody.find((room) => room.creatorLogin === login);
+      if (myRoom) {
+        if (gameStepSub) {
+          myRoomId = null;
+          gameStepSub.unsubscribe();
+        }
+
+        gameStepSub = stompClient.subscribe(
+            `${SERVER.game}/${myRoom.id}`,
+            ({ body }) => {
+            const parsedBody = JSON.parse(body);
+            if (parsedBody.startTime && parsedBody.guestLogin !== 'Bot') {
+              // someone joined my game
+              myRoomId = myRoom.id;
+              emit(clearFields());
+              emit(joinMyGame({
+                id: myRoom.id,
+                guestLogin: parsedBody.guestLogin,
+                startTime: parsedBody.startTime,
+                stepDtoList: parsedBody.stepDtoList,
+                gameType: parsedBody.gameType,
+              }));
+            }
+            if (myRoom.id === myRoomId) {
+              emit(setStepHistory(parsedBody));
+            }
+          },
+        );
+      }
+
+      return emit(addRoom(parsedBody));
+  });
   const errorSub = stompClient.subscribe(SERVER.errors, ({ body }) => console.log(body));
   return () => {
     roomsSub.unsubscribe();

@@ -8,14 +8,20 @@ import { rootReducer } from 'store/rootReducer';
 import rootSaga from 'store/rootSaga';
 import App from './components/App';
 
-//@ts-ignore
-const devTools = window?.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const saga = createSagaMiddleware();
+const middlewares = [
+  applyMiddleware(saga),
+];
+//@ts-ignore
+if (window?.__REDUX_DEVTOOLS_EXTENSION__) {
+  //@ts-ignore
+  middlewares.push(window?.__REDUX_DEVTOOLS_EXTENSION__());
+}
+
 const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(saga),
-    devTools,
+    ...middlewares,
   ),
 );
 

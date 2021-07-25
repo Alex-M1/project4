@@ -41,5 +41,7 @@
   "Checkers": "Checkers",
   "winner": "Winner",
   "opposer": "Opposer",
-  "back_to_main_menu": "Back to main menu"
+  "back_to_main_menu": "Back to main menu",
+  "your_turn": "Your turn",
+  "opponent_turn": "Opponent's turn"
 }

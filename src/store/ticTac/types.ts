@@ -8,15 +8,34 @@ export interface ITicTac {
     count: number;
     isUserStep: boolean;
   };
-  isGameEnd: boolean
+  isGameEnd: boolean;
+  isMyTurn: boolean;
+  myOpponentGame: {
+    id: string;
+    guestLogin: string;
+    startTime: number;
+    gameType: string;
+    stepDtoList: string[];
+  }
 }
 
 export interface IPlayWithBot {
   id: string,
   square: number
 }
+export interface IPlayWithOpponent {
+  id: string,
+  square: number
+}
 export interface IStepHistory {
-  winner: string
+  winner: string;
+  field?: string[];
+  stepDto?: {
+    login: string;
+    step: string;
+    time: number;
+    id: string;
+  }
 }
 
 export type TActions = typeof Actions

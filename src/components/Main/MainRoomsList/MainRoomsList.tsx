@@ -6,16 +6,33 @@ import { IRoom } from 'store/room/types';
 import { StP, StRooms, StRoomsContainer } from './styled';
 import MainRoomsItem from '../MainRoomsItem';
 import AddRoomBtn from '../AddRoomBtn';
+import { useHistory } from 'react-router-dom';
+import { CLIENT } from 'constants/urls';
+import { IGameData } from 'common/types/constantsTypes';
+import { GAME_SETTINGS, LOCAL_STORAGE as LS } from 'constants/constants';
 
 interface IProps {
     rooms: IRoom[],
-    socketConnection: () => void
+    socketConnection: () => void,
+    myOpponentGame: any;
 }
 
-const MainRoomsList: React.FC<IProps> = ({ rooms, socketConnection }) => {
+const MainRoomsList: React.FC<IProps> = ({ rooms, socketConnection, myOpponentGame }) => {
+    const history = useHistory();
     useEffect(() => {
         socketConnection();
     }, []);
+    useEffect(() => {
+        if (myOpponentGame.id) {
+            history.push(`${CLIENT.ticTacClient}/${myOpponentGame.id}`);
+            const gameData: IGameData = {
+                roomId: myOpponentGame.id,
+                gameType: myOpponentGame.gameType,
+                playWith: GAME_SETTINGS.user,
+            };
+            localStorage.setItem(LS.gameOptions, JSON.stringify(gameData));
+        }
+    }, [myOpponentGame]);
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
     return (

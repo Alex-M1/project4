@@ -41,5 +41,7 @@
   "Checkers": "Шашки",
   "winner": "Победитель",
   "opposer": "Противник",
-  "back_to_main_menu": "На главную страницу"
+  "back_to_main_menu": "На главную страницу",
+  "your_turn": "Ваш ход",
+  "opponent_turn": "Ход оппонента"
 }
