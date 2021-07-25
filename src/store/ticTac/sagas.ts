@@ -1,16 +1,17 @@
 import { SagaIterator } from '@redux-saga/types';
 import { LOCAL_STORAGE as LS } from 'constants/constants';
 import { SERVER as S, SERVER } from 'constants/urls';
-import { takeEvery, call, put, take } from 'redux-saga/effects';
+import { takeEvery, call, put, take, delay } from 'redux-saga/effects';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
 import { notifications } from 'src/helpers/notification';
 import { createRoomChanel, stompClient } from 'src/helpers/stompClient';
-import { createRoomChanel as roomChannel, doBotStep, doStep, setIsGameEnd, setStepHistory, stepWithBot } from './actions';
+import { clearFields, createRoomChanel as roomChannel, doBotStep, doStep, setIsGameEnd, setStepHistory, stepWithBot } from './actions';
 import { ActionTypes as AT } from './actionTypes';
 
 export function* roomChannelSaga({ payload }: ReturnType<typeof roomChannel>): SagaIterator {
   try {
     yield put(setIsGameEnd(false));
+    yield put(clearFields());
     yield call(
       [stompClient, 'send'],
       SERVER.joinRoom,
@@ -71,6 +72,7 @@ export function* doBotStepSaga({ payload }: ReturnType<typeof doBotStep>): SagaI
       },
     };
     yield call([stompClient, 'send'], S.doStep, { uuid: parsedGameData.roomId }, JSON.stringify(stepBody));
+    yield delay(600);
     yield put(doStep(payload));
   } catch (err) {
     yield call(notifications, { message: 'something_wrong' });

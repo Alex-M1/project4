@@ -4,6 +4,7 @@ import { IPlayWithBot, IStepHistory } from './types';
 
 export const doStep = (payload: number) => action(AT.DO_STEP, payload);
 export const doBotStep = (payload: number) => action(AT.DO_BOT_STEP, payload);
+export const clearFields = () => action(AT.CLEAR_FIELDS);
 export const stepWithBot = (payload: IPlayWithBot) => action(AT.STEP_WITH_BOT, payload);
 export const setIsGameEnd = (payload: boolean) => action(AT.SET_IS_GAME_END, payload);
 export const setStepHistory = (payload: IStepHistory) => action(AT.SET_STEP_HISTORY, payload);

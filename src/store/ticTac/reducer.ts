@@ -29,6 +29,15 @@ export const ticTacReducer: TReducer = (state = initialState, action) => {
         ...state,
         isGameEnd: action.payload,
       };
+    case AT.CLEAR_FIELDS:
+      return {
+        ...state,
+        squares: Array(9).fill(null),
+        steps: {
+          count: 0,
+          isUserStep: null,
+        },
+      };
     default: return state;
   }
 };
