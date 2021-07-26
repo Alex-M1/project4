@@ -68,7 +68,7 @@ const TicTac: React.FC<IProps> = ({
         key={uuidv4()}
         square={i}
         content={el}
-        onClick={(square) => stepHandler(square)}
+        onClick={stepHandler}
         isGameEnd={isGameEnd}
       />
     ));
