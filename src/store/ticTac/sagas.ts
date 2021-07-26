@@ -33,7 +33,7 @@ export function* roomChannelSaga({ payload }: ReturnType<typeof roomChannel>): S
           SERVER.joinRoom,
           {},
           JSON.stringify({
-            guestLogin: parsedGameData.playWith === GAME_SETTINGS.bot ? 'Bot' : myLogin,
+            guestLogin: parsedGameData.playWith === GAME_SETTINGS.bot ? GAME_SETTINGS.bot : myLogin,
             id: parsedGameData.roomId,
           }),
       );
@@ -105,7 +105,7 @@ export function* doBotStepSaga({ payload }: ReturnType<typeof doBotStep>): SagaI
     const stepBody = {
       gameType: parsedGameData.gameType,
       stepDto: {
-        login: 'Bot',
+        login: GAME_SETTINGS.bot,
         step: payload.toString(),
         time: Date.now(),
         id: parsedGameData.roomId,

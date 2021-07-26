@@ -1,6 +1,6 @@
 import { TIC_TAC, VIEW_OPTIONS } from 'constants/constants';
 import styled from 'styled-components';
-import { IStyled } from '../_common_/types/styledTypes';
+import { IStyled } from 'common/types/styledTypes';
 
 export const StTicTacContainer = styled.div`
   display: flex;

@@ -1,5 +1,5 @@
 import { CompatClient, Stomp } from '@stomp/stompjs';
-import { LOCAL_STORAGE } from 'constants/constants';
+import { GAME_SETTINGS, LOCAL_STORAGE } from 'constants/constants';
 import { SERVER } from 'constants/urls';
 import { eventChannel } from 'redux-saga';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
@@ -51,7 +51,7 @@ export const createStompChannel = (stompClient: CompatClient) => eventChannel((e
             `${SERVER.game}/${myRoom.id}`,
             ({ body }) => {
             const parsedBody = JSON.parse(body);
-            if (parsedBody.startTime && parsedBody.guestLogin !== 'Bot') {
+            if (parsedBody.startTime && parsedBody.guestLogin !== GAME_SETTINGS.bot) {
               // someone joined my game
               myRoomId = myRoom.id;
               emit(clearFields());
