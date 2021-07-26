@@ -2,11 +2,15 @@ import { connect } from 'react-redux';
 import { chooseCell, doStep } from 'store/checkers/actions';
 import { getFieldItem, getPossibleStepsCells } from 'store/checkers/selectors';
 import { AppStateType } from 'store/rootReducer';
-import Cell, { IProps } from './Cell';
+import Cell from './Cell';
 
-const mapStateToProps = (state: AppStateType, { cellNumber }: IProps) => ({
-  fieldItem: getFieldItem(state, cellNumber),
-  possibleCell: getPossibleStepsCells(state, cellNumber),
+interface IProps {
+  cellNumber: number,
+}
+
+const mapStateToProps = (state: AppStateType, props: IProps) => ({
+  fieldItem: getFieldItem(state, props.cellNumber),
+  possibleCell: getPossibleStepsCells(state, props.cellNumber),
 });
 
 const mapDispatchToProps = {

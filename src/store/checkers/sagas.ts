@@ -3,6 +3,7 @@ import { SERVER } from 'constants/urls';
 import { SagaIterator } from 'redux-saga';
 import { call, put, select, take, takeEvery } from 'redux-saga/effects';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
+import { notifications } from 'src/helpers/notification';
 import { createCheckerChannel, stompClient } from 'src/helpers/stompClient';
 import { chooseCell, doBotStep, doStep, setPossibleSteps } from './actions';
 import { ActionTypes as AT } from './actionTypes';
@@ -26,7 +27,9 @@ export function* checkerChannelSaga(): SagaIterator {
       const action = yield take(checkerChannel);
       yield put(action);
     }
-  } catch (err) { console.log(err); }
+  } catch (err) {
+    yield call(notifications, { message: 'something_wrong' });
+  }
 }
 
 export function* chooseCellSaga({ payload }: ReturnType<typeof chooseCell>) {
@@ -50,9 +53,9 @@ export function* chooseCellSaga({ payload }: ReturnType<typeof chooseCell>) {
       { uuid: parsedGameData.roomId },
       JSON.stringify(stepBody),
     );
-
-    console.log(payload);
-  } catch (err) { console.log(err); }
+  } catch (err) {
+    yield call(notifications, { message: 'something_wrong' });
+  }
 }
 
 export function* doStepSaga({ payload }: ReturnType<typeof doStep>): SagaIterator {
@@ -88,27 +91,33 @@ export function* doStepSaga({ payload }: ReturnType<typeof doStep>): SagaIterato
         }),
       );
     }
-  } catch (err) { console.log(err); }
+  } catch (err) {
+    yield call(notifications, { message: 'something_wrong' });
+  }
 }
 
 export function* doBotStepSaga({ payload }: ReturnType<typeof doBotStep>): SagaIterator {
-  const gameData = yield call([localStorage, 'getItem'], LS.gameOptions);
-  const parsedGameData: IGameData = yield call([JSON, 'parse'], gameData);
-  const stepBody = {
-    gameType: parsedGameData.gameType,
-    stepDto: {
-      login: 'Bot',
-      step: payload,
-      time: Date.now(),
-      id: parsedGameData.roomId,
-    },
-  };
-  yield call(
-    [stompClient, 'send'],
-    SERVER.doStep,
-    { uuid: parsedGameData.roomId },
-    JSON.stringify(stepBody),
-  );
+  try {
+    const gameData = yield call([localStorage, 'getItem'], LS.gameOptions);
+    const parsedGameData: IGameData = yield call([JSON, 'parse'], gameData);
+    const stepBody = {
+      gameType: parsedGameData.gameType,
+      stepDto: {
+        login: 'Bot',
+        step: payload,
+        time: Date.now(),
+        id: parsedGameData.roomId,
+      },
+    };
+    yield call(
+      [stompClient, 'send'],
+      SERVER.doStep,
+      { uuid: parsedGameData.roomId },
+      JSON.stringify(stepBody),
+    );
+  } catch (err) {
+    yield call(notifications, { message: 'something_wrong' });
+  }
 }
 
 export default function* checkerWatcher() {

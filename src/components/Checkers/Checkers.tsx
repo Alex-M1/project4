@@ -17,7 +17,7 @@ const Checkers: React.FC<IProps> = ({ connectCheckersChannel }) => {
   const { colors, theme } = useTheme();
   const rows = CHESS_DESK.ROWS;
   const cols = CHESS_DESK.COLS;
-  let cellNumber = 0;
+  let cellNumber = CHESS_DESK.CELLS_NUM_INIT;
   return (
     <DndProvider backend={HTML5Backend}>
       <StContainer>

@@ -51,7 +51,9 @@ export function* leaveRoomSaga() {
       { uuid: parsedGameData.roomId },
       JSON.stringify({ guestLogin: login, id: parsedGameData.roomId }),
     );
-  } catch (err) { console.log(err); }
+  } catch (err) {
+    yield call(notifications, { message: 'something_wrong' });
+  }
 }
 
 export default function* watcherGame() {
