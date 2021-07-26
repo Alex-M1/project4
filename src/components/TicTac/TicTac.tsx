@@ -74,8 +74,8 @@ const TicTac: React.FC<IProps> = ({
     ));
   }, [squares]);
   const message = useMemo(() => {
-    if (winnerMessage) return t(winnerMessage);
-    return turn ? t('your_turn') : t('opponent_turn'); 
+    if (winnerMessage) return winnerMessage;
+    return turn ? 'your_turn' : 'opponent_turn'; 
   }, [winnerMessage, turn]);
   return (
     <StTicTacContainer>
@@ -83,7 +83,7 @@ const TicTac: React.FC<IProps> = ({
         theme={theme}
         colors={colors}
       >
-        {message}
+        {t(message)}
       </StTurnText>
       <StTicTacField >
         {renderSquares}
