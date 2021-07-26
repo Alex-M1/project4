@@ -129,12 +129,15 @@ export function* stepHistory({ payload }: ReturnType<typeof setStepHistory>): Sa
       yield put(setSquares(field));
     }
 
-    if (winner) {
+    if (winner !== undefined) {
       yield put(setIsGameEnd(true));
-      
-      winner === login
-        ? yield put(setWinner('you_win'))
-        : yield put(setWinner('you_loose'));
+      yield put(clearFields());
+
+      winner === null
+        ? yield put(setWinner('draw'))
+        : winner === login
+          ? yield put(setWinner('you_win'))
+          : yield put(setWinner('you_loose'));
     }
   } catch (err) {
     yield call(notifications, { message: 'something_wrong' });

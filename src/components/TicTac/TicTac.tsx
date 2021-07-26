@@ -1,9 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { ICreateRoomChanel, IPlayWithBot, IPlayWithOpponent } from 'store/ticTac/types';
 import { v4 as uuidv4 } from 'uuid';
 import { GAME_SETTINGS, LOCAL_STORAGE as LS } from 'constants/constants';
 import { useTranslation } from 'react-i18next';
 import { IMyOpponentGame } from 'store/room/types';
+import { getIsMyTurn } from 'store/ticTac/selectors';
 import { StTicTacContainer, StTicTacField, StTurnText } from './styled';
 import TicTacItem from './TicTacItem';
 import { useTheme } from '../hooks/useTheme';
@@ -11,7 +13,6 @@ import { useTheme } from '../hooks/useTheme';
 interface IProps {
   squares: string[],
   setTurn: (payload: boolean) => void,
-  isMyTurn: boolean;
   setWinner: (payload: string) => void;
   isGameEnd: boolean,
   stepWithBot: (payload: IPlayWithBot) => void,
@@ -23,7 +24,6 @@ interface IProps {
 
 const TicTac: React.FC<IProps> = ({
   squares,
-  isMyTurn,
   setWinner,
   isGameEnd,
   stepWithBot,
@@ -32,10 +32,9 @@ const TicTac: React.FC<IProps> = ({
   stepWithOpponent,
   createRoomChanel,
 }) => {
-  const [turn, setTurn] = useState(isMyTurn);
   const data = JSON.parse(localStorage.getItem(LS.gameOptions));
+  const turn = useSelector(getIsMyTurn);
   useEffect(() => {
-    setTurn(true);
     setWinner('');
   }, []);
   useEffect(() => {
@@ -46,12 +45,12 @@ const TicTac: React.FC<IProps> = ({
       });
     }
   }, [myOpponentGame]);
-  useEffect(() => {
-    setTurn(isMyTurn);
-  }, [isMyTurn]);
   const { t } = useTranslation();
   const { colors, theme } = useTheme();
   const stepHandler = (square: number) => {
+    if (!turn) {
+      return;
+    }
     if (data && data.playWith === GAME_SETTINGS.user) {
       stepWithOpponent({ square });
     } else {
