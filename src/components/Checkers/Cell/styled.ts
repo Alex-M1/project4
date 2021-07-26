@@ -7,8 +7,8 @@ interface IStCellStyled extends IStyled {
 }
 
 export const StCell = styled.div <IStCellStyled>`
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border: 1px solid ${(props) => changeTheme(props, 'textColor')};
   margin: 1px;
   color: ${(props) => changeTheme(props, 'textColor')};

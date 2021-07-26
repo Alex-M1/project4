@@ -17,10 +17,16 @@ export const initialState: ITicTac = {
     startTime: null,
     stepDtoList: null,
   },
+  winner: '',
 };
 
 export const ticTacReducer: TReducer = (state = initialState, action) => {
   switch (action.type) {
+    case AT.SET_WINNER: 
+      return {
+        ...state,
+        winner: action.payload,
+      };
     case AT.DO_STEP:
       state.squares[action.payload] = state.steps.count % 2 === 0
         ? TIC_TAC_ITEM.X : TIC_TAC_ITEM.O;

@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { IMyOpponentGame } from 'store/room/types';
 import { AppStateType } from 'store/rootReducer';
 
 export const getTicTac = (state: AppStateType) => state.ticTac;
@@ -15,10 +16,15 @@ export const getIsGame = createSelector(
 
 export const getMyOpponentGame = createSelector(
     getTicTac,
-    (ticTac): any => ticTac.myOpponentGame,
+    (ticTac): IMyOpponentGame => ticTac.myOpponentGame,
 );
 
 export const getIsMyTurn = createSelector(
     getTicTac,
-    (ticTac): any => ticTac.isMyTurn,
+    (ticTac): boolean => ticTac.isMyTurn,
+);
+
+export const getWinner = createSelector(
+  getTicTac,
+  (ticTac): string => ticTac.winner,
 );

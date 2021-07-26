@@ -1,38 +1,45 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { IPlayWithBot, IPlayWithOpponent } from 'store/ticTac/types';
+import { ICreateRoomChanel, IPlayWithBot, IPlayWithOpponent } from 'store/ticTac/types';
 import { v4 as uuidv4 } from 'uuid';
 import { GAME_SETTINGS, LOCAL_STORAGE as LS } from 'constants/constants';
 import { useTranslation } from 'react-i18next';
+import { IMyOpponentGame } from 'store/room/types';
 import { IMatch } from '../_common_/types/constantsTypes';
 import { StTicTacContainer, StTicTacField, StTurnText } from './styled';
 import TicTacItem from './TicTacItem';
+import { useTheme } from '../hooks/useTheme';
 
 interface IProps {
   match: IMatch,
   squares: string[],
-  isGameEnd: boolean,
-  createRoomChanel: (payload: any) => void,
-  stepWithBot: (payload: IPlayWithBot) => void,
-  stepWithOpponent: (payload: IPlayWithOpponent) => void,
   setTurn: (payload: boolean) => void,
-  myOpponentGame: any;
   isMyTurn: boolean;
+  setWinner: (payload: string) => void;
+  isGameEnd: boolean,
+  stepWithBot: (payload: IPlayWithBot) => void,
+  winnerMessage: string;
+  myOpponentGame: IMyOpponentGame;
+  createRoomChanel: (payload: ICreateRoomChanel) => void,
+  stepWithOpponent: (payload: IPlayWithOpponent) => void,
 }
 
 const TicTac: React.FC<IProps> = ({
   match,
   squares,
+  isMyTurn,
+  setWinner,
   isGameEnd,
   stepWithBot,
-  stepWithOpponent,
-  isMyTurn,
-  createRoomChanel,
+  winnerMessage,
   myOpponentGame,
+  stepWithOpponent,
+  createRoomChanel,
 }) => {
   const [turn, setTurn] = useState(isMyTurn);
   const data = JSON.parse(localStorage.getItem(LS.gameOptions));
   useEffect(() => {
     setTurn(true);
+    setWinner('');
   }, []);
   useEffect(() => {
     if (!myOpponentGame.id) {
@@ -46,6 +53,7 @@ const TicTac: React.FC<IProps> = ({
     setTurn(isMyTurn);
   }, [isMyTurn]);
   const { t } = useTranslation();
+  const { colors, theme } = useTheme();
   const stepHandler = (square: number) => {
     if (data && data.playWith === GAME_SETTINGS.user) {
       stepWithOpponent({ square, id: match.params.id });
@@ -65,13 +73,18 @@ const TicTac: React.FC<IProps> = ({
       />
     ));
   }, [squares]);
+  const message = useMemo(() => {
+    if (winnerMessage) return t(winnerMessage);
+    return turn ? t('your_turn') : t('opponent_turn'); 
+  }, [winnerMessage, turn]);
   return (
     <StTicTacContainer>
-      {
-        data && data.playWith === GAME_SETTINGS.user && (
-          <StTurnText>{ turn ? t('your_turn') : t('opponent_turn') }</StTurnText>
-        )
-      }
+      <StTurnText
+        theme={theme}
+        colors={colors}
+      >
+        {message}
+      </StTurnText>
       <StTicTacField >
         {renderSquares}
       </StTicTacField>

@@ -1,23 +1,25 @@
 import { AppStateType } from 'store/rootReducer';
 import { connect } from 'react-redux';
-import { doStep, stepWithBot, createRoomChanel, stepWithOpponent, setTurn } from 'store/ticTac/actions';
-import { getIsGame, getIsMyTurn, getMyOpponentGame, getSquares } from 'store/ticTac/selectors';
+import { doStep, stepWithBot, createRoomChanel, stepWithOpponent, setTurn, setWinner } from 'store/ticTac/actions';
+import { getIsGame, getIsMyTurn, getMyOpponentGame, getSquares, getWinner } from 'store/ticTac/selectors';
 import { getRoomList } from 'store/room/selectors';
 import TicTac from './TicTac';
 
 const mapStateToProps = (state: AppStateType) => ({
+  winnerMessage: getWinner(state),
+  rooms: getRoomList(state),
   squares: getSquares(state),
   isGameEnd: getIsGame(state),
-  rooms: getRoomList(state),
-  myOpponentGame: getMyOpponentGame(state),
   isMyTurn: getIsMyTurn(state),
+  myOpponentGame: getMyOpponentGame(state),
 });
 
 const mapDispatchToProps = {
   doStep,
+  setTurn,
+  setWinner,
   stepWithBot,
   stepWithOpponent,
-  setTurn,
   createRoomChanel,
 };
 

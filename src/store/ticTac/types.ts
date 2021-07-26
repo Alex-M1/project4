@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+import { IMyOpponentGame, IStepDtoList } from 'store/room/types';
 import { ActionType } from 'typesafe-actions';
 import * as Actions from './actions';
 
@@ -10,13 +11,21 @@ export interface ITicTac {
   };
   isGameEnd: boolean;
   isMyTurn: boolean;
-  myOpponentGame: {
-    id: string;
-    guestLogin: string;
-    startTime: number;
-    gameType: string;
-    stepDtoList: string[];
-  }
+  myOpponentGame: IMyOpponentGame;
+  winner: string;
+}
+
+export interface IJoinMyGame {
+    id: string,
+    guestLogin: string,
+    startTime: string,
+    stepDtoList: Array<IStepDtoList>,
+    gameType: string,
+}
+
+export interface ICreateRoomChanel {
+  roomId: string,
+  myOpponentGame: IMyOpponentGame,
 }
 
 export interface IPlayWithBot {

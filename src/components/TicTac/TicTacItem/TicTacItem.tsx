@@ -5,8 +5,8 @@ import { StTicTacItem } from './styled';
 interface IProps {
   square: number;
   content: string;
+  onClick: (square: number) => void;
   isGameEnd: boolean;
-  onClick: (square: number) => void
 }
 
 const TicTacItem: React.FC<IProps> = ({ isGameEnd, square, content, onClick }) => {

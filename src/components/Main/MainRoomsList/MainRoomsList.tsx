@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'src/components/hooks/useTheme';
 import Title from 'common/Title';
-import { IRoom } from 'store/room/types';
+import { IMyOpponentGame, IRoom } from 'store/room/types';
 import { useHistory } from 'react-router-dom';
 import { CLIENT } from 'constants/urls';
 import { IGameData } from 'common/types/constantsTypes';
@@ -13,8 +13,8 @@ import { StP, StRooms, StRoomsContainer } from './styled';
 
 interface IProps {
     rooms: IRoom[],
+    myOpponentGame: IMyOpponentGame;
     socketConnection: () => void,
-    myOpponentGame: any;
 }
 
 const MainRoomsList: React.FC<IProps> = ({ rooms, socketConnection, myOpponentGame }) => {
@@ -24,7 +24,7 @@ const MainRoomsList: React.FC<IProps> = ({ rooms, socketConnection, myOpponentGa
     }, []);
     useEffect(() => {
         if (myOpponentGame.id) {
-            history.push(`${CLIENT.ticTacClient}/${myOpponentGame.id}`);
+            history.push(`${CLIENT.ticTacClient}`);
             const gameData: IGameData = {
                 roomId: myOpponentGame.id,
                 gameType: myOpponentGame.gameType,

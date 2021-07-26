@@ -1,5 +1,6 @@
 import { TIC_TAC, VIEW_OPTIONS } from 'constants/constants';
 import styled from 'styled-components';
+import { IStyled } from '../_common_/types/styledTypes';
 
 export const StTicTacContainer = styled.div`
   display: flex;
@@ -17,8 +18,9 @@ export const StTicTacField = styled.div`
   flex-wrap: wrap;
 `;
 
-export const StTurnText = styled.div`
+export const StTurnText = styled.div <IStyled>`
   margin: 0 0 15px;
   font-size: 30px;
   font-weight: 700;
+  color: ${({ colors, theme }) => colors[theme].textColor};
 `;

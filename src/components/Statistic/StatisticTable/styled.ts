@@ -4,7 +4,7 @@ import { changeTheme } from 'src/helpers/changeTheme';
 
 export const StWrapper = styled.div <IStyled>`
   width: 47%;
-  height: 75%;
+  height: 85%;
   border-radius: 12px;
   overflow: hidden;
   color: ${(props) => changeTheme(props, 'textColor')};
