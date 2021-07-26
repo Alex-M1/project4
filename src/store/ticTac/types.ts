@@ -3,6 +3,8 @@ import { IMyOpponentGame, IStepDtoList } from 'store/room/types';
 import { ActionType } from 'typesafe-actions';
 import * as Actions from './actions';
 
+export type TStepHistory = Array<string> | string
+
 export interface ITicTac {
   squares: string[] | null;
   steps: {
@@ -29,11 +31,9 @@ export interface ICreateRoomChanel {
 }
 
 export interface IPlayWithBot {
-  id: string,
   square: number
 }
 export interface IPlayWithOpponent {
-  id: string,
   square: number
 }
 export interface IStepHistory {

@@ -4,13 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { GAME_SETTINGS, LOCAL_STORAGE as LS } from 'constants/constants';
 import { useTranslation } from 'react-i18next';
 import { IMyOpponentGame } from 'store/room/types';
-import { IMatch } from 'common/types/constantsTypes';
 import { StTicTacContainer, StTicTacField, StTurnText } from './styled';
 import TicTacItem from './TicTacItem';
 import { useTheme } from '../hooks/useTheme';
 
 interface IProps {
-  match: IMatch,
   squares: string[],
   setTurn: (payload: boolean) => void,
   isMyTurn: boolean;
@@ -24,7 +22,6 @@ interface IProps {
 }
 
 const TicTac: React.FC<IProps> = ({
-  match,
   squares,
   isMyTurn,
   setWinner,
@@ -44,7 +41,7 @@ const TicTac: React.FC<IProps> = ({
   useEffect(() => {
     if (!myOpponentGame.id) {
       createRoomChanel({
-        roomId: match.params.id,
+        roomId: data.roomId,
         myOpponentGame,
       });
     }
@@ -56,9 +53,9 @@ const TicTac: React.FC<IProps> = ({
   const { colors, theme } = useTheme();
   const stepHandler = (square: number) => {
     if (data && data.playWith === GAME_SETTINGS.user) {
-      stepWithOpponent({ square, id: match.params.id });
+      stepWithOpponent({ square });
     } else {
-      stepWithBot({ square, id: match.params.id });
+      stepWithBot({ square });
     }
   };
 

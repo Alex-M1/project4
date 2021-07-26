@@ -88,6 +88,7 @@
         "classes": false
       }
     ],
+    "no-plusplus": "off",
     "no-mixed-operators": "off",
     "no-param-reassign": "off",
     "jsx-a11y/alt-text": "off",
