@@ -6,5 +6,5 @@ export const StContainer = styled.div <IStyled>`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 90%;
+  height: 85%;
 `;

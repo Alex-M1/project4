@@ -1,10 +1,10 @@
 import { CompatClient, Stomp } from '@stomp/stompjs';
-import { LOCAL_STORAGE } from 'constants/constants';
+import { LOCAL_STORAGE as LS } from 'constants/constants';
 import { SERVER } from 'constants/urls';
 import { eventChannel } from 'redux-saga';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
 import { doBotStep as doBotStepChecker, refreshField, setPossibleSteps } from 'store/checkers/actions';
-import { addRoom } from 'store/room/actions';
+import { addRoom, redirectToRoom } from 'store/room/actions';
 import { doBotStep, setStepHistory } from 'store/ticTac/actions';
 import { cookieMaster } from './cookieMaster';
 
@@ -18,8 +18,8 @@ export const connection = (token: string) => {
 };
 
 export const createRoomChanel = () => eventChannel((emit) => {
-  if (!stompClient) connection(cookieMaster.getCookie(LOCAL_STORAGE.token));
-  const gameData: IGameData = JSON.parse(localStorage.getItem(LOCAL_STORAGE.gameOptions));
+  if (!stompClient) connection(cookieMaster.getCookie(LS.token));
+  const gameData: IGameData = JSON.parse(localStorage.getItem(LS.gameOptions));
   const botStep = stompClient.subscribe(
     `${SERVER.topicBotStep}/${gameData.roomId}`,
     ({ body }) => emit(doBotStep(JSON.parse(body))),
@@ -35,8 +35,8 @@ export const createRoomChanel = () => eventChannel((emit) => {
 });
 
 export const createCheckerChannel = () => eventChannel((emit) => {
-  if (!stompClient) connection(cookieMaster.getCookie(LOCAL_STORAGE.token));
-  const gameData: IGameData = JSON.parse(localStorage.getItem(LOCAL_STORAGE.gameOptions));
+  if (!stompClient) connection(cookieMaster.getCookie(LS.token));
+  const gameData: IGameData = JSON.parse(localStorage.getItem(LS.gameOptions));
   const botStep = stompClient.subscribe(
     `${SERVER.topicBotStep}/${gameData.roomId}`,
     ({ body }) => emit(doBotStepChecker(body)),
@@ -66,12 +66,36 @@ export const createCheckerChannel = () => eventChannel((emit) => {
 });
 
 export const createStompChannel = (stompClient: CompatClient) => eventChannel((emit) => {
+  let subMyRoom;
   const roomsSub = stompClient.subscribe(
     SERVER.rooms,
-    ({ body }) => emit(addRoom(JSON.parse(body))),
+    ({ body }) => {
+      const rooms = JSON.parse(body);
+      emit(addRoom(rooms));
+      rooms.forEach((el) => {
+        if (el.creatorLogin === localStorage.getItem(LS.login)) {
+          subMyRoom = stompClient.subscribe(
+            `${SERVER.game}/${el.id}`,
+            ({ body }) => {
+              const message = JSON.parse(body);
+              if (message.field) {
+                emit(refreshField(message.field.gameField));
+              }
+              if (message.guestLogin) {
+                const options: IGameData = JSON.parse(localStorage.getItem(LS.gameOptions));
+                options.playWith = message.guestLogin;
+                localStorage.setItem(LS.gameOptions, JSON.stringify(options));
+                emit(redirectToRoom(message.gameType));
+              }
+            },
+          );
+        }
+      });
+    },
   );
   const errorSub = stompClient.subscribe(SERVER.errors, ({ body }) => console.log(body));
   return () => {
+    subMyRoom.unsubscribe();
     roomsSub.unsubscribe();
     errorSub.unsubscribe();
   };

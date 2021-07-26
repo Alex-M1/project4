@@ -11,3 +11,7 @@ export const getGameType = createSelector(
   getRoom,
   (data): string => data.gameType,
 );
+export const getToRoom = createSelector(
+  getRoom,
+  (data): string => data.toRoom,
+);

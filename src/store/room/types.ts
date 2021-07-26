@@ -11,6 +11,7 @@ export interface IRoom {
 export interface IInitialState {
   rooms: Array<IRoom>;
   gameType: string;
+  toRoom: string;
 }
 
 export type TAction = typeof Actions
