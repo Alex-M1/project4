@@ -2,7 +2,7 @@ import { CompatClient, Stomp } from '@stomp/stompjs';
 import { GAME_SETTINGS, LOCAL_STORAGE } from 'constants/constants';
 import { SERVER } from 'constants/urls';
 import { eventChannel } from 'redux-saga';
-import { IGameData } from 'src/components/_common_/types/constantsTypes';
+import { IGameData } from 'common/types/constantsTypes';
 import { addRoom } from 'store/room/actions';
 import { clearFields, doBotStep, joinMyGame, setStepHistory } from 'store/ticTac/actions';
 

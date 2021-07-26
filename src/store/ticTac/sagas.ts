@@ -2,7 +2,7 @@ import { SagaIterator } from '@redux-saga/types';
 import { GAME_SETTINGS, GAME_TYPE, LOCAL_STORAGE as LS } from 'constants/constants';
 import { SERVER as S, SERVER } from 'constants/urls';
 import { takeEvery, call, put, take, delay } from 'redux-saga/effects';
-import { IGameData } from 'src/components/_common_/types/constantsTypes';
+import { IGameData } from 'common/types/constantsTypes';
 import { notifications } from 'src/helpers/notification';
 import { createRoomChanel, stompClient } from 'src/helpers/stompClient';
 import {

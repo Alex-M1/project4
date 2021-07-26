@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDrop } from 'react-dnd';
 import { useTheme } from 'src/components/hooks/useTheme';
-import { ICell } from 'src/components/_common_/types/constantsTypes';
+import { ICell } from 'common/types/constantsTypes';
 import { VIEW_OPTIONS } from 'constants/constants';
 import Checker from '../Checker';
 import { StCell } from './styled';

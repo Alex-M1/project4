@@ -1,9 +1,9 @@
 import React from 'react';
+import Title from 'common/Title';
 import ModalButtons from './ModalButtons';
 import Portal from '../Portal';
 import { StModal, StModalContainer } from './styled';
 import { useTheme } from '../hooks/useTheme';
-import Title from '../_common_/Title';
 import ModalCross from './ModalCross';
 import ModalSelect from './ModalSelect';
 

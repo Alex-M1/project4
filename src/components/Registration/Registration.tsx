@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from '../_common_/Title';
+import Title from 'common/Title';
 import RegForm from './RegForm';
 import RegBtn from './RegBtn';
 import { StContainer, StGlobalCredentials } from '../Auth/styled';

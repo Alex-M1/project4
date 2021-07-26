@@ -1,4 +1,4 @@
-import { ICell } from 'src/components/_common_/types/constantsTypes';
+import { ICell } from 'common/types/constantsTypes';
 
 export const CELL:ICell[][] = [
   [

@@ -1,6 +1,6 @@
 import { changeTheme } from 'src/helpers/changeTheme';
 import styled from 'styled-components';
-import { IStyled } from '../_common_/types/styledTypes';
+import { IStyled } from 'common/types/styledTypes';
 
 export const StHeader = styled.div<IStyled>`
     display: flex;

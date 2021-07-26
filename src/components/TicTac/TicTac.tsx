@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { GAME_SETTINGS, LOCAL_STORAGE as LS } from 'constants/constants';
 import { useTranslation } from 'react-i18next';
 import { IMyOpponentGame } from 'store/room/types';
-import { IMatch } from '../_common_/types/constantsTypes';
+import { IMatch } from 'common/types/constantsTypes';
 import { StTicTacContainer, StTicTacField, StTurnText } from './styled';
 import TicTacItem from './TicTacItem';
 import { useTheme } from '../hooks/useTheme';
