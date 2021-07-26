@@ -23,8 +23,8 @@ const App: React.FC = () => {
           <Route exact path={CLIENT.authClient} component={Auth} />
           <Route path={CLIENT.regClient} component={Registration} />
           <Route path={CLIENT.main} component={Main} />
-          <Route path={`${CLIENT.ticTacClient}/:id`} component={TicTac} />
-          <Route path={`${CLIENT.checkers}/:id`} component={Checkers} />
+          <Route path={CLIENT.ticTacClient} component={TicTac} />
+          <Route path={CLIENT.checkers} component={Checkers} />
           <Route path={CLIENT.statistic} component={Statistic} />
         </Switch>
       </Router>

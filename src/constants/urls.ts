@@ -23,6 +23,8 @@ export const SERVER = {
   socket: 'ws://35.176.167.155:8082',
   gameMenu: '/game-menu',
   joinRoom: '/radioactive/join-room',
+  userTopic: '/user/topic/game/',
+  leaveGame: '/radioactive/leave-the-game',
   createRoom: '/radioactive/create-room',
   updateRoom: '/radioactive/update-room',
   getBotStep: '/radioactive/get-bot-step',
@@ -30,5 +32,5 @@ export const SERVER = {
   getStepOrder: '/radioactive/get-step-order',
   statisticByUsername: '/statistic/search-by-username',
   registration: '/registration/reg',
-  getPossibleSteps: '/get-possible-steps',
+  getPossibleSteps: '/radioactive/get-possible-steps',
 };

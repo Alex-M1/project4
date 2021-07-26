@@ -1,30 +1,27 @@
 import React, { useEffect, useMemo } from 'react';
 import { IPlayWithBot } from 'store/ticTac/types';
 import { v4 as uuidv4 } from 'uuid';
-import { IMatch } from '../_common_/types/constantsTypes';
 import { StTicTacContainer, StTicTacField } from './styled';
 import TicTacItem from './TicTacItem';
 
 interface IProps {
-  match: IMatch,
   squares: string[],
   isGameEnd: boolean,
-  createRoomChanel: (id: string) => void,
+  createRoomChanel: () => void,
   stepWithBot: (payload: IPlayWithBot) => void
 }
 
 const TicTac: React.FC<IProps> = ({
-  match,
   squares,
   isGameEnd,
   stepWithBot,
   createRoomChanel,
 }) => {
   useEffect(() => {
-    createRoomChanel(match.params.id);
+    createRoomChanel();
   }, []);
   const stepHandler = (square: number) => {
-    stepWithBot({ square, id: match.params.id });
+    stepWithBot({ square });
   };
   const renderSquares = useMemo(() => {
     return squares.map((el, i) => (

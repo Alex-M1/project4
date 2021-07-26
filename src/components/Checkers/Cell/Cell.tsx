@@ -1,51 +1,42 @@
 import React from 'react';
-import { useDrop } from 'react-dnd';
 import { useTheme } from 'src/components/hooks/useTheme';
-import { ICell } from 'src/components/_common_/types/constantsTypes';
-import { VIEW_OPTIONS } from 'constants/constants';
+import { ICheckerModel } from 'store/checkers/types';
+import { setCellBg } from 'src/helpers/changeTheme';
 import Checker from '../Checker';
 import { StCell } from './styled';
 
-interface IProps {
-  col: number, 
-  row: number, 
-  cell: ICell
+export interface IProps {
+  fieldItem: ICheckerModel,
+  cellNumber: number,
+  possibleCell?: boolean,
+  doStep: (cellNum: number) => void,
+  chooseCell: (cell: number) => void,
 }
 
-const Cell: React.FC <IProps> = ({ col, row, cell }) => {
+const Cell: React.FC<IProps> = ({
+  doStep,
+  fieldItem,
+  cellNumber,
+  chooseCell,
+  possibleCell,
+}) => {
   const { colors, theme } = useTheme();
-  const [, drop] = useDrop(
-    () => ({
-      accept: 'checker',
-      drop: () => {
-        console.log(`drop ${row} ${col}`);
-      },
-    }),
-    [row, col],
-  );
-
-  const getCellBackground = (row: number, col: number) => {
-    const cellBg = VIEW_OPTIONS.CELL_BACKGROUND;
-    return row % 2 === 1 
-      ? (col % 2 === 1 ? cellBg.GRAY : cellBg.WHITE) 
-      : (col % 2 === 0 ? cellBg.GRAY : cellBg.WHITE);
-  };
+  const cellHandler = () => chooseCell(cellNumber);
+  const possibleHandler = () => doStep(cellNumber);
 
   return (
     <StCell
-      ref={drop}
       theme={theme}
       colors={colors}
-      background={getCellBackground(row, col)}
+      background={setCellBg(possibleCell, fieldItem)}
+      onClick={possibleCell ? possibleHandler : cellHandler}
     >
       {
-        (cell.hasItem)
-        ? (cell.color === 'black')
-          ? <Checker isBlack />
-          : <Checker isBlack={false} />
-        : null
+        fieldItem.checker
+          ? <Checker isBlack={fieldItem?.checker.blackChecker} />
+          : null
       }
-    </StCell>
+    </StCell >
   );
 };
 

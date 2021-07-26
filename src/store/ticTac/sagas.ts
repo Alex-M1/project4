@@ -5,19 +5,21 @@ import { takeEvery, call, put, take } from 'redux-saga/effects';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
 import { notifications } from 'src/helpers/notification';
 import { createRoomChanel, stompClient } from 'src/helpers/stompClient';
-import { createRoomChanel as roomChannel, doBotStep, doStep, setIsGameEnd, setStepHistory, stepWithBot } from './actions';
+import { doBotStep, doStep, setIsGameEnd, setStepHistory, stepWithBot } from './actions';
 import { ActionTypes as AT } from './actionTypes';
 
-export function* roomChannelSaga({ payload }: ReturnType<typeof roomChannel>): SagaIterator {
+export function* roomChannelSaga(): SagaIterator {
   try {
     yield put(setIsGameEnd(false));
+    const options = yield call([localStorage, 'getItem'], LS.gameOptions);
+    const parseOption: IGameData = yield call([JSON, 'parse'], options);
     yield call(
       [stompClient, 'send'],
       SERVER.joinRoom,
       {},
       JSON.stringify({
-        guestLogin: 'Bot',
-        id: payload,
+        id: parseOption.roomId,
+        guestLogin: parseOption.playWith,
       }),
     );
     const roomChannel = yield call(createRoomChanel);
@@ -41,16 +43,16 @@ export function* withBotGameSaga({ payload }: ReturnType<typeof stepWithBot>): S
         login,
         step: payload.square.toString(),
         time: Date.now(),
-        id: payload.id,
+        id: parsedGameData.roomId,
       },
     };
-    yield call([stompClient, 'send'], S.doStep, { uuid: payload.id }, JSON.stringify(stepBody));
+    yield call([stompClient, 'send'], S.doStep, { uuid: parsedGameData.roomId }, JSON.stringify(stepBody));
     yield put(doStep(payload.square));
     yield call(
       [stompClient, 'send'],
       S.getBotStep,
       {},
-      JSON.stringify({ id: payload.id, gameType: parsedGameData.gameType }),
+      JSON.stringify({ id: parsedGameData.roomId, gameType: parsedGameData.gameType }),
     );
   } catch (err) {
     yield call(notifications, { message: 'something_wrong' });
@@ -92,8 +94,8 @@ export function* stepHistory({ payload }: ReturnType<typeof setStepHistory>): Sa
 }
 
 export default function* ticTacWatcher() {
-  yield takeEvery(AT.STEP_WITH_BOT, withBotGameSaga);
-  yield takeEvery(AT.CREATE_ROOM_CHANNEL, roomChannelSaga);
   yield takeEvery(AT.DO_BOT_STEP, doBotStepSaga);
   yield takeEvery(AT.SET_STEP_HISTORY, stepHistory);
+  yield takeEvery(AT.STEP_WITH_BOT, withBotGameSaga);
+  yield takeEvery(AT.CREATE_ROOM_CHANNEL, roomChannelSaga);
 }

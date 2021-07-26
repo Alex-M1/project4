@@ -3,8 +3,10 @@ import { LOCAL_STORAGE } from 'constants/constants';
 import { SERVER } from 'constants/urls';
 import { eventChannel } from 'redux-saga';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
+import { doBotStep as doBotStepChecker, refreshField, setPossibleSteps } from 'store/checkers/actions';
 import { addRoom } from 'store/room/actions';
 import { doBotStep, setStepHistory } from 'store/ticTac/actions';
+import { cookieMaster } from './cookieMaster';
 
 export let stompClient: CompatClient | null = null;
 
@@ -16,6 +18,7 @@ export const connection = (token: string) => {
 };
 
 export const createRoomChanel = () => eventChannel((emit) => {
+  if (!stompClient) connection(cookieMaster.getCookie(LOCAL_STORAGE.token));
   const gameData: IGameData = JSON.parse(localStorage.getItem(LOCAL_STORAGE.gameOptions));
   const botStep = stompClient.subscribe(
     `${SERVER.topicBotStep}/${gameData.roomId}`,
@@ -28,6 +31,37 @@ export const createRoomChanel = () => eventChannel((emit) => {
   return () => {
     botStep.unsubscribe();
     roomWatcher.unsubscribe();
+  };
+});
+
+export const createCheckerChannel = () => eventChannel((emit) => {
+  if (!stompClient) connection(cookieMaster.getCookie(LOCAL_STORAGE.token));
+  const gameData: IGameData = JSON.parse(localStorage.getItem(LOCAL_STORAGE.gameOptions));
+  const botStep = stompClient.subscribe(
+    `${SERVER.topicBotStep}/${gameData.roomId}`,
+    ({ body }) => emit(doBotStepChecker(body)),
+  );
+  const checketWatcher = stompClient.subscribe(
+    `${SERVER.game}/${gameData.roomId}`,
+    ({ body }) => {
+      if (JSON.parse(body).field) {
+        emit(refreshField(JSON.parse(body).field.gameField));
+      }
+    },
+  );
+  const userTopic = stompClient.subscribe(
+    SERVER.userTopic,
+    ({ body }) => {
+      if (Array.isArray(JSON.parse(body))) {
+        const cells = JSON.parse(body).map((el) => el.stepIndex);
+        return emit(setPossibleSteps(cells));
+      }
+    },
+  );
+  return () => {
+    botStep.unsubscribe();
+    userTopic.unsubscribe();
+    checketWatcher.unsubscribe();
   };
 });
 
