@@ -42,6 +42,7 @@ export const TIC_TAC_ITEM = {
 export const CHESS_DESK = {
   COLS: [1, 2, 3, 4, 5, 6, 7, 8],
   ROWS: [1, 2, 3, 4, 5, 6, 7, 8],
+  CELLS_NUM_INIT: 0,
 };
 
 export const LANGUAGE = {

@@ -2,6 +2,8 @@ import { Reducer } from 'redux';
 import { ActionType } from 'typesafe-actions';
 import * as Actions from './actions';
 
+export type TStepHistory = Array<string> | string
+
 export interface ITicTac {
   squares: string[] | null;
   steps: {
