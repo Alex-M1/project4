@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { IPlayWithBot, IPlayWithOpponent } from 'store/ticTac/types';
 import { v4 as uuidv4 } from 'uuid';
 import { GAME_SETTINGS, LOCAL_STORAGE as LS } from 'constants/constants';

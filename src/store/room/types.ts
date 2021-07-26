@@ -11,6 +11,13 @@ export interface IRoom {
 export interface IInitialState {
   rooms: Array<IRoom>;
   gameType: string;
+  myOpponentGame: {
+    id: string;
+    guestLogin: string;
+    startTime: number;
+    gameType: string;
+    stepDtoList: string[];
+  };
 }
 
 export type TAction = typeof Actions

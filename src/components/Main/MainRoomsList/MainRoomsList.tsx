@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from 'src/components/hooks/useTheme';
 import Title from 'common/Title';
 import { IRoom } from 'store/room/types';
-import { StP, StRooms, StRoomsContainer } from './styled';
-import MainRoomsItem from '../MainRoomsItem';
-import AddRoomBtn from '../AddRoomBtn';
 import { useHistory } from 'react-router-dom';
 import { CLIENT } from 'constants/urls';
 import { IGameData } from 'common/types/constantsTypes';
 import { GAME_SETTINGS, LOCAL_STORAGE as LS } from 'constants/constants';
+import AddRoomBtn from '../AddRoomBtn';
+import MainRoomsItem from '../MainRoomsItem';
+import { StP, StRooms, StRoomsContainer } from './styled';
 
 interface IProps {
     rooms: IRoom[],
