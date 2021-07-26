@@ -133,6 +133,7 @@ describe('ticTacReducer', () => {
           },
         ],
       };
+      initialState.myOpponentGame.id='gggf';
     expect(ticTacReducer(initialState, actions.joinMyGame(joinMyGameUpdate)))
       .toEqual({
         ...initialState,
