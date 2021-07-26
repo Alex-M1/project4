@@ -6,6 +6,6 @@ interface IProps {
 }
 
 const Portal: React.FC <IProps> = (
-    {children}) => (ReactDOM.createPortal(children, document.getElementById('portal'))
+    { children }) => (ReactDOM.createPortal(children, document.getElementById('portal'))
     );
 export default Portal;
