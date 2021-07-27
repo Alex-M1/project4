@@ -1,5 +1,5 @@
 import { CompatClient, Stomp } from '@stomp/stompjs';
-import {GAME_SETTINGS, GAME_TYPE, LOCAL_STORAGE} from 'constants/constants';
+import { GAME_SETTINGS, GAME_TYPE, LOCAL_STORAGE } from 'constants/constants';
 import { SERVER } from 'constants/urls';
 import { eventChannel } from 'redux-saga';
 import { IGameData } from 'common/types/constantsTypes';
@@ -90,7 +90,6 @@ export const createStompChannel = (stompClient: CompatClient) => eventChannel((e
                 && parsedBody.guestLogin !== GAME_SETTINGS.bot
                 && parsedBody.gameType === GAME_TYPE.TIC_TAC_TOE
             ) {
-              // someone joined my game
               myRoomId = myRoom.id;
               emit(clearFields());
               emit(joinMyGame({

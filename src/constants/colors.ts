@@ -28,6 +28,7 @@ export const colors = {
     black: '#000',
     blackCellBg: '#777',
     hoverLight: '#ddd',
+    gold: '#FFD700',
   },
   dark: {
     background: '#0E1621',
@@ -58,5 +59,6 @@ export const colors = {
     black: '#000',
     blackCellBg: '#777',
     hoverLight: '#ddd',
+    gold: '#FFD700',
   },
 };

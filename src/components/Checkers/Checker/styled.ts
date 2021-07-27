@@ -16,10 +16,28 @@ export const StCellWhite = styled.div <IStyled>`
     background: ${(props) => changeTheme(props, 'white')};
   }
 `;
+export const StCellWhiteQueen = styled.div <IStyled>`
+  border: 2px solid ${(props) => changeTheme(props, 'black')};
+  box-shadow: 0 0 2px 2px ${(props) => changeTheme(props, 'black')};
+  background: ${(props) => changeTheme(props, 'white')};
+  &::after {
+    border: 2px solid ${(props) => changeTheme(props, 'black')};
+    background: ${(props) => changeTheme(props, 'gold')};
+  }
+`;
 export const StCellBlack = styled.div <IStyled>`
   border: 2px solid ${(props) => changeTheme(props, 'black')};
   box-shadow: 0 0 2px 2px ${(props) => changeTheme(props, 'black')};
   background: ${(props) => changeTheme(props, 'blackCellBg')};
+  &::after {
+    border: 2px solid ${(props) => changeTheme(props, 'black')};
+    background: ${(props) => changeTheme(props, 'blackCellBg')};
+  }
+`;
+export const StCellBlackQueen = styled.div <IStyled>`
+  border: 2px solid ${(props) => changeTheme(props, 'black')};
+  box-shadow: 0 0 2px 2px ${(props) => changeTheme(props, 'black')};
+  background: ${(props) => changeTheme(props, 'gold')};
   &::after {
     border: 2px solid ${(props) => changeTheme(props, 'black')};
     background: ${(props) => changeTheme(props, 'blackCellBg')};
