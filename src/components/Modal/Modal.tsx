@@ -6,6 +6,7 @@ import { StModal, StModalContainer } from './styled';
 import { useTheme } from '../hooks/useTheme';
 import ModalCross from './ModalCross';
 import ModalSelect from './ModalSelect';
+import { KEY_CODES } from 'constants/constants';
 
 interface IProps {
   onCloseModal: () => void;
@@ -14,7 +15,7 @@ interface IProps {
 const Modal: React.FC<IProps> = ({ onCloseModal }) => {
   const { colors, theme } = useTheme();
   const close = (e) => {
-    if (e.keyCode === 27) {
+    if (e.key === KEY_CODES.ESCAPE) {
       onCloseModal();
     }
   };
