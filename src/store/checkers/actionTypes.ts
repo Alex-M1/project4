@@ -1,5 +1,6 @@
 export enum ActionTypes {
   DO_STEP = '@@checkers/DO_STEP',
+  SET_WINNER = '@@checkers/SET_WINNER',
   DO_BOT_STEP = '@@checkers/DO_BOT_STEP',
   CHOOSE_CELL = '@@checkers/CHOOSE_CELL',
   REFRESH_FIELD = '@@checkersREFRESH_FIELD',

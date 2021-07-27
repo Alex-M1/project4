@@ -25,6 +25,7 @@ export const checkerReducer: TReducer = (state = initialState, action) => {
         ...state,
         currentCell: action.payload,
       };
+
     default: return state;
   }
 };

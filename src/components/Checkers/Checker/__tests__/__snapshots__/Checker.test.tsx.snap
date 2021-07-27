@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checker black checker Should match snapshot 1`] = `"<div><div class=\\"styled__StCellBlack-gTsvAF fsoxms\\"></div></div>"`;
+
+exports[`Checker white checker Should match snapshot 1`] = `"<div><div class=\\"styled__StCellWhite-eopeRB czkzjO\\"></div></div>"`;

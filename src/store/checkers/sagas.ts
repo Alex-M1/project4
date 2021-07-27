@@ -1,11 +1,11 @@
-import { LOCAL_STORAGE as LS } from 'constants/constants';
+import { GAME_SETTINGS, LOCAL_STORAGE as LS } from 'constants/constants';
 import { SERVER } from 'constants/urls';
 import { SagaIterator } from 'redux-saga';
 import { call, put, select, take, takeEvery } from 'redux-saga/effects';
 import { IGameData } from 'src/components/_common_/types/constantsTypes';
 import { notifications } from 'src/helpers/notification';
 import { createCheckerChannel, stompClient } from 'src/helpers/stompClient';
-import { chooseCell, doBotStep, doStep, setPossibleSteps } from './actions';
+import { chooseCell, doBotStep, doStep, setPossibleSteps, setWinner } from './actions';
 import { ActionTypes as AT } from './actionTypes';
 import { getCurrentCell } from './selectors';
 
@@ -80,7 +80,7 @@ export function* doStepSaga({ payload }: ReturnType<typeof doStep>): SagaIterato
       JSON.stringify(stepBody),
     );
     yield put(setPossibleSteps([]));
-    if (parsedGameData.playWith === 'Bot') {
+    if (parsedGameData.playWith === GAME_SETTINGS.bot) {
       yield call(
         [stompClient, 'send'],
         SERVER.getBotStep,
@@ -120,9 +120,21 @@ export function* doBotStepSaga({ payload }: ReturnType<typeof doBotStep>): SagaI
   }
 }
 
+export function* winnerSaga({ payload }: ReturnType<typeof setWinner>) {
+  try {
+    const login = yield call([localStorage, 'getItem'], LS.login);
+    if (login === payload) yield call(notifications, { message: 'you_win', type: 'info' });
+    else if (payload === null) yield call(notifications, { message: 'draw', type: 'warn' });
+    else yield call(notifications, { message: 'you_loose' });
+  } catch (err) {
+    yield call(notifications, { message: 'something_wrong' });
+  }
+}
+
 export default function* checkerWatcher() {
-  yield takeEvery(AT.CONNECT_CHECKERS_CHANNEL, checkerChannelSaga);
-  yield takeEvery(AT.CHOOSE_CELL, chooseCellSaga);
   yield takeEvery(AT.DO_STEP, doStepSaga);
+  yield takeEvery(AT.SET_WINNER, winnerSaga);
   yield takeEvery(AT.DO_BOT_STEP, doBotStepSaga);
+  yield takeEvery(AT.CHOOSE_CELL, chooseCellSaga);
+  yield takeEvery(AT.CONNECT_CHECKERS_CHANNEL, checkerChannelSaga);
 }

@@ -63,6 +63,10 @@ export const VIEW_OPTIONS = {
     WHITE: '#fff',
     POSSIBLE: '#b2ff65',
   },
+  scroll: {
+    scrollbar: 'rgba(155, 155, 158, 0.15)',
+    thumb: 'rgba(201, 201, 201, 0.5)',
+  },
 };
 
 export const LOCAL_STORAGE = {

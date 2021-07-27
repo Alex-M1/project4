@@ -71,7 +71,7 @@ const TicTac: React.FC<IProps> = ({
   }, [squares]);
   const message = useMemo(() => {
     if (winnerMessage) return winnerMessage;
-    return turn ? 'your_turn' : 'opponent_turn'; 
+    return turn ? 'your_turn' : 'opponent_turn';
   }, [winnerMessage, turn]);
   return (
     <StTicTacContainer>

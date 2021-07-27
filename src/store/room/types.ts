@@ -26,7 +26,7 @@ export interface IMyOpponentGame {
 export interface IInitialState {
   rooms: Array<IRoom>;
   gameType: string;
-  myOpponentGame: IMyOpponentGame;
+  toRoom: string;
 }
 
 export type TAction = typeof Actions
