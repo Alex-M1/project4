@@ -31,8 +31,8 @@ module.exports = {
     'jest.config.js',
     'package.json',
     'webpack.config.js',
-    '/src/index.jsx',
-    '/src/i18n.js',
+    '/src/index.tsx',
+    '/src/i18n.ts',
     '/src/__tests__',
   ],
   moduleNameMapper: {
