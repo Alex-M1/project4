@@ -16,3 +16,9 @@ export const StInput = styled.input <IStyled>`
         color: ${(props) => changeTheme(props, 'placeholderColor')};
     }
 `;
+export const StHidePass = styled.img`
+  position: absolute;
+  right:10px;
+  bottom: 20px;
+  cursor: pointer;
+`;

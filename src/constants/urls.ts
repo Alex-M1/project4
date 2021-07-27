@@ -10,6 +10,8 @@ export const CLIENT = {
   play: 'src/assets/img/play.png',
   bot: 'src/assets/img/ai.png',
   logo: 'src/assets/img/logout.svg',
+  show: 'src/assets/img/view.png',
+  hide: 'src/assets/img/hide.png',
   checkers: '/Checkers',
 };
 

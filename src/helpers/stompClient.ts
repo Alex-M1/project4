@@ -3,7 +3,7 @@ import { GAME_SETTINGS, GAME_TYPE, LOCAL_STORAGE as LS } from 'constants/constan
 import { SERVER } from 'constants/urls';
 import { eventChannel } from 'redux-saga';
 import { IGameData } from 'common/types/constantsTypes';
-import { doBotStep as doBotStepChecker, refreshField, setPossibleSteps } from 'store/checkers/actions';
+import { doBotStep as doBotStepChecker, refreshField, setPossibleSteps, setWinner } from 'store/checkers/actions';
 import { addRoom, redirectToRoom } from 'store/room/actions';
 import { clearFields, doBotStep, joinMyGame, setStepHistory } from 'store/ticTac/actions';
 import { cookieMaster } from './cookieMaster';
@@ -49,6 +49,9 @@ export const createCheckerChannel = () => eventChannel((emit) => {
     `${SERVER.game}/${gameData.roomId}`,
     ({ body }) => {
       const message = JSON.parse(body);
+      if (message.winner) {
+        emit(setWinner(message.winner));
+      }
       if (message.field) {
         emit(refreshField(JSON.parse(body).field.gameField));
       }

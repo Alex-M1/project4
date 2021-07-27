@@ -8,6 +8,7 @@ export const StInputDiv = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     padding: 10px 0;
+    position: relative;
 `;
 
 export const StSpan = styled.span <IStyled>`
