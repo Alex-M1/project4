@@ -4,7 +4,7 @@ import { SERVER } from 'constants/urls';
 import { LOCAL_STORAGE as LS } from 'constants/constants';
 import { stompClient, createCheckerChannel } from 'src/helpers/stompClient';
 import { IGameData } from 'common/types/constantsTypes';
-import watcherCheckers, { checkerChannelSaga, chooseCellSaga, doStepSaga, doBotStepSaga } from '../sagas';
+import watcherCheckers, { checkerChannelSaga, chooseCellSaga, doStepSaga, doBotStepSaga, winnerSaga } from '../sagas';
 import { ActionTypes as AT } from '../actionTypes';
 import { setPossibleSteps } from '../actions';
 import { getCurrentCell } from '../selectors';
@@ -265,6 +265,55 @@ describe('CheckerSagas', () => {
     });
     it('should call workerConnection with error', () => {
       testSaga(doBotStepSaga, action)
+        .next()
+        .throw(new Error())
+        .call(notifications, { message: 'something_wrong' })
+        .next()
+        .isDone();
+    });
+  });
+  describe('winnerSaga', () => {
+    let action: any;
+    beforeEach(() => {
+      action = {
+        payload: 'asasa',
+        type: AT.SET_WINNER,
+      };
+    });
+    it('should call doBotStepSaga without error user win', () => {
+      const login = 'asasa';
+      testSaga(winnerSaga, action)
+        .next()
+        .call([localStorage, 'getItem'], LS.login)
+        .next(login)
+        .call(notifications, { message: 'you_win', type: 'info' })
+        .next()
+        .isDone();
+    });
+    it('should call doBotStepSaga without error opponent win', () => {
+      const login = 'asasa';
+      action.payload = 'aqqqq';
+      testSaga(winnerSaga, action)
+        .next()
+        .call([localStorage, 'getItem'], LS.login)
+        .next(login)
+        .call(notifications, { message: 'you_loose' })
+        .next()
+        .isDone();
+    });
+    it('should call doBotStepSaga without error isDraw', () => {
+      const login = 'asasa';
+      action.payload = null;
+      testSaga(winnerSaga, action)
+        .next()
+        .call([localStorage, 'getItem'], LS.login)
+        .next(login)
+        .call(notifications, { message: 'draw', type: 'warn' })
+        .next()
+        .isDone();
+    });
+    it('should call winnerSaga with error', () => {
+      testSaga(winnerSaga, action)
         .next()
         .throw(new Error())
         .call(notifications, { message: 'something_wrong' })

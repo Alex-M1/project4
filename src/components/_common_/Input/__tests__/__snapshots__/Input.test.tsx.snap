@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input Should match snapshot 1`] = `"<input type=\\"type\\" value=\\"value\\" class=\\"styled__StInput-ifVcmW gvVFSK\\"/>"`;
+exports[`Input type password Should match snapshot 1`] = `"<input type=\\"password\\" value=\\"value\\" class=\\"styled__StInput-ifVcmW gvVFSK\\"/><img src=\\"src/assets/img/view.png\\" class=\\"styled__StHidePass-kZfxvt jOsIQT\\"/>"`;
+
+exports[`Input type text Should match snapshot 1`] = `"<input type=\\"text\\" value=\\"value\\" class=\\"styled__StInput-ifVcmW gvVFSK\\"/>"`;

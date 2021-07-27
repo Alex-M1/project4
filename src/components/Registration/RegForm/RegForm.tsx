@@ -25,9 +25,10 @@ const RegForm: React.FC<IProps> = ({ type, value, setCredentialsValue }) => {
         {t(type)}
       </StSpan>
       <Input
-        type={type}
+        type={type === 'password' || type === 'confirm' ? 'password' : 'text'}
         value={value}
         onChange={onInputChange}
+        placeholder={`${type}_ipt`}
       />
     </StInputDiv>
   );
