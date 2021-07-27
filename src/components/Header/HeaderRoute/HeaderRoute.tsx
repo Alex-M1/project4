@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Location } from 'history';
 import { useTheme } from '../../hooks/useTheme';
-import { StG, StS, StWrapper } from './styled';
+import { StGames, StStatistic, StWrapper } from './styled';
 
 interface IProps {
   location: Location;
@@ -17,22 +17,22 @@ const HeaderRoute: React.FC <IProps> = ({ location }) => {
   return (
       <StWrapper>
         <NavLink to={CLIENT.main}>
-          <StG
+          <StGames
             theme={theme}
             colors={colors}
             path={path}
           >
             {t('games')}
-          </StG>
+          </StGames>
         </NavLink>
         <NavLink to={CLIENT.statistic}>
-          <StS
+          <StStatistic
             theme={theme}
             colors={colors}
             path={path}
           >
             {t('statistic')}
-          </StS>  
+          </StStatistic>  
         </NavLink>
       </StWrapper>
   );

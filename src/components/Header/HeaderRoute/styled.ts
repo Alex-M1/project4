@@ -29,7 +29,7 @@ export const StP = styled.p <IStyled>`
   letter-spacing: 2px;
   cursor: pointer;
 `;
-export const StG = styled.p <IUnderline>`
+export const StGames = styled.p <IUnderline>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +39,7 @@ export const StG = styled.p <IUnderline>`
   cursor: pointer;
   text-decoration: ${(props) => (props.path === '/main' ? 'underline' : 'none')};
 `;
-export const StS = styled.p <IUnderline>`
+export const StStatistic = styled.p <IUnderline>`
   display: flex;
   justify-content: center;
   align-items: center;
