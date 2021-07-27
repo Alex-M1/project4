@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Cell white Cell Should match snapshot 1`] = `"<div class=\\"styled__StCell-gJrZHm fKDHEl\\"></div>"`;
-
 exports[`Cell with Checker Should match snapshot 1`] = `"<div class=\\"styled__StCell-gJrZHm cngUHY\\"><div><div class=\\"styled__StCellWhite-eopeRB czkzjO\\"></div></div></div>"`;
 
 exports[`Cell without Checker Should match snapshot 1`] = `"<div class=\\"styled__StCell-gJrZHm fKDHEl\\"></div>"`;
