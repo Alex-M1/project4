@@ -431,3 +431,8 @@ export const CHECKER_FIELD_INIT = [
     blackSquare: true,
   },
 ];
+
+export const KEY_CODES = {
+  ESCAPE: 'Escape',
+  ENTER: 'Enter',
+};
