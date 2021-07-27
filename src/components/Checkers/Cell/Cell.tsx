@@ -33,7 +33,7 @@ const Cell: React.FC<IProps> = ({
     >
       {
         fieldItem.checker
-          ? <Checker isBlack={fieldItem?.checker.blackChecker} isQueen={fieldItem?.checker.queen} />
+          ? <Checker isBlack={fieldItem?.checker.blackChecker} isQueen={fieldItem?.checker.queen}/>
           : null
       }
     </StCell >

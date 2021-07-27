@@ -16,15 +16,21 @@ interface IProps {
 }
 
 const Header: React.FC<IProps> = ({ location, leaveRoom }) => {
+  const path = location.pathname;
+  const isExit = useMemo(() => {
+    if (path === CLIENT.authClient || path === CLIENT.regClient) {
+      return null;
+    } 
+      return <HeaderLogout />;
+  }, [location.pathname]);
   const isNav = useMemo(() => {
-    const path = location.pathname;
     if (path === CLIENT.authClient || path === CLIENT.regClient) {
       return null;
     } 
     if (path.startsWith(CLIENT.ticTacClient) || path.startsWith(CLIENT.checkers)) {
       return <HeaderRouteGames/>;
     }
-      return <HeaderRoute />;
+      return <HeaderRoute location={location}/>;
   }, [location.pathname]);
   const { colors, theme } = useTheme();
   const handleLeaveRoom = () => leaveRoom();
@@ -52,7 +58,7 @@ const Header: React.FC<IProps> = ({ location, leaveRoom }) => {
         <StNavContainer>
           <HeaderTheme />
           <HeaderLanguage />
-          <HeaderLogout />
+          {isExit}
         </StNavContainer>
       </StHeaderContainer>
     </StHeader>

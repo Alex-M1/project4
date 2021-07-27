@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Title from 'common/Title';
 import ModalButtons from './ModalButtons';
 import Portal from '../Portal';
@@ -13,6 +13,15 @@ interface IProps {
 
 const Modal: React.FC<IProps> = ({ onCloseModal }) => {
   const { colors, theme } = useTheme();
+  const close = (e) => {
+    if (e.keyCode === 27) {
+      onCloseModal();
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('keydown', close);
+   return () => window.removeEventListener('keydown', close);
+  }, []);
 
   return (
     <Portal>
