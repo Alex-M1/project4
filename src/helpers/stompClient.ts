@@ -37,14 +37,20 @@ export const createRoomChanel = () => eventChannel((emit) => {
 export const createCheckerChannel = () => eventChannel((emit) => {
   if (!stompClient) connection(cookieMaster.getCookie(LS.token));
   const gameData: IGameData = JSON.parse(localStorage.getItem(LS.gameOptions));
-  const botStep = stompClient.subscribe(
-    `${SERVER.topicBotStep}/${gameData.roomId}`,
-    ({ body }) => emit(doBotStepChecker(body)),
-  );
-  const checketWatcher = stompClient.subscribe(
+  if (gameData.playWith === 'Bot') {
+    stompClient.subscribe(
+      `${SERVER.topicBotStep}/${gameData.roomId}`,
+      ({ body }) => emit(doBotStepChecker(body)),
+    );
+  }
+  const checkerWatcher = stompClient.subscribe(
     `${SERVER.game}/${gameData.roomId}`,
     ({ body }) => {
-      if (JSON.parse(body).field) {
+      console.log('______________________');
+      console.log(body, 'serverGame');
+      console.log('______________________');
+      const message = JSON.parse(body);
+      if (message.field) {
         emit(refreshField(JSON.parse(body).field.gameField));
       }
     },
@@ -52,6 +58,9 @@ export const createCheckerChannel = () => eventChannel((emit) => {
   const userTopic = stompClient.subscribe(
     SERVER.userTopic,
     ({ body }) => {
+      console.log('______________________');
+      console.log(body, 'userTopic');
+      console.log('______________________');
       if (Array.isArray(JSON.parse(body))) {
         const cells = JSON.parse(body).map((el) => el.stepIndex);
         return emit(setPossibleSteps(cells));
@@ -59,9 +68,8 @@ export const createCheckerChannel = () => eventChannel((emit) => {
     },
   );
   return () => {
-    botStep.unsubscribe();
     userTopic.unsubscribe();
-    checketWatcher.unsubscribe();
+    checkerWatcher.unsubscribe();
   };
 });
 
@@ -83,6 +91,8 @@ export const createStompChannel = (stompClient: CompatClient) => eventChannel((e
               }
               if (message.guestLogin) {
                 const options: IGameData = JSON.parse(localStorage.getItem(LS.gameOptions));
+                options.roomId = el.id;
+                options.gameType = 'Checkers';
                 options.playWith = message.guestLogin;
                 localStorage.setItem(LS.gameOptions, JSON.stringify(options));
                 emit(redirectToRoom(message.gameType));

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from 'src/components/hooks/useTheme';
 import Title from 'common/Title';
 import { IRoom } from 'store/room/types';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { LOCAL_STORAGE } from 'constants/constants';
 import { StP, StRooms, StRoomsContainer } from './styled';
 import MainRoomsItem from '../MainRoomsItem';
