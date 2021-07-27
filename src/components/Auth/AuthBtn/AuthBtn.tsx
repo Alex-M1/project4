@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 
 import ModRedirect from 'common/ModRedirect';
 import Button from 'common/Button';
+import { KEY_CODES } from 'constants/constants';
 import { StInputDiv } from '../AuthIpt/styled';
 
 interface IProps {
@@ -14,7 +15,7 @@ const AuthBtn: React.FC<IProps> = ({ isRedirect, setIsRedirect, signInRequest })
   const onButtonClick = () => signInRequest();
   useEffect(() => {
     const signin = (e) => {
-      if (e.keyCode === 13) {
+      if (e.key === KEY_CODES.ENTER) {
         onButtonClick();
       }
     };

@@ -51,10 +51,10 @@ const TicTac: React.FC<IProps> = ({
     if (!turn) {
       return;
     }
-    if (data && data.playWith === GAME_SETTINGS.user) {
-      stepWithOpponent({ square });
-    } else {
+    if (data && data.playWith === GAME_SETTINGS.bot) {
       stepWithBot({ square });
+    } else {
+      stepWithOpponent({ square });
     }
   };
 

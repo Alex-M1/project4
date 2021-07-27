@@ -3,6 +3,7 @@ import { StInputDiv } from 'src/components/Auth/AuthIpt/styled';
 import ModRedirect from 'common/ModRedirect';
 import Button from 'common/Button';
 import { CLIENT } from 'constants/urls';
+import { KEY_CODES } from 'constants/constants';
 
 interface IProps {
   isRedirect: boolean;
@@ -14,7 +15,7 @@ const RegBtn: React.FC<IProps> = ({ isRedirect, signUpRequest, setIsRedirect }) 
   const onButtonClick = () => signUpRequest();
   useEffect(() => {
     const signup = (e) => {
-      if (e.keyCode === 13) {
+      if (e.key === KEY_CODES.ENTER) {
         onButtonClick();
       }
     };
