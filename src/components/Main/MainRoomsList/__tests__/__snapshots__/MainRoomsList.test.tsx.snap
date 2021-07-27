@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainRoomsList Should match snapshot 1`] = `"<div class=\\"styled__StRooms-cxknzw kQcOlJ\\"><h1 class=\\"styled__StTitle-lfcumM bhHMZN\\"></h1><button class=\\"styled__StBtn-kAydTA jyFLiv\\"></button><div class=\\"styled__StRoomsContainer-bYRoxr bxPYMn\\"><a aria-current=\\"page\\" class=\\"active\\" href=\\"/\\"><div class=\\"styled__StItem-jUSzsl DPkny\\"><p></p><span class=\\"styled__StIcon-chPeWD cDIvgb\\"><img src=\\"src/assets/img/play.png\\" alt=\\"\\"/></span><span class=\\"styled__StIcon-chPeWD cDIvgb\\"><img src=\\"undefined\\" alt=\\"\\"/></span></div></a></div></div>"`;
