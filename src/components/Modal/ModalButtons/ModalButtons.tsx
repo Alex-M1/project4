@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StButton } from 'common/Button/styled';
 import { useTheme } from '../../hooks/useTheme';
@@ -16,6 +16,15 @@ const ModalButtons: React.FC<IProps> = ({ createRoom, onCloseModal }) => {
     createRoom();
     onCloseModal();
   };
+  const create = (e) => {
+    if (e.key === 'Enter') {
+      handleCreateRoom();
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('keydown', create);
+    return () => window.removeEventListener('keydown', create);
+  }, []);
 
   return (
     <StButtonGroup
