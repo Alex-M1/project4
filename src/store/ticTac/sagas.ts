@@ -28,7 +28,6 @@ export function* roomChannelSaga({ payload }: ReturnType<typeof roomChannel>): S
     yield put(setIsGameEnd(false));
     yield put(clearFields());
     if (!myOpponentGame.id) {
-      console.log(myOpponentGame);
       yield call(
           [stompClient, 'send'],
           SERVER.joinRoom,
@@ -123,7 +122,6 @@ export function* stepHistory({ payload }: ReturnType<typeof setStepHistory>): Sa
   try {
     const login = yield call([localStorage, 'getItem'], LS.login);
     const { field, stepDto, winner } = payload;
-    console.log(stepDto);
     if (field) {
       if (stepDto.login !== login) {
         yield put(setTurn(true));

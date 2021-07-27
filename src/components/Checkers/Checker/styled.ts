@@ -7,37 +7,23 @@ interface IOpacity {
   isDragging: boolean
 }
 
-export const StCellWhite = styled.div <IStyled>`
+interface IQueen extends IStyled {
+  isQueen: boolean;
+}
+
+export const StCellWhite = styled.div <IQueen>`
   border: 2px solid ${(props) => changeTheme(props, 'black')};
   box-shadow: 0 0 2px 2px ${(props) => changeTheme(props, 'black')};
   background: ${(props) => changeTheme(props, 'white')};
   &::after {
     border: 2px solid ${(props) => changeTheme(props, 'black')};
-    background: ${(props) => changeTheme(props, 'white')};
+    background: ${(props) => (props.isQueen? changeTheme(props, 'gold'): changeTheme(props, 'white'))};
   }
 `;
-export const StCellWhiteQueen = styled.div <IStyled>`
+export const StCellBlack = styled.div <IQueen>`
   border: 2px solid ${(props) => changeTheme(props, 'black')};
   box-shadow: 0 0 2px 2px ${(props) => changeTheme(props, 'black')};
-  background: ${(props) => changeTheme(props, 'white')};
-  &::after {
-    border: 2px solid ${(props) => changeTheme(props, 'black')};
-    background: ${(props) => changeTheme(props, 'gold')};
-  }
-`;
-export const StCellBlack = styled.div <IStyled>`
-  border: 2px solid ${(props) => changeTheme(props, 'black')};
-  box-shadow: 0 0 2px 2px ${(props) => changeTheme(props, 'black')};
-  background: ${(props) => changeTheme(props, 'blackCellBg')};
-  &::after {
-    border: 2px solid ${(props) => changeTheme(props, 'black')};
-    background: ${(props) => changeTheme(props, 'blackCellBg')};
-  }
-`;
-export const StCellBlackQueen = styled.div <IStyled>`
-  border: 2px solid ${(props) => changeTheme(props, 'black')};
-  box-shadow: 0 0 2px 2px ${(props) => changeTheme(props, 'black')};
-  background: ${(props) => changeTheme(props, 'gold')};
+  background: ${(props) => (props.isQueen? changeTheme(props, 'gold'): changeTheme(props, 'blackCellBg'))};
   &::after {
     border: 2px solid ${(props) => changeTheme(props, 'black')};
     background: ${(props) => changeTheme(props, 'blackCellBg')};
