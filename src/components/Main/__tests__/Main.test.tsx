@@ -1,9 +1,15 @@
-import { CHECKER_FIELD_INIT, CHESS_DESK, GAME_TYPE } from 'constants/constants';
+import { GAME_TYPE } from 'constants/constants';
 import React from 'react';
 import configureStore from 'redux-mock-store';
 import { shallowSmart, mountSmart } from 'src/__tests__/testHelper';
-import Checkers from '../Checkers';
+import Main from '../Main';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: jest.fn().mockImplementation(() => ({
+    t: jest.fn(),
+  })),
+}),
+);
 const mockStore = configureStore();
 const store = mockStore({
   room: {
@@ -12,32 +18,34 @@ const store = mockStore({
     toRoom: '',
   },
   ticTac: {
-
+    squares: Array(9).fill(null),
+    steps: {
+      count: 0,
+      isUserStep: null,
+    },
+    isGameEnd: false,
+    isMyTurn: true,
+    myOpponentGame: {
+      id: null,
+      gameType: null,
+      guestLogin: null,
+      startTime: null,
+      stepDtoList: null,
+    },
+    winner: '',
   },
 });
-describe('Checkers', () => {
-  let props;
-  beforeEach(() => {
-    props = {
-      refreshField: jest.fn(),
-      connectCheckersChannel: jest.fn(),
-    };
-  });
+describe('Main', () => {
   it('Should match snapshot', () => {
-    const component = shallowSmart(<Checkers {...props} />, store);
+    const component = shallowSmart(<Main />, store);
     expect(component.html()).toMatchSnapshot();
   });
-  it('should render StContainer', () => {
-    const component = mountSmart(<Checkers {...props} />, store);
-    expect(component.find('styled__StContainer')).toHaveLength(1);
+  it('should render StGlobalCredentials', () => {
+    const component = mountSmart(<Main />, store);
+    expect(component.find('styled__StGlobalCredentials')).toHaveLength(1);
   });
-  it('should render StTable', () => {
-    const component = mountSmart(<Checkers {...props} />, store);
-    expect(component.find('styled__StTable')).toHaveLength(1);
-  });
-  it('should render Cell', () => {
-    const component = mountSmart(<Checkers {...props} />, store);
-    expect(component.find('Cell'))
-      .toHaveLength(CHESS_DESK.ROWS.length * CHESS_DESK.COLS.length);
+  it('should render MainRoomsList', () => {
+    const component = mountSmart(<Main />, store);
+    expect(component.find('MainRoomsList')).toHaveLength(1);
   });
 });

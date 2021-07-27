@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main Should match snapshot 1`] = `"<div class=\\"styled__StGlobalCredentials-dasUon cRRWpH\\"><div class=\\"styled__StRooms-cxknzw kQcOlJ\\"><h1 class=\\"styled__StTitle-lfcumM bhHMZN\\"></h1><button class=\\"styled__StBtn-kAydTA jyFLiv\\"></button><div class=\\"styled__StRoomsContainer-bYRoxr bxPYMn\\"><p class=\\"styled__StP-kXHExz gtneVI\\"></p></div></div></div>"`;
