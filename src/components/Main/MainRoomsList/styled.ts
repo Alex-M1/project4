@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IStyled } from 'common/types/styledTypes';
+import { VIEW_OPTIONS } from 'constants/constants';
 
 export const StRooms = styled.div <IStyled>`
     width: 500px;
@@ -19,13 +20,13 @@ export const StRoomsContainer = styled.div`
     overflow-y: scroll;
      &::-webkit-scrollbar {
     width: 5px;
-    background-color: rgba(155, 155, 158, 0.15);
+    background-color: ${VIEW_OPTIONS.scroll.scrollbar};
     border-radius: 5px;
     height: 12px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(201, 201, 201, 0.5);
+    background: ${VIEW_OPTIONS.scroll.thumb};
     border-radius: 5px;
   }
 `;

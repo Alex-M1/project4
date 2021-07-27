@@ -39,7 +39,7 @@ export const createRoomChanel = () => eventChannel((emit) => {
 export const createCheckerChannel = () => eventChannel((emit) => {
   if (!stompClient) connection(cookieMaster.getCookie(LS.token));
   const gameData: IGameData = JSON.parse(localStorage.getItem(LS.gameOptions));
-  if (gameData.playWith === 'Bot') {
+  if (gameData.playWith === GAME_SETTINGS.bot) {
     stompClient.subscribe(
       `${SERVER.topicBotStep}/${gameData.roomId}`,
       ({ body }) => emit(doBotStepChecker(body)),
@@ -108,7 +108,6 @@ export const createStompChannel = (stompClient: CompatClient) => eventChannel((e
             if (myRoomId && myRoom.id === myRoomId) {
               emit(setStepHistory(parsedBody));
             }
-            //-----------------------------------------------------
             if (parsedBody.gameType === GAME_TYPE.CHECKERS) {
               const message = JSON.parse(body);
               if (message.field) {
@@ -117,7 +116,7 @@ export const createStompChannel = (stompClient: CompatClient) => eventChannel((e
               if (message.guestLogin) {
                 const options: IGameData = JSON.parse(localStorage.getItem(LS.gameOptions));
                 options.roomId = myRoom.id;
-                options.gameType = 'Checkers';
+                options.gameType = GAME_TYPE.CHECKERS;
                 options.playWith = message.guestLogin;
                 localStorage.setItem(LS.gameOptions, JSON.stringify(options));
                 emit(redirectToRoom(message.gameType));
