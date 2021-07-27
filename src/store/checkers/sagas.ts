@@ -53,9 +53,6 @@ export function* chooseCellSaga({ payload }: ReturnType<typeof chooseCell>) {
       { uuid: parsedGameData.roomId },
       JSON.stringify(stepBody),
     );
-    console.log('___________________________');
-    console.log(stepBody);
-    console.log('___________________________');
   } catch (err) {
     yield call(notifications, { message: 'something_wrong' });
   }
@@ -76,9 +73,6 @@ export function* doStepSaga({ payload }: ReturnType<typeof doStep>): SagaIterato
         id: parsedGameData.roomId,
       },
     };
-    console.log('___________________________');
-    console.log(stepBody);
-    console.log('___________________________');
     yield call(
       [stompClient, 'send'],
       SERVER.doStep,

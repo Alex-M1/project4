@@ -41,7 +41,7 @@ export const StResultsWrapper = styled.div <IStyled>`
   width: 100%;
   max-height: 455px;
   margin-top: 40px;
-  overflow: scroll;
+  overflow-y: scroll;
 
   & div {
     display: flex;
