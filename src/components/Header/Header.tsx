@@ -8,6 +8,7 @@ import HeaderLanguage from './HeaderLanguage';
 import HeaderRoute from './HeaderRoute';
 import HeaderLogout from './HeaderLogout';
 import { useTheme } from '../hooks/useTheme';
+import HeaderRouteGames from './HeaderRouteGames';
 
 interface IProps {
   location: Location,
@@ -19,8 +20,11 @@ const Header: React.FC<IProps> = ({ location, leaveRoom }) => {
     const path = location.pathname;
     if (path === CLIENT.authClient || path === CLIENT.regClient) {
       return null;
+    } 
+    if (path.startsWith(CLIENT.ticTacClient) || path.startsWith(CLIENT.checkers)) {
+      return <HeaderRouteGames/>;
     }
-    return <HeaderRoute />;
+      return <HeaderRoute />;
   }, [location.pathname]);
   const { colors, theme } = useTheme();
   const handleLeaveRoom = () => leaveRoom();

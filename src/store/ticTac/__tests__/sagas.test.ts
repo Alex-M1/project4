@@ -3,7 +3,7 @@ import { notifications } from 'helpers/notification';
 import { SERVER } from 'constants/urls';
 import { LOCAL_STORAGE as LS } from 'constants/constants';
 import { stompClient, createRoomChanel } from 'src/helpers/stompClient';
-import { IGameData } from 'src/components/_common_/types/constantsTypes';
+import { IGameData } from 'common/types/constantsTypes';
 import watcherTicTac, { doBotStepSaga, roomChannelSaga, stepHistory, withBotGameSaga } from '../sagas';
 import { ActionTypes as AT } from '../actionTypes';
 import { doStep, setIsGameEnd } from '../actions';

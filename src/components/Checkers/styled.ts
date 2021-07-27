@@ -10,10 +10,10 @@ export const StTable = styled.div <IStyled>`
   flex-direction: row-reverse;
   flex-wrap: wrap;
   overflow: hidden;
-  width: 660px;
-  height: 660px;
+  width: 500px;
+  height: 500px;
   border: 2px solid ${(props) => changeTheme(props, 'textColor')};
-  margin: 45px auto;
+  margin: 50px auto;
   background: ${(props) => changeTheme(props, 'backgroundSecondary')};
   transform: rotate(180deg);
 `;

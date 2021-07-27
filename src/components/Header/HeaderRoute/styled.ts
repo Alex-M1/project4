@@ -9,7 +9,17 @@ export const StWrapper = styled.div`
   width: 400px;
   margin: 0;
 `;
+export const StWrapperGame = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: 0;
+`;
 export const StP = styled.p <IStyled>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: ${(props) => changeTheme(props, 'textColorHeader')};
   font-size: 25px;
   letter-spacing: 2px;

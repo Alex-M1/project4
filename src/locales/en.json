@@ -33,6 +33,7 @@
   "play_with_bot": "Play with bot",
   "you_win": "You winner",
   "you_loose": "You loose",
+  "draw": "Draw",
   "game_statistic": "Game statistic",
   "result": "Result",
   "user_name": "User name",
@@ -40,5 +41,8 @@
   "Tic-tac-toe": "Tic-tac-toe",
   "Checkers": "Checkers",
   "winner": "Winner",
-  "opposer": "Opposer"
+  "opposer": "Opposer",
+  "back_to_main_menu": "Back to main menu",
+  "your_turn": "Your turn",
+  "opponent_turn": "Opponent's turn"
 }

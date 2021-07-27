@@ -1,4 +1,4 @@
-import { IStyled } from 'src/components/_common_/types/styledTypes';
+import { IStyled } from 'common/types/styledTypes';
 import { changeTheme } from 'src/helpers/changeTheme';
 import styled from 'styled-components';
 

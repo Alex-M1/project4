@@ -1,4 +1,4 @@
-import { IStyled } from 'src/components/_common_/types/styledTypes';
+import { IStyled } from 'common/types/styledTypes';
 import { changeTheme } from 'src/helpers/changeTheme';
 import styled from 'styled-components';
 
@@ -7,8 +7,8 @@ interface IStCellStyled extends IStyled {
 }
 
 export const StCell = styled.div <IStCellStyled>`
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border: 1px solid ${(props) => changeTheme(props, 'textColor')};
   margin: 1px;
   color: ${(props) => changeTheme(props, 'textColor')};

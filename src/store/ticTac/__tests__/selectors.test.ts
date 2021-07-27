@@ -10,7 +10,7 @@ describe('ticTacSelectors', () => {
       ...initialState,
     },
   };
-  it('getUser', () => {
+  it('getTicTac', () => {
     expect(selectors.getTicTac(store)).toEqual(store.ticTac);
   });
   it('getSquares', () => {
@@ -18,5 +18,14 @@ describe('ticTacSelectors', () => {
   });
   it('getIsGame', () => {
     expect(selectors.getIsGame(store)).toEqual(store.ticTac.isGameEnd);
+  });
+  it('getMyOpponentGame', () => {
+    expect(selectors.getMyOpponentGame(store)).toEqual(store.ticTac.myOpponentGame);
+  });
+  it('getIsMyTurn', () => {
+    expect(selectors.getIsMyTurn(store)).toEqual(store.ticTac.isMyTurn);
+  });
+  it('getWinner', () => {
+    expect(selectors.getWinner(store)).toEqual(store.ticTac.winner);
   });
 });

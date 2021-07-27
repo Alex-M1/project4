@@ -1,5 +1,7 @@
 /* eslint-disable no-plusplus */
+import { LOCAL_STORAGE } from 'constants/constants';
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from 'react-i18next';
 
 interface IProps {
@@ -11,12 +13,12 @@ interface IProps {
 
 const StatisticItem: React.FC <IProps> = ({ creatorLogin, gameType, guestLogin, winnerLogin }) => {
   const { t } = useTranslation();
-  let counter = 0;
+  const userLogin = localStorage.getItem(LOCAL_STORAGE.login);
   return (
-      <div key={counter++}>
-        <span>{creatorLogin}</span>
+      <div key={uuidv4()}>
+        <span>{userLogin}</span>
         <span>{t(gameType)}</span>
-        <span>{guestLogin}</span>
+        <span>{userLogin === creatorLogin ? guestLogin : creatorLogin}</span>
         <span>{winnerLogin}</span>
       </div>
   );

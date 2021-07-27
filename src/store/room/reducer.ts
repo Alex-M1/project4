@@ -5,6 +5,13 @@ import { ActionTypes as AT } from './actionTypes';
 export const initialState: IInitialState = {
   rooms: [],
   gameType: GAME_TYPE.CHECKERS,
+  myOpponentGame: {
+    id: null,
+    gameType: null,
+    guestLogin: null,
+    startTime: null,
+    stepDtoList: null,
+  },
 };
 
 export const roomReducer: TReducer = (state = initialState, action) => {

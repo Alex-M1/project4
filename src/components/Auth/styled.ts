@@ -21,7 +21,7 @@ export const StGlobalCredentials = styled.div`
 export const StNavLink = styled.div <IStyled>`
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     color: ${(props) => changeTheme(props, 'textColor')};
 `;
