@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useTheme } from 'src/components/hooks/useTheme';
 import Modal from 'src/components/Modal';
 import { StBtn } from './styled';
@@ -6,7 +6,11 @@ import { StBtn } from './styled';
 const AddRoomBtn: React.FC = () => {
     const { colors, theme } = useTheme();
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const handleClick = () => setIsOpen((prev) => !prev);
+    const handleClick = () => {
+        setIsOpen((prev) => !prev);
+        ref.current.blur();
+    };
+    const ref = useRef(null);
 
     return (
         <>
@@ -14,6 +18,7 @@ const AddRoomBtn: React.FC = () => {
                 theme={theme}
                 colors={colors}
                 onClick={handleClick}
+                ref={ref}
             />
             {isOpen && <Modal onCloseModal={handleClick} />}
         </>

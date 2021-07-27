@@ -2,29 +2,37 @@ import React from 'react';
 import { CLIENT } from 'constants/urls';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Location } from 'history';
 import { useTheme } from '../../hooks/useTheme';
-import { StP, StWrapper } from './styled';
+import { StG, StS, StWrapper } from './styled';
 
-const HeaderRoute = () => {
+interface IProps {
+  location: Location;
+}
+
+const HeaderRoute: React.FC <IProps> = ({ location }) => {
+  const path = location.pathname;
   const { t } = useTranslation();
   const { colors, theme } = useTheme();
   return (
       <StWrapper>
         <NavLink to={CLIENT.main}>
-          <StP
+          <StG
             theme={theme}
             colors={colors}
+            path={path}
           >
             {t('games')}
-          </StP>
+          </StG>
         </NavLink>
         <NavLink to={CLIENT.statistic}>
-          <StP
+          <StS
             theme={theme}
             colors={colors}
+            path={path}
           >
             {t('statistic')}
-          </StP>  
+          </StS>  
         </NavLink>
       </StWrapper>
   );

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
 import ModRedirect from 'common/ModRedirect';
 import Button from 'common/Button';
@@ -12,6 +12,15 @@ interface IProps {
 
 const AuthBtn: React.FC<IProps> = ({ isRedirect, setIsRedirect, signInRequest }) => {
   const onButtonClick = () => signInRequest();
+  useEffect(() => {
+    const signin = (e) => {
+      if (e.keyCode === 13) {
+        onButtonClick();
+      }
+    };
+    window.addEventListener('keydown', signin);
+  return () => window.removeEventListener('keydown', signin);
+  }, []);
   const redirect = useMemo(() => {
     if (isRedirect) {
       setIsRedirect(false);

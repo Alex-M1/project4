@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { StInputDiv } from 'src/components/Auth/AuthIpt/styled';
 import ModRedirect from 'common/ModRedirect';
 import Button from 'common/Button';
@@ -12,6 +12,15 @@ interface IProps {
 
 const RegBtn: React.FC<IProps> = ({ isRedirect, signUpRequest, setIsRedirect }) => {
   const onButtonClick = () => signUpRequest();
+  useEffect(() => {
+    const signup = (e) => {
+      if (e.keyCode === 13) {
+        onButtonClick();
+      }
+    };
+    window.addEventListener('keydown', signup);
+  return () => window.removeEventListener('keydown', signup);
+  }, []);
   const redirect = useMemo(() => {
     if (isRedirect) {
       setIsRedirect(false);
