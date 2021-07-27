@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderRouteGames Should match snapshot 1`] = `"<div class=\\"styled__StWrapperGame-cAXBUd zWtYc\\"><a href=\\"/main\\"><p class=\\"styled__StP-gOoQqg gWyZFU\\"></p></a></div>"`;
