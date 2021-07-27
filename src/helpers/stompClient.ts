@@ -83,7 +83,7 @@ export const createStompChannel = (stompClient: CompatClient) => eventChannel((e
       if (myRoom) {
         if (gameStepSub) {
           myRoomId = null;
-          // gameStepSub.unsubscribe();
+          gameStepSub.unsubscribe();
         }
         gameStepSub = stompClient.subscribe(
           `${SERVER.game}/${myRoom.id}`,
