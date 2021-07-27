@@ -27,12 +27,7 @@ export function* roomChannelSaga({ payload }: ReturnType<typeof roomChannel>): S
     const parsedGameData: IGameData = yield call([JSON, 'parse'], gameData);
     yield put(setIsGameEnd(false));
     yield put(clearFields());
-    console.log(myOpponentGame);
     if (!myOpponentGame.id) {
-      console.log({
-        guestLogin: parsedGameData.playWith === GAME_SETTINGS.bot ? GAME_SETTINGS.bot : myLogin,
-        id: parsedGameData.roomId,
-      });
       yield call(
         [stompClient, 'send'],
         SERVER.joinRoom,
@@ -117,7 +112,6 @@ export function* doBotStepSaga({ payload }: ReturnType<typeof doBotStep>): SagaI
       },
     };
     yield call([stompClient, 'send'], S.doStep, { uuid: parsedGameData.roomId }, JSON.stringify(stepBody));
-    yield delay(350);
   } catch (err) {
     yield call(notifications, { message: 'something_wrong' });
   }

@@ -1,12 +1,12 @@
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import { notifications } from 'helpers/notification';
 import { SERVER } from 'constants/urls';
-import { LOCAL_STORAGE as LS } from 'constants/constants';
+import { GAME_TYPE, LOCAL_STORAGE as LS } from 'constants/constants';
 import { stompClient, createRoomChanel } from 'src/helpers/stompClient';
 import { IGameData } from 'common/types/constantsTypes';
-import watcherTicTac, { doBotStepSaga, roomChannelSaga, stepHistory, withBotGameSaga } from '../sagas';
+import watcherTicTac, { doBotStepSaga, roomChannelSaga, stepHistory, withBotGameSaga, withOpponentGameSaga } from '../sagas';
 import { ActionTypes as AT } from '../actionTypes';
-import { doStep, setIsGameEnd } from '../actions';
+import { clearFields, doStep, setIsGameEnd, setSquares, setTurn, setWinner } from '../actions';
 
 jest.mock('src/helpers/stompClient', () => ({
   createRoomChanel: jest.fn(),
@@ -20,36 +20,108 @@ describe('TicTacSagas', () => {
     let action: any;
     beforeEach(() => {
       action = {
-        payload: 'str',
+        payload: { myOpponentGame: {} },
         type: AT.CREATE_ROOM_CHANNEL,
       };
     });
-    it('should call roomChannelSaga without error', () => {
-      const roomChannel = [];
-      const actionMock = { type: '' };
+    it('should call roomChannelSaga without error with id', () => {
       const gameData = 'sad';
       const parsedGameData: IGameData = {
         roomId: '123',
         gameType: 'asdasd',
         playWith: 'bot',
       };
+      const login = 'login';
+      action.payload.myOpponentGame.id = '123';
       testSaga(roomChannelSaga, action)
         .next()
-        .put(setIsGameEnd(false))
-        .next()
+        .call([localStorage, 'getItem'], LS.login)
+        .next(login)
         .call([localStorage, 'getItem'], LS.gameOptions)
         .next(gameData)
         .call([JSON, 'parse'], gameData)
         .next(parsedGameData)
+        .put(setIsGameEnd(false))
+        .next()
+        .put(clearFields())
+        .next()
+        .isDone();
+      action.payload.myOpponentGame.id = null;
+    });
+    it('should call roomChannelSaga without error without id', () => {
+      const roomChannel = [];
+      const actionMock = { type: '' };
+      const gameData = 'sad';
+      const parsedGameData: IGameData = {
+        roomId: '123',
+        gameType: 'asdasd',
+        playWith: 'Bot',
+      };
+      const login = 'login';
+      testSaga(roomChannelSaga, action)
+        .next()
+        .call([localStorage, 'getItem'], LS.login)
+        .next(login)
+        .call([localStorage, 'getItem'], LS.gameOptions)
+        .next(gameData)
+        .call([JSON, 'parse'], gameData)
+        .next(parsedGameData)
+        .put(setIsGameEnd(false))
+        .next()
+        .put(clearFields())
+        .next()
         .call(
           [stompClient, 'send'],
           SERVER.joinRoom,
           {},
           JSON.stringify({
-            guestLogin: 'Bot',
+            guestLogin: parsedGameData.playWith,
             id: parsedGameData.roomId,
           }),
         )
+        .next()
+        .put(setTurn(true))
+        .next()
+        .call(createRoomChanel)
+        .next(roomChannel)
+        .take(roomChannel)
+        .next(actionMock)
+        .put(actionMock)
+        .next();
+    });
+    it('should call roomChannelSaga without error without id !bot', () => {
+      const roomChannel = [];
+      const actionMock = { type: '' };
+      const gameData = 'sad';
+      const parsedGameData: IGameData = {
+        roomId: '123',
+        gameType: 'asdasd',
+        playWith: 'User',
+      };
+      const login = 'login';
+      testSaga(roomChannelSaga, action)
+        .next()
+        .call([localStorage, 'getItem'], LS.login)
+        .next(login)
+        .call([localStorage, 'getItem'], LS.gameOptions)
+        .next(gameData)
+        .call([JSON, 'parse'], gameData)
+        .next(parsedGameData)
+        .put(setIsGameEnd(false))
+        .next()
+        .put(clearFields())
+        .next()
+        .call(
+          [stompClient, 'send'],
+          SERVER.joinRoom,
+          {},
+          JSON.stringify({
+            guestLogin: login,
+            id: parsedGameData.roomId,
+          }),
+        )
+        .next()
+        .put(setTurn(false))
         .next()
         .call(createRoomChanel)
         .next(roomChannel)
@@ -181,8 +253,6 @@ describe('TicTacSagas', () => {
           JSON.stringify(stepBody),
         )
         .next()
-        .put(doStep(action.payload))
-        .next()
         .isDone();
       spy.mockRestore();
     });
@@ -200,46 +270,182 @@ describe('TicTacSagas', () => {
     beforeEach(() => {
       action = {
         payload: {
+          field: ['12'],
           winner: 'aasd',
+          stepDto: {
+            login: 'string',
+            step: 'string',
+            time: 12312321,
+            id: 'string',
+          },
         },
         type: AT.SET_STEP_HISTORY,
       };
     });
-    it('should call stepHistory without error & winner is player', () => {
+    it('should call stepHistory without error & win', () => {
       const login = 'aasd';
       testSaga(stepHistory, action)
         .next()
         .call([localStorage, 'getItem'], LS.login)
         .next(login)
+        .put(setTurn(true))
+        .next()
+        .put(setSquares(action.payload.field))
+        .next()
         .put(setIsGameEnd(true))
         .next()
-        .call(notifications, { message: 'you_win', type: 'info' })
+        .put(clearFields())
+        .next()
+        .put(setWinner('you_win'))
         .next()
         .isDone();
     });
     it('should call stepHistory without error & player is loose', () => {
-      const login = 'aasdd';
+      const login = 'aasssd';
+      testSaga(stepHistory, action)
+        .next()
+        .call([localStorage, 'getItem'], LS.login)
+        .next(login)
+        .put(setTurn(true))
+        .next()
+        .put(setSquares(action.payload.field))
+        .next()
+        .put(setIsGameEnd(true))
+        .next()
+        .put(clearFields())
+        .next()
+        .put(setWinner('you_loose'))
+        .next()
+        .isDone();
+    });
+    it('should call stepHistory without error & draw', () => {
+      const login = 'aasssd';
+      action.payload.winner = null;
+      testSaga(stepHistory, action)
+        .next()
+        .call([localStorage, 'getItem'], LS.login)
+        .next(login)
+        .put(setTurn(true))
+        .next()
+        .put(setSquares(action.payload.field))
+        .next()
+        .put(setIsGameEnd(true))
+        .next()
+        .put(clearFields())
+        .next()
+        .put(setWinner('draw'))
+        .next()
+        .isDone();
+    });
+    it('should call stepHistory without error & !winner', () => {
+      const login = 'aasssd';
+      action.payload.winner = undefined;
+      testSaga(stepHistory, action)
+        .next()
+        .call([localStorage, 'getItem'], LS.login)
+        .next(login)
+        .put(setTurn(true))
+        .next()
+        .put(setSquares(action.payload.field))
+        .next()
+        .isDone();
+    });
+    it('should call stepHistory without error & no field winner', () => {
+      action.payload.winner = 'aasdd';
+      const login = 'string';
+      testSaga(stepHistory, action)
+        .next()
+        .call([localStorage, 'getItem'], LS.login)
+        .next(login)
+        .put(setSquares(action.payload.field))
+        .next()
+        .put(setIsGameEnd(true))
+        .next()
+        .put(clearFields())
+        .next()
+        .put(setWinner('you_loose'))
+        .next()
+        .isDone();
+    });
+    it('should call stepHistory without error & no field', () => {
+      action.payload.field = null;
+      const login = 'string';
       testSaga(stepHistory, action)
         .next()
         .call([localStorage, 'getItem'], LS.login)
         .next(login)
         .put(setIsGameEnd(true))
         .next()
-        .call(notifications, { message: 'you_loose', type: 'warn' })
+        .put(clearFields())
         .next()
-        .isDone();
-    });
-    it('should call stepHistory without error & no field winner', () => {
-      action.payload.winner = null;
-      const login = 'aasdd';
-      testSaga(stepHistory, action)
+        .put(setWinner('you_loose'))
         .next()
-        .call([localStorage, 'getItem'], LS.login)
-        .next(login)
         .isDone();
     });
     it('should call withBotGameSaga with error', () => {
       testSaga(stepHistory, action)
+        .next()
+        .throw(new Error())
+        .call(notifications, { message: 'something_wrong' })
+        .next()
+        .isDone();
+    });
+  });
+  describe('withOpponentGameSaga', () => {
+    let action: any;
+    beforeEach(() => {
+      action = {
+        payload: {
+          square: 3,
+        },
+        type: AT.STEP_WITH_OPPONENT,
+      };
+    });
+    it('should call withOpponentGameSaga without error & win', () => {
+      const login = 'aasd';
+      const gameData = 'sad';
+      const parsedGameData: IGameData = {
+        roomId: '123',
+        gameType: 'asdasd',
+        playWith: 'bot',
+      };
+      const mockDate = 123213;
+      const spy = jest
+        .spyOn(Date, 'now')
+        .mockImplementation(() => mockDate);
+      const stepBody = {
+        gameType: GAME_TYPE.TIC_TAC_TOE,
+        stepDto: {
+          login,
+          step: action.payload.square.toString(),
+          time: mockDate,
+          id: parsedGameData.roomId,
+        },
+      };
+      testSaga(withOpponentGameSaga, action)
+        .next()
+        .call([localStorage, 'getItem'], LS.login)
+        .next(login)
+        .call([localStorage, 'getItem'], LS.gameOptions)
+        .next(gameData)
+        .call([JSON, 'parse'], gameData)
+        .next(parsedGameData)
+        .call(
+          [stompClient, 'send'],
+          SERVER.doStep,
+          { uuid: parsedGameData.roomId },
+          JSON.stringify(stepBody),
+        )
+        .next()
+        .put(doStep(action.payload.square))
+        .next()
+        .put(setTurn(false))
+        .next()
+        .isDone();
+      spy.mockRestore();
+    });
+    it('should call withOpponentGameSaga with error', () => {
+      testSaga(withOpponentGameSaga, action)
         .next()
         .throw(new Error())
         .call(notifications, { message: 'something_wrong' })
