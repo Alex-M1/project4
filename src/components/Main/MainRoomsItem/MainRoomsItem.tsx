@@ -20,16 +20,13 @@ const MainRoomsItem: React.FC<IProps> = ({ id, login, type }) => {
     const gameData: IGameData = {
       roomId: id,
       gameType: type,
-      playWith: isMyGame ? GAME_SETTINGS.bot : GAME_SETTINGS.user,
+      playWith: isMyGame ? GAME_SETTINGS.bot : localStorage.getItem(LS.login),
     };
     localStorage.setItem(LS.gameOptions, JSON.stringify(gameData));
   };
   return (
     <NavLink to={type} onClick={toGameHandler}>
-      <StItem
-        theme={theme}
-        colors={colors}
-      >
+      <StItem theme={theme} colors={colors} >
         <p>{login}</p>
         {
           isMyGame

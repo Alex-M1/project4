@@ -1,10 +1,10 @@
 import { CompatClient, Stomp } from '@stomp/stompjs';
-import {GAME_SETTINGS, GAME_TYPE, LOCAL_STORAGE} from 'constants/constants';
+import { GAME_SETTINGS, GAME_TYPE, LOCAL_STORAGE as LS } from 'constants/constants';
 import { SERVER } from 'constants/urls';
 import { eventChannel } from 'redux-saga';
 import { IGameData } from 'common/types/constantsTypes';
 import { doBotStep as doBotStepChecker, refreshField, setPossibleSteps } from 'store/checkers/actions';
-import { addRoom } from 'store/room/actions';
+import { addRoom, redirectToRoom } from 'store/room/actions';
 import { clearFields, doBotStep, joinMyGame, setStepHistory } from 'store/ticTac/actions';
 import { cookieMaster } from './cookieMaster';
 
@@ -18,15 +18,17 @@ export const connection = (token: string) => {
 };
 
 export const createRoomChanel = () => eventChannel((emit) => {
-  if (!stompClient) connection(cookieMaster.getCookie(LOCAL_STORAGE.token));
-  const gameData: IGameData = JSON.parse(localStorage.getItem(LOCAL_STORAGE.gameOptions));
+  if (!stompClient) connection(cookieMaster.getCookie(LS.token));
+  const gameData: IGameData = JSON.parse(localStorage.getItem(LS.gameOptions));
   const botStep = stompClient.subscribe(
     `${SERVER.topicBotStep}/${gameData.roomId}`,
     ({ body }) => emit(doBotStep(JSON.parse(body))),
   );
   const roomWatcher = stompClient.subscribe(
     `${SERVER.game}/${gameData.roomId}`,
-    ({ body }) => emit(setStepHistory(JSON.parse(body) || body)),
+    ({ body }) => {
+      emit(setStepHistory(JSON.parse(body) || body));
+    },
   );
   return () => {
     botStep.unsubscribe();
@@ -35,16 +37,19 @@ export const createRoomChanel = () => eventChannel((emit) => {
 });
 
 export const createCheckerChannel = () => eventChannel((emit) => {
-  if (!stompClient) connection(cookieMaster.getCookie(LOCAL_STORAGE.token));
-  const gameData: IGameData = JSON.parse(localStorage.getItem(LOCAL_STORAGE.gameOptions));
-  const botStep = stompClient.subscribe(
-    `${SERVER.topicBotStep}/${gameData.roomId}`,
-    ({ body }) => emit(doBotStepChecker(body)),
-  );
-  const checketWatcher = stompClient.subscribe(
+  if (!stompClient) connection(cookieMaster.getCookie(LS.token));
+  const gameData: IGameData = JSON.parse(localStorage.getItem(LS.gameOptions));
+  if (gameData.playWith === GAME_SETTINGS.bot) {
+    stompClient.subscribe(
+      `${SERVER.topicBotStep}/${gameData.roomId}`,
+      ({ body }) => emit(doBotStepChecker(body)),
+    );
+  }
+  const checkerWatcher = stompClient.subscribe(
     `${SERVER.game}/${gameData.roomId}`,
     ({ body }) => {
-      if (JSON.parse(body).field) {
+      const message = JSON.parse(body);
+      if (message.field) {
         emit(refreshField(JSON.parse(body).field.gameField));
       }
     },
@@ -59,9 +64,8 @@ export const createCheckerChannel = () => eventChannel((emit) => {
     },
   );
   return () => {
-    botStep.unsubscribe();
     userTopic.unsubscribe();
-    checketWatcher.unsubscribe();
+    checkerWatcher.unsubscribe();
   };
 });
 
@@ -72,26 +76,26 @@ export const createStompChannel = (stompClient: CompatClient) => eventChannel((e
   const roomsSub = stompClient.subscribe(
     SERVER.rooms,
     ({ body }) => {
-      const login = localStorage.getItem(LOCAL_STORAGE.login);
+      const login = localStorage.getItem(LS.login);
       const parsedBody = JSON.parse(body);
       const myRoom = parsedBody.find((room) => room.creatorLogin === login);
+
       if (myRoom) {
         if (gameStepSub) {
           myRoomId = null;
           gameStepSub.unsubscribe();
         }
-
         gameStepSub = stompClient.subscribe(
-            `${SERVER.game}/${myRoom.id}`,
-            ({ body }) => {
+          `${SERVER.game}/${myRoom.id}`,
+          ({ body }) => {
             const parsedBody = JSON.parse(body);
             if (
-                parsedBody.startTime
-                && parsedBody.guestLogin !== GAME_SETTINGS.bot
-                && parsedBody.gameType === GAME_TYPE.TIC_TAC_TOE
+              parsedBody.startTime
+              && parsedBody.guestLogin !== GAME_SETTINGS.bot
+              && parsedBody.gameType === GAME_TYPE.TIC_TAC_TOE
             ) {
-              // someone joined my game
               myRoomId = myRoom.id;
+
               emit(clearFields());
               emit(joinMyGame({
                 id: myRoom.id,
@@ -104,12 +108,25 @@ export const createStompChannel = (stompClient: CompatClient) => eventChannel((e
             if (myRoomId && myRoom.id === myRoomId) {
               emit(setStepHistory(parsedBody));
             }
+            if (parsedBody.gameType === GAME_TYPE.CHECKERS) {
+              const message = JSON.parse(body);
+              if (message.field) {
+                emit(refreshField(message.field.gameField));
+              }
+              if (message.guestLogin) {
+                const options: IGameData = JSON.parse(localStorage.getItem(LS.gameOptions));
+                options.roomId = myRoom.id;
+                options.gameType = GAME_TYPE.CHECKERS;
+                options.playWith = message.guestLogin;
+                localStorage.setItem(LS.gameOptions, JSON.stringify(options));
+                emit(redirectToRoom(message.gameType));
+              }
+            }
           },
         );
       }
-
       return emit(addRoom(parsedBody));
-  });
+    });
   const errorSub = stompClient.subscribe(SERVER.errors, ({ body }) => console.log(body));
   return () => {
     roomsSub.unsubscribe();

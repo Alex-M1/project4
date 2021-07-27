@@ -27,15 +27,20 @@ export function* roomChannelSaga({ payload }: ReturnType<typeof roomChannel>): S
     const parsedGameData: IGameData = yield call([JSON, 'parse'], gameData);
     yield put(setIsGameEnd(false));
     yield put(clearFields());
+    console.log(myOpponentGame);
     if (!myOpponentGame.id) {
+      console.log({
+        guestLogin: parsedGameData.playWith === GAME_SETTINGS.bot ? GAME_SETTINGS.bot : myLogin,
+        id: parsedGameData.roomId,
+      });
       yield call(
-          [stompClient, 'send'],
-          SERVER.joinRoom,
-          {},
-          JSON.stringify({
-            guestLogin: parsedGameData.playWith === GAME_SETTINGS.bot ? GAME_SETTINGS.bot : myLogin,
-            id: parsedGameData.roomId,
-          }),
+        [stompClient, 'send'],
+        SERVER.joinRoom,
+        {},
+        JSON.stringify({
+          guestLogin: parsedGameData.playWith === GAME_SETTINGS.bot ? GAME_SETTINGS.bot : myLogin,
+          id: parsedGameData.roomId,
+        }),
       );
       yield put(setTurn(parsedGameData.playWith === GAME_SETTINGS.bot));
       const roomChannel = yield call(createRoomChanel);
@@ -80,7 +85,7 @@ export function* withOpponentGameSaga({ payload }: ReturnType<typeof stepWithBot
   try {
     const login = yield call([localStorage, 'getItem'], LS.login);
     const gameData = yield call([localStorage, 'getItem'], LS.gameOptions);
-    const parsedGameData :IGameData= yield call([JSON, 'parse'], gameData);
+    const parsedGameData: IGameData = yield call([JSON, 'parse'], gameData);
     const stepBody = {
       gameType: GAME_TYPE.TIC_TAC_TOE,
       stepDto: {

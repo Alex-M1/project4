@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE as LS } from 'constants/constants';
+import { GAME_SETTINGS, LOCAL_STORAGE as LS } from 'constants/constants';
 import { SERVER } from 'constants/urls';
 import { SagaIterator } from 'redux-saga';
 import { call, put, select, take, takeEvery } from 'redux-saga/effects';
@@ -80,7 +80,7 @@ export function* doStepSaga({ payload }: ReturnType<typeof doStep>): SagaIterato
       JSON.stringify(stepBody),
     );
     yield put(setPossibleSteps([]));
-    if (parsedGameData.playWith === 'Bot') {
+    if (parsedGameData.playWith === GAME_SETTINGS.bot) {
       yield call(
         [stompClient, 'send'],
         SERVER.getBotStep,

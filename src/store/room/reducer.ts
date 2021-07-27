@@ -5,13 +5,7 @@ import { ActionTypes as AT } from './actionTypes';
 export const initialState: IInitialState = {
   rooms: [],
   gameType: GAME_TYPE.CHECKERS,
-  myOpponentGame: {
-    id: null,
-    gameType: null,
-    guestLogin: null,
-    startTime: null,
-    stepDtoList: null,
-  },
+  toRoom: '',
 };
 
 export const roomReducer: TReducer = (state = initialState, action) => {
@@ -25,6 +19,11 @@ export const roomReducer: TReducer = (state = initialState, action) => {
       return {
         ...state,
         gameType: action.payload,
+      };
+    case AT.REDIRECT_TO_ROOM:
+      return {
+        ...state,
+        toRoom: action.payload,
       };
     default: return state;
   }
