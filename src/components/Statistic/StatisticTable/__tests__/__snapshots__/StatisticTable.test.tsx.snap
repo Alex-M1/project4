@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatisticTable StatisticTable Should match snapshot 1`] = `"<div class=\\"styled__StWrapper-kHlHLr fYkXuW\\"><div class=\\"styled__StHeaderWrapper-bKzUbg fqprgP\\"><h1></h1><div><span></span><span></span><span></span><span></span></div></div><div class=\\"styled__StResultsWrapper-eOGtIh gxuytl\\"><div><span></span><span></span><span>string</span><span>string</span></div><div><span></span><span></span><span>string</span><span>string</span></div></div></div>"`;
